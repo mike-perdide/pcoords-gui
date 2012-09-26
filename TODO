@@ -1,0 +1,13 @@
+[Frontend]
+[X] Show a table of selected lines (the rows of selected lines are highlighted)
+[X] Change the axis order
+[ ] Change the direction of the axes
+[X] Change the line segment color
+[X] Zoom/Focus
+	Adjust witdth of lines when use zoom - done
+[ ] Apply Scroll -> Like google Maps
+[X] Add widgets to choice a parser and log file.
+	- Add mechanisms to open other pgdl file without close the GUI.
+[ ] Dynamic Graphic Plotting
+[X] Hide rows when move slider
+[ ] Disperse point of an axes.

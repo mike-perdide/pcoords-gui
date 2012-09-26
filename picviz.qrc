@@ -1,0 +1,12 @@
+<!DOCTYPE RCC><RCC version="1.0">
+	<qresource prefix="/picviz-gui/icons">
+		<file alias="brush.png">icons/brush.png</file>
+		<file alias="hide.png">icons/hide.png</file>
+		<file alias="less.png">icons/less.png</file>
+		<file alias="lesszoom.png">icons/lesszoom.png</file>
+		<file alias="lock.png">icons/lock.png</file>
+		<file alias="more.png">icons/more.png</file>
+		<file alias="morezoom.png">icons/morezoom.png</file>
+		<file alias="width.png">icons/width.png</file>
+	</qresource>
+</RCC>
