@@ -1,0 +1,2 @@
+recursive-include icons *.png
+include *.qrc *.ui
