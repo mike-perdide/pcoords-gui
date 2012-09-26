@@ -1,9 +1,12 @@
-all: resource picviz-gui
+SRCDIRS = picviz-gui
+GENTARGETS = all clean test
 
-resource: picviz.qrc
-	pyrcc4 -o PicvizGui/qrc_resources.py picviz.qrc
+$(GENTARGETS): $(SRCDIRS)
+	#Make recursion
+	$(MAKE) -C $< $@
 
-picviz-gui: picviz.ui
-	pyuic4 picviz.ui > PicvizGui/UiPicviz.py
-	sed -i 's/..\/..\/..\/..\/..\/..\/..\/usr/\/usr/g' PicvizGui/UiPicviz.py
+install:	all
+	pysetup run install_dist||python setup.py install
 
+publish:	all
+	pysetup run register sdist upload
