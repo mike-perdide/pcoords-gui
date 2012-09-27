@@ -75,7 +75,7 @@ class AxisButton(QtGui.QWidget):
             #    del self.scene.listUndoStatement[i]
 
         for each in self.comboBoxes:
-            name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox, 
+            name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
             label = label + " %s "%(each.currentText().__str__())
         #self.scene.listUndoStatement.append(label)
         #print self.scene.listUndoStatement
@@ -101,10 +101,10 @@ class AxisButton(QtGui.QWidget):
             index = i.findText(listAxis[j])
             i.setCurrentIndex(index)
             j = j + 1
-                    
+
         #print label
         for each in self.comboBoxes:
-            name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox, 
+            name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
             #translate is for engine name and store on list
         self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
         self.lines.clean()
@@ -122,7 +122,7 @@ class AxisButton(QtGui.QWidget):
         #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
         #name_list=[] #This list is responsable for hold names of axes
         #for each in self.comboBoxes:
-        #    name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox, 
+        #    name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
             #translate is for engine name and store on list
         #self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
         self.lines.clean()
@@ -134,7 +134,7 @@ class AxisButton(QtGui.QWidget):
 
 
     def setLines(self,scene_lines,line_number): #Presenting Lines
-        self.lines = scene_lines 
+        self.lines = scene_lines
         self.linenb = line_number
 
     def setImage(self,scene_image): #Presenting image file
@@ -145,7 +145,7 @@ class AxisButton(QtGui.QWidget):
 
     def setSlider(self,slider):
         self.horizontalSlider = slider
-    
+
     def Close(self):
         self.ui.horizontalLayout.removeWidget(self.button) #Put the button in the same layout where are located the combos
         self.button.close()

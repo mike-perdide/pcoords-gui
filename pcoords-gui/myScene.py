@@ -94,7 +94,7 @@ class myScene(QtGui.QGraphicsScene):
                     count_showed += 1
                 del self.dic['lines'][i]
             del remove_items
-            
+
         progress.setValue(100)
         self.removeAllLayers()
         self.axisButton.updateAfterRemoveDuplicated()
@@ -102,7 +102,7 @@ class myScene(QtGui.QGraphicsScene):
         dialog = QtGui.QMessageBox(self.ui.graphicsView)
         dialog.setWindowTitle("Picviz-GUI")
         dialog.setIcon(1)
-        dialog.setText("Removed %d normal lines. \nRemoved %d hidden lines." % 
+        dialog.setText("Removed %d normal lines. \nRemoved %d hidden lines." %
                     (count_showed/(self.axes_number-1) , count_hidden/(self.axes_number-1)))
         dialog.show()
 
@@ -167,7 +167,7 @@ class myScene(QtGui.QGraphicsScene):
         del self.axes_number
         del self.layers
         self.layers={}
-    
+
     def keyPressEvent(self,key):
         pressedKey=key.key()
         count = 0
@@ -218,7 +218,7 @@ class myScene(QtGui.QGraphicsScene):
 #            print "COLOR"
 #            print self.listUndoStatement
             self.countUndo = len(self.listUndoStatement) #- 1
-    
+
     def brushSelection2(self,paramLine,paramColor,paramSelected):
         colorPen = QtGui.QColor(paramColor)
         pen = QtGui.QPen(colorPen)
@@ -233,7 +233,7 @@ class myScene(QtGui.QGraphicsScene):
         self.dic['lines'][int(paramLine)]['color']=color
         count = count + 1
 
-        
+
     def hideSelected(self):
         count = 0
         selected=self.selectedItems()
@@ -254,9 +254,9 @@ class myScene(QtGui.QGraphicsScene):
         #self.countUndo = len(self.listUndoStatement) #- 1
         self.clearSelection()
         self.groups[len(self.groups)-1].hide()
-        
 
-    
+
+
     def hideSelected2(self,paramLine):
         count = 0
         each = self.graph_items[int(paramLine)+self.axes_number]
@@ -269,9 +269,9 @@ class myScene(QtGui.QGraphicsScene):
         self.clearSelection()
         self.groups[len(self.groups)-1].hide()
 
-    
+
     def hideNotSelected(self):
-        count = 0 
+        count = 0
         list1 = self.selectedItems()
         for i in range(0,self.axes_number):
             list1.append(self.graph_items[i]) #Adding the Axes to not consider them in difference
@@ -291,7 +291,7 @@ class myScene(QtGui.QGraphicsScene):
         count = 0
         statement = "WIDTH"
         #print self.dic['lines']
-        selected_items2 = self.selectedItems()     
+        selected_items2 = self.selectedItems()
         for i in range(len(self.listUndoStatement)-1,self.countUndo-1,-1):
                 del self.listUndoStatement[i]
 
@@ -305,7 +305,7 @@ class myScene(QtGui.QGraphicsScene):
         #print "Statement width: %s" %(statement)
         if statement != "WIDTH":
             self.listUndoStatement.append(statement)
-            #self.countUndo = self.countUndo + 1        
+            #self.countUndo = self.countUndo + 1
             self.countUndo = len(self.listUndoStatement) #- 1
 
         #del self.listUndoStatement[len(self.listUndoStatement)-1]
@@ -313,7 +313,7 @@ class myScene(QtGui.QGraphicsScene):
         # print self.listUndoStatement
 
         self.clearSelection()
-    
+
     def changeWidth2(self,paramLine,width):
         count = 0
         each =     self.graph_items[int(paramLine)+self.axes_number]
@@ -323,7 +323,7 @@ class myScene(QtGui.QGraphicsScene):
 
     def AxisIncrease(self,axis):
 #        print "INCREASE %d"%(self.currentIncrease)
-        #self.listUndoStatement.append("INCREASE %d"%(self.currentIncrease))        
+        #self.listUndoStatement.append("INCREASE %d"%(self.currentIncrease))
     #    for i in range(strlen(self.listUndoStatement),self.countUndo-1,-1):
      #       del self.listUndoStatement[i]
 
@@ -371,7 +371,7 @@ class myScene(QtGui.QGraphicsScene):
         for each in range(0,self.axes_number):
             paxis = self.graph_items[each].line()
             self.graph_items[each].setLine(paxis.x1(),paxis.y1(),paxis.x2(),maximum+4)
-        
+
     def hideList(self,hidelist):
         count = 0
         #group=self.selected
@@ -383,10 +383,10 @@ class myScene(QtGui.QGraphicsScene):
                 self.dic['lines'][each.getId()-self.axes_number]['hidden']=True
         self.clearSelection()
         self.groups[len(self.groups)-1].hide()
-        
+
 
     def showAllLines(self):
-        count = 0        
+        count = 0
         #for i in range(len(self.listUndoStatement)-1,self.countUndo-1,-1):
             #    del self.listUndoStatement[i]
 
@@ -398,10 +398,10 @@ class myScene(QtGui.QGraphicsScene):
                 i.mySetSelected(False,False)
         self.clearSelection()
         for i in range(0,self.ui.tableWidget.rowCount()):
-            self.ui.tableWidget.showRow(i)        
+            self.ui.tableWidget.showRow(i)
         #self.countUndo = len(self.listUndoStatement) #- 1
 
-    
+
     def showAllLines2(self,paramLine):
         count = 0
         for each in self.groups:
@@ -430,9 +430,9 @@ class myScene(QtGui.QGraphicsScene):
             if not self.layers[selected]['hidden'] and not self.layers[selected]['blocked']:
                 self.semaphore=True
                 for each in self.layers[selected]['items']:
-                        self.graph_items[each].setSelected(True)    
+                        self.graph_items[each].setSelected(True)
         #pass
-            
+
     def createLayer(self,name,index,line):
         if name == '':
             line.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
@@ -440,7 +440,7 @@ class myScene(QtGui.QGraphicsScene):
             name = 'default'
         if (not self.layers.has_key(name)):
             index_list=[index]
-            
+
             item = QtGui.QTreeWidgetItem()
             #item.setIcon(0,QtCore.QString(name))self.ui.layersTreeWidget.headerItem().icon(0)
             item.setText(2,QtCore.QString(name))
@@ -451,12 +451,12 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.header().resizeSection(0,22)
             self.ui.layersTreeWidget.header().resizeSection(1,25)
             self.layers[name]={'items':[index],'hidden':False,'blocked':False,'group':None,'widget':item}
-            
+
         else:
             self.layers[name]['items'].append(index)
-        statement = "ADDLAYER %s %s %s" %(name,index,line)    
+        statement = "ADDLAYER %s %s %s" %(name,index,line)
         self.listUndoStatement.append(statement)
-        #self.countUndo = self.countUndo + 1        
+        #self.countUndo = self.countUndo + 1
         self.countUndo = len(self.listUndoStatement) #- 1
 
     def updateItem(self,name,item):
@@ -468,7 +468,7 @@ class myScene(QtGui.QGraphicsScene):
 
 
 
-    
+
     def selectLayer(self,treeItem,column):
         self.clearSelection()
         treeItem = self.ui.layersTreeWidget.selectedItems()[0]
@@ -521,7 +521,7 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.removeItemWidget(item,1)
             self.ui.layersTreeWidget.removeItemWidget(item,2)
             del self.layers[layer]
-            
+
 
     def addLayer(self):
         ok = False
@@ -550,7 +550,7 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.removeItemWidget(current,0)
             self.ui.layersTreeWidget.removeItemWidget(current,1)
             self.ui.layersTreeWidget.removeItemWidget(current,2)
-            
+
             if self.layers.has_key('default'):
                 current.setCheckState(0, self.falseTrue(self.layers['default']['blocked']))
                 current.setCheckState(1,  self.falseTrue(not self.layers['default']['hidden']))
@@ -581,9 +581,9 @@ class myScene(QtGui.QGraphicsScene):
         hidden = self.layers[name][hidden]
         blocked = self.layers[name][blocked]
         group = self.layers[name][group]
-        statement = "REMOVELAYER %s %s %s %s %s" %(name,items_str,str(hidden),str(blocked),str(group))    
+        statement = "REMOVELAYER %s %s %s %s %s" %(name,items_str,str(hidden),str(blocked),str(group))
         self.listUndoStatement.append(statement)
-        #self.countUndo = self.countUndo + 1        
+        #self.countUndo = self.countUndo + 1
         self.countUndo = len(self.listUndoStatement) #- 1'''
 
 
@@ -608,10 +608,10 @@ class myScene(QtGui.QGraphicsScene):
         elif current == None:
             QtGui.QMessageBox.information(self.ui.layersTreeWidget,self.trUtf8("Layers"),self.trUtf8("Select one layer to remove!"))
         else:
-            QtGui.QMessageBox.information(self.ui.layersTreeWidget,self.trUtf8("Layers"),self.trUtf8("Cannot remove default layer!"))            
-                    
+            QtGui.QMessageBox.information(self.ui.layersTreeWidget,self.trUtf8("Layers"),self.trUtf8("Cannot remove default layer!"))
+
         '''self.clearSelection()
-        if previous!=None:    
+        if previous!=None:
             items = self.layers[previous.text(2).__str__()]
             for each in items:
                 self.graph_items[each].setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
@@ -622,4 +622,4 @@ class myScene(QtGui.QGraphicsScene):
         #self.semaphore=False
         #self.changed()
         #self.layers[previous.text(0).__str__()].append(group)'''
-        
+

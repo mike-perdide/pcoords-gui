@@ -35,7 +35,7 @@ class Line:
         row = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(row)
         hidden=[]
-        for line in self.image['lines']:    
+        for line in self.image['lines']:
             plotnb=plotnb+1
             linecounter = linecounter + 1
             qtcolor = self.QTColorGet(line['color'])
@@ -47,7 +47,7 @@ class Line:
             currentLine.setPen(pen)
             currentLine.setCursor(QtCore.Qt.OpenHandCursor)
             currentLine.setLayer(line['layer'])
-            self.scene.createLayer(line['layer'],linecounter,currentLine)            
+            self.scene.createLayer(line['layer'],linecounter,currentLine)
             self.scene.addItem(currentLine)
             self.ui.tableWidget.setItem(row, plotnb, QtGui.QTableWidgetItem(line['x1_strval']))
             self.backupRows[row].append(line['x1_strval'])
@@ -64,7 +64,7 @@ class Line:
                 self.ui.tableWidget.insertRow(row)
                 for each in parentcontainer:
                     parentDict[each]=parentcontainer
-                del parentcontainer                    
+                del parentcontainer
                 parentcontainer = []
                 plotnb=-1
 
@@ -95,7 +95,7 @@ class Line:
         self.scene.hideList(hidden)
 
     def doSelectable(self):
-        count = 0 
+        count = 0
         for each in self.graph_item:
             if (count>self.axes_number-1):
                 each.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
@@ -170,16 +170,16 @@ class Line:
             if count > self.axes_number-1:
                 each.increaseWidth()
             count = count + 1
-                    
-                
-                
+
+
+
 
 class lineItem(QtGui.QGraphicsLineItem):
 
     def setParents(self,parentList,allItems,Id):
         # = parentList
         self.parentList = [item for item in parentList if not item in [self]]
-        
+
         self.selec=False
         self.allItems=allItems
         self.ctrlPressed=False
@@ -197,7 +197,7 @@ class lineItem(QtGui.QGraphicsLineItem):
     def setLayer(self,name):
         self.layer = name
 
-    
+
     def setOneRow(self,row1):
         self.tableItem1=row1
         self.haveTwoItems=False
@@ -213,7 +213,7 @@ class lineItem(QtGui.QGraphicsLineItem):
 
     def dragEnterEvent(self,event):
         print event
-    
+
     def setPressed(self,key):
         #print "Yes"
         if(key==QtCore.Qt.Key_Control):
@@ -226,7 +226,7 @@ class lineItem(QtGui.QGraphicsLineItem):
 
     def myIsSelected(self):
         return self.selec
-    
+
     def isPressed(self):
         return self.ctrlPressed
 
@@ -271,8 +271,8 @@ class lineItem(QtGui.QGraphicsLineItem):
 
     def setParentSelected(self,value):
         self.parentSelected=value
-        
-    
+
+
     def mySetSelected(self,selection,first):
         if (selection):
             print "Aplicou"
@@ -297,7 +297,7 @@ class lineItem(QtGui.QGraphicsLineItem):
         if(self.haveTwoItems):
             self.tableItem2.setSelected(self.selec)
         self.tableItem1.setSelected(self.selec)
-        
+
 
     def getId(self):
         return self.id

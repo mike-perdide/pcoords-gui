@@ -2,7 +2,7 @@ from PyQt4 import QtGui
 
 class ExportGraph:
     """
-    Export the graph stored in the datastructure 
+    Export the graph stored in the datastructure
     into an external file.
     """
     def __init__(self):
@@ -24,7 +24,7 @@ class ExportGraph:
 
     def asPNG(self, scene):
         path = QtGui.QFileDialog.getSaveFileName(None, "Save Png", "", "Png File (*.png)")
-        if path:	
+        if path:
             pixmap = QtGui.QPixmap(scene.width()+20,scene.height()+20)
             painter =  QtGui.QPainter(pixmap)
             painter.setRenderHint(QtGui.QPainter.Antialiasing)
@@ -51,9 +51,9 @@ class ExportGraph:
                     fp.write("    ")
                 if strpos == len(image['axeslist']):
                     # {'layer': '', 'y2': 125, 'x1_strval': 'syslog', 'color': '#000000', 'y1': 169, 'x2': 350, 'hidden': 0, 'x1': 250, 'x2_strval': '2011-11-11T16:03:39.140806-05:00 wrestlingcleats shutdown: shutdown by root: ', 'penwidth': 1.0}
-                    fp.write("%s=\"%s\", " % 
+                    fp.write("%s=\"%s\", " %
                              (self.__getAxisposLabel(image, axispos), line['x1_strval']))
-                    fp.write("%s=\"%s\"" % 
+                    fp.write("%s=\"%s\"" %
                              (self.__getAxisposLabel(image, axispos+1), line['x2_strval']))
                     # Write properties
                     props = self.__getLineProperties(line)
@@ -74,7 +74,7 @@ class ExportGraph:
                     strpos = 2
                     axispos = 0
                 else:
-                    fp.write("%s=\"%s\", " % 
+                    fp.write("%s=\"%s\", " %
                              (self.__getAxisposLabel(image, axispos), line['x1_strval']))
                     strpos += 1
                     axispos += 1

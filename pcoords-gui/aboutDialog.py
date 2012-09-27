@@ -7,12 +7,12 @@ class buildAboutPanel (QtGui.QDialog):
         self.ui = Ui_AboutDialog()
         self.ui.setupUi(self)
         self.apiversion = apiversion
-        self.ui.plainTextEdit.textCursor().insertHtml(self.getAboutDotHTML())    
-        
+        self.ui.plainTextEdit.textCursor().insertHtml(self.getAboutDotHTML())
+
         # about_text = open("PicvizGui/about.html","r")
         # string = about_text.readlines()
         # for each in string:
-        #     self.ui.plainTextEdit.textCursor().insertHtml(each)        
+        #     self.ui.plainTextEdit.textCursor().insertHtml(each)
 
     def getAboutDotHTML(self):
         variables = {
@@ -30,7 +30,7 @@ API version: APIVERSION<br/>
 </p>
 
 
-<p>URL: <a href="http://www.wallinfire.net/picviz">http://wallinfire.net/picviz</a><br></p> 
+<p>URL: <a href="http://www.wallinfire.net/picviz">http://wallinfire.net/picviz</a><br></p>
 <p>Help: <a href="mailto:picviz@wallinfire.net">picviz@wallinfire.net</a><br></p>
 <p>IRC: #picviz at <a href="http://www.freenode.net">freenode.org</a><br><br></p>
 

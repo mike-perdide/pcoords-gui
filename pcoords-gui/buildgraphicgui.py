@@ -17,7 +17,7 @@ class Buildpanel (QtGui.QDialog):
         QtCore.QObject.connect(self.ui.buttonBuild,QtCore.SIGNAL('clicked()'),self.buildFilePcv)
         QtCore.QObject.connect(self.ui.buttonFindDestinationPgdl,QtCore.SIGNAL('clicked()'),self.savePgdl)
         print "---Build created"
-    
+
     def defineLogFile (self):
         self.nameLogFile = pcvfile = QtGui.QFileDialog.getOpenFileName(None,"Open Log File","","")
         self.ui.pathLogfile.setText(self.nameLogFile)
@@ -36,7 +36,7 @@ class Buildpanel (QtGui.QDialog):
         self.nameGraphic = "unknow.png"
         dic_TypeParser = {0:'python',1:'perl',2:'bash',3:'./',4:'./',5:'java'}
         index = self.ui.comboTypeParser.currentIndex()
-        if index != 3 and index != 4: 
+        if index != 3 and index != 4:
             commandParse = dic_TypeParser[index] + " " + self.nameParserFile.__str__() + " " + self.nameLogFile.__str__() +" > " + self.namePgdlFile.__str__()
             print "Command: "+ commandParse
             os.system(commandParse)
@@ -49,7 +49,7 @@ class Buildpanel (QtGui.QDialog):
                 self.parent.paint_ImageView()
         #commandBuildPcv = "pcv -Tpngcairo " + self.namePcv  + self.nameGraphic
         #os.system(commandBuildPcv)
-    
-    
+
+
 
 

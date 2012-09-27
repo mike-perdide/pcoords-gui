@@ -21,7 +21,7 @@ from PyQt4 import QtCore, QtGui
 import picviz
 
 # UI
-from PicvizGui import axisgui, export, lines, defaults, selection, UiPicviz 
+from PicvizGui import axisgui, export, lines, defaults, selection, UiPicviz
 from PicvizGui.buildgraphicgui import Buildpanel
 from PicvizGui.UiPicviz import Ui_MainWindow
 from PicvizGui.myScene import myScene
@@ -74,7 +74,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         test = Buildpanel(self)
         test.show()
         print '+Buildgraphic'
-        
+
     def init_view (self, pcvFileBuilded):
         self.axes_number=0
         self.filter = None
@@ -88,7 +88,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 self.filtertable = sys.argv[2:]
                 self.filter = string.join(self.filtertable, " ")
             self.image = picviz.Image(str(self.pcvfile), self.filter)
-    
+
     def openPcvFile (self):
         self.pcvfile = QtGui.QFileDialog.getOpenFileName(None, "Open Picviz graph", "", "Picviz Files (*.pgdl *.pcv)")
         self.image = picviz.Image(str(self.pcvfile), self.filter)
@@ -101,8 +101,8 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
             self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing,True)
         else:
             self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing,False)
-            
-         
+
+
     def destroyComboBoxes (self):
         for each in self.comboList:
             each.close()
@@ -112,7 +112,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         #print self.image
         #if self.image:
         #    del self.image
-    
+
     def showCredits(self):
         panel = buildAboutPanel(picviz.Version(),self)
         panel.show()
@@ -143,7 +143,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
 
         self.connect(self.ui.actionUndo,QtCore.SIGNAL('triggered()'),self.undoProcess)
         self.connect(self.ui.actionRedo,QtCore.SIGNAL('triggered()'),self.redoProcess)
-        
+
         self.connect(self.ui.action_About,QtCore.SIGNAL('triggered()'),self.showCredits)
 
         self.connect(self.ui.actionZoomin,QtCore.SIGNAL('triggered()'),self.plusZoom)
@@ -181,13 +181,13 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 strList = cmd.split()
                 string = ''.join(strList[:1])
             #    print statementList
-                if string == "COLOR":    
+                if string == "COLOR":
                     num = (len(strList)-1)/2
                     for i in range(1,len(strList)-1,2):
             #            print "ID=%s COLOR=%s count=%d"%(strList[i],strList[i+1],self.scene.countUndo)
                         self.scene.brushSelection2(strList[i],strList[i+1],num)
                     self.scene.countUndo = self.scene.countUndo + 1 #+ (self.scene.axes_number-1)
-                elif string == "SHOWALL":         
+                elif string == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
                     for i in range (num_selected_lines):
                         for j in range (self.scene.axes_number-1):
@@ -195,7 +195,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                             self.scene.countUndo = self.scene.countUndo - 1
                             cmd = str(statementList[len(statementList)-self.scene.countUndo])
                             strList = cmd.split()
-                elif string == "HIDE":         
+                elif string == "HIDE":
                     num_selected_lines = len(strList)
             #        print "selected %d" %(num_selected_lines)
                     for i in range (1,num_selected_lines,1):
@@ -220,7 +220,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                         self.axisButton.buttonPressed2(listParam)
             #            print "Combo1=%s Combo2=%s Comobo3= %s count=%d"%(strList[i],strList[i+1],strList[i+2],self.scene.countUndo)
                         listParam = []
-                        
+
                     self.scene.countUndo = self.scene.countUndo + 1
 
                     #listParam = []
@@ -230,7 +230,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 #    print strList
                 #    self.axisButton.buttonPressed2(listParam)
                 #    self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "WIDTH":    
+                elif string == "WIDTH":
                     #print "width"
                     num_selected_lines = len(strList)-1
                     for i in range (1,num_selected_lines,3):
@@ -260,7 +260,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 self.scene.countUndo = 0
             else:
 
-                statementList = self.scene.listUndoStatement                
+                statementList = self.scene.listUndoStatement
             #    print "In Undo count = %d Len= %d" %(self.scene.countUndo,len(statementList)-1)
                 cmd = str(statementList[self.scene.countUndo-1])
                 strList = cmd.split()
@@ -272,7 +272,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
             #            print "ID=%s COLOR=%s count=%d"%(strList[i-1],strList[i],self.scene.countUndo)
                         self.scene.brushSelection2(strList[i-1],strList[i],num)
                     self.scene.countUndo = self.scene.countUndo -1 #+(self.scene.axes_number-1)
-                elif string == "SHOWALL":         
+                elif string == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
                     for i in range (num_selected_lines):
                         for j in range (self.scene.axes_number-1):
@@ -281,7 +281,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                             cmd = str(statementList[len(statementList)-self.scene.countUndo])
                             strList = cmd.split()
                     self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "HIDE":         
+                elif string == "HIDE":
                         num_selected_lines = (len(strList)-1)
                         for i in range (num_selected_lines,0,-1):
             #                print "ID=%s count=%d"%(strList[i],self.scene.countUndo)
@@ -304,14 +304,14 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                             listParam.append(strList[i])
                             self.axisButton.buttonPressed2(listParam)
             #                print "Combo1=%s Combo2=%s Comobo3= %s count=%d"%(strList[i-2],strList[i-1],strList[i],self.scene.countUndo)
-                            listParam = []                        
+                            listParam = []
                         self.scene.countUndo = self.scene.countUndo - 1
                     #listParam = []
                     #for i in range(self.scene.axes_number):
                     #    listParam.append(strList[i+1])
                     #self.axisButton.buttonPressed2(listParam)
                     #self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "WIDTH":    
+                elif string == "WIDTH":
                         num_selected_lines = len(strList)-1
                         for i in range (num_selected_lines,0,-3):
             #                print "ID=%s Width= %s count=%d"%(strList[i-2],strList[i-1],self.scene.countUndo)
@@ -330,7 +330,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
             #                print "ADD LAYER %s %s %s" %(strList[1],strList[2+j],strList[2+(i-1)])
                         self.scene.countUndo = self.scene.countUndo - 1
             #    print self.scene.countUndo
-                
+
         except:
             QtGui.QMessageBox.information(self,self.trUtf8("Undo"),self.trUtf8("There isn't Statement to Undo!"))
                 #self.ui.setMenuBar(self.menubar)
@@ -354,7 +354,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         self.scene.listUndoStatement.append("ZOOM+")
 #        self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
-    
+
     def plusZoom2 (self):
         #self.matrix.scale(2,2)
         #self.ui.graphicsView.setMatrix(self.matrix)
@@ -373,8 +373,8 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         self.scene.listUndoStatement.append("ZOOM-")
         #self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
-    
-    
+
+
     def lessZoom2 (self):
         #self.matrix.scale(0.5,0.5)
         #self.ui.graphicsView.setMatrix(self.matrix)
@@ -394,13 +394,13 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         self.ui.tableWidget.verticalHeader().hide()
         self.ui.tableWidget.setShowGrid(True)
         self.ui.tableWidget.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
-        
+
     def exportToPGDL(self):
         self.exporter.asPGDL(self.image)
 
     def exportToPNG(self):
         self.exporter.asPNG(self.scene)
-        
+
     def paint_ImageView (self):
 
         self.scene = myScene(self.ui.graphicsView)
@@ -437,7 +437,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         comboList = []
         axesDict = {} #Handler of engine/ComboBox axis name translate
         dictFull=False #Flag for not duplicate lines!
-        
+
         while i < self.axes_number:
             combo = axisgui.AxisName(self.ui, self)
             self.ui.horizontalLayout.addWidget(combo)
@@ -445,7 +445,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
             temp_index = 0
             for axis in self.image['axeslist']:
                 #itemlabel = "teste"
-                itemlabel = combo.setItemName(self.image['axes'][axis]['label'],self.image['axes'][axis]['id']) 
+                itemlabel = combo.setItemName(self.image['axes'][axis]['label'],self.image['axes'][axis]['id'])
                 # set the combo names
                 if (dictFull == False) :
                     if (self.image['axes'][axis]['label']):
@@ -460,7 +460,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
             dictFull=True #Set the flag in first iteration
             combo.setCurrentIndex(i)
             comboList.append(combo)
-            i = i + 1 
+            i = i + 1
         self.axisButton = axisgui.AxisButton(self.ui, comboList, axesDict, self.scene, self) #Add a button in Horizontal Layout
         self.scene.getButton(self.axisButton)
         self.ui.horizontalSlider.setPageStep(1)
@@ -486,7 +486,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         self.line = lines.Line(self.scene, self.image, self.axes_number, self.ui, self.comboList)
         self.line.addLines(linenb)
 
-        #self.connect(self.ui.tableWidget,QtCore.SIGNAL('itemSelectionChanged()'),self.scene.teste)        
+        #self.connect(self.ui.tableWidget,QtCore.SIGNAL('itemSelectionChanged()'),self.scene.teste)
         self.connect(self.ui.horizontalSlider, QtCore.SIGNAL('valueChanged(int)'),self.line.update_lines_view)
         #self.connect(self.scene, QtCore.SIGNAL('selectionChanged()'),self.line.selectionUpdate)
         self.axisButton.setLines(self.line,linenb)
@@ -494,8 +494,8 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         self.axisButton.setCurrentEngine(picviz)
         self.axisButton.setSlider(self.ui.horizontalSlider)
         self.buttonChange.append(self.axisButton)
-    
-    
+
+
     def Close (self):
         print "Closing Window!"
         self.close()
@@ -506,7 +506,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)    
+    app = QtGui.QApplication(sys.argv)
     PicViz = PicvizApp()
     PicViz.init_view(None)
     PicViz.create_window_after_init_view()
