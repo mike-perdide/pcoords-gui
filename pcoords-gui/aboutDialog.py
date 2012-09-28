@@ -1,9 +1,10 @@
 from PyQt4 import QtCore, QtGui
 from aboutDialogUi import Ui_AboutDialog
 
+
 class buildAboutPanel (QtGui.QDialog):
     def __init__(self, apiversion, parent = None):
-            QtGui.QWidget.__init__(self, parent)
+        QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_AboutDialog()
         self.ui.setupUi(self)
         self.apiversion = apiversion

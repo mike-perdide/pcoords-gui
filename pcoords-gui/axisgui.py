@@ -2,8 +2,10 @@ from PyQt4 import QtCore, QtGui
 
 import selection, defaults
 
+
 #class AxisName(QtGui.QWidget):
 class AxisName(QtGui.QComboBox):
+
     def __init__(self, ui, parent = None):
         QtGui.QWidget.__init__(self, parent)
                 #self.combo = QtGui.QComboBox(parent)
@@ -30,7 +32,6 @@ class AxisName(QtGui.QComboBox):
 
     def getCurrentIndex(self):
         return self.currentIndex()
-
 
 
 class AxisButton(QtGui.QWidget):
@@ -116,8 +117,6 @@ class AxisButton(QtGui.QWidget):
         for i in self.comboBoxes:
             self.currentComboBoxes.append(i.currentText().__str__())
 
-
-
     def updateAfterRemoveDuplicated(self):
         #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
         #name_list = [] #This list is responsable for hold names of axes
@@ -130,8 +129,6 @@ class AxisButton(QtGui.QWidget):
         self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
-
-
 
     def setLines(self, scene_lines, line_number): #Presenting Lines
         self.lines = scene_lines
@@ -151,6 +148,7 @@ class AxisButton(QtGui.QWidget):
         self.button.close()
         self.close()
 
+
 def addAxes(image, scene, lines, axes_number, ui):
     pen = QtGui.QPen()
     pen.setColor(QtCore.Qt.black)
@@ -162,4 +160,3 @@ def addAxes(image, scene, lines, axes_number, ui):
         #item = selection.SelectionItem(image, scene, lines, i * defaults.axiswidth , 0)
             #scene.addItem(item)
         i = i + 1
-

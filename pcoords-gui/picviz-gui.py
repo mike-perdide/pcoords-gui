@@ -43,8 +43,6 @@ from PicvizGui.aboutDialog import buildAboutPanel
 #    def updateTimeout(self):
 #        self.last_timeout = int(time.time())
 
-
-
 # check for psyco
 try:
     import psyco
@@ -52,7 +50,9 @@ try:
 except ImportError:
     print 'Running without psyco (http://psyco.sourceforge.net/).'
 
+
 class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
+
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.ui = UiPicviz.Ui_MainWindow()
@@ -66,6 +66,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         self.exporter = export.ExportGraph()
         #self.countUndo = 1 #Define the last statement of picviz log file that can be to perform
         #addLines(window, image)
+
     def ComboIndexChange(widget):
         pass
 #    print "foo"
@@ -102,7 +103,6 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         else:
             self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing, False)
 
-
     def destroyComboBoxes (self):
         for each in self.comboList:
             each.close()
@@ -126,7 +126,6 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
 
         #self.matrix = QtGui.QMatrix() #Natrix to apply Zoom on GraphicsView
 
-
         #scene.setSceneRect(0, 0, 875, 500)
         self.connect(self.ui.actionSave, QtCore.SIGNAL('triggered()'), self.exportToPGDL)
         self.connect(self.ui.actionExport_png, QtCore.SIGNAL('triggered()'), self.exportToPNG)
@@ -135,7 +134,6 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         self.connect(self.ui.action_Quit, QtCore.SIGNAL('triggered()'), self.Close)
         self.connect(self.ui.zoomButtonPlus, QtCore.SIGNAL('clicked()'), self.plusZoom)
         self.connect(self.ui.zoomButtonLess, QtCore.SIGNAL('clicked()'), self.lessZoom)
-
 
         self.connect(self.ui.axisIncreaseButton, QtCore.SIGNAL('clicked()'), self.increaseAxisDialog)
         self.connect(self.ui.setWidthButton, QtCore.SIGNAL('clicked()'), self.changeWidthDialog)
@@ -159,13 +157,11 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         else:
             self.ui.LayersBox.hide()
 
-
     def viewTable(self, checked):
         if checked:
             self.ui.tableWidget.show()
         else:
             self.ui.tableWidget.hide()
-
 
     def sortLayers(self):
         self.ui.layersTreeWidget.sortItems(2, 0)
@@ -245,13 +241,11 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
             #            print "REMOVE LAYER %s" % (strList[1])
                         self.scene.countUndo = self.scene.countUndo + 1
 
-
             #print self.scene.countUndo
         except:
             QtGui.QMessageBox.information(self, self.trUtf8("Redo"), self.trUtf8("There isn't Statement to Redo!"))
             if self.scene.countUndo > (len(statementList) - 1):
                 self.scene.countUndo = len(statementList) - 1
-
 
     def undoProcess(self):
         try:
@@ -334,6 +328,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         except:
             QtGui.QMessageBox.information(self, self.trUtf8("Undo"), self.trUtf8("There isn't Statement to Undo!"))
                 #self.ui.setMenuBar(self.menubar)
+
     def changeWidthDialog(self):
         panel = buildWidthPanel(self)
         panel.show()
@@ -349,8 +344,8 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1.15, 1.15)
         self.line.decreaseWidth()
-            for i in range(len(self.scene.listUndoStatement) - 1, self.scene.countUndo - 1, -1):
-                    del self.scene.listUndoStatement[i]
+        for i in range(len(self.scene.listUndoStatement) - 1, self.scene.countUndo - 1, -1):
+            del self.scene.listUndoStatement[i]
         self.scene.listUndoStatement.append("ZOOM+")
 #        self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
@@ -373,7 +368,6 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         self.scene.listUndoStatement.append("ZOOM-")
         #self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
-
 
     def lessZoom2 (self):
         #self.matrix.scale(0.5, 0.5)
@@ -402,7 +396,6 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         self.exporter.asPNG(self.scene)
 
     def paint_ImageView (self):
-
         self.scene = myScene(self.ui.graphicsView)
         self.scene.setBackgroundBrush(QtCore.Qt.white)
         self.scene.getUi(self.ui, self.image)
@@ -429,7 +422,6 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         self.connect(self.ui.removeLayerButton, QtCore.SIGNAL('clicked()'), self.scene.removeLayer)
         self.connect(self.ui.addLayerButton, QtCore.SIGNAL('clicked()'), self.scene.addLayer)
         self.connect(self.ui.selectLayerButton, QtCore.SIGNAL('clicked()'), self.scene.doSelectLayer)
-
 
         self.axes_number = len(self.image['axeslist'])
         i = 0
@@ -495,14 +487,13 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         self.axisButton.setSlider(self.ui.horizontalSlider)
         self.buttonChange.append(self.axisButton)
 
-
     def Close (self):
         print "Closing Window!"
         self.close()
 
     def closeEvent(self, event):
         self.scene.clearSelection()
-            event.accept()
+        event.accept()
 
 
 if __name__ == "__main__":
@@ -518,4 +509,3 @@ if __name__ == "__main__":
     if PicViz.image:
         PicViz.paint_ImageView()
     sys.exit(app.exec_())
-

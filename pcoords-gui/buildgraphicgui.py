@@ -6,12 +6,14 @@ import os
 # Picviz
 import picviz
 
+
 class Buildpanel (QtGui.QDialog):
+
     def __init__(self, parent = None):
-            QtGui.QWidget.__init__(self, parent)
+        QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_Dialog_Build()
         self.ui.setupUi(self)
-                self.parent = parent
+        self.parent = parent
         QtCore.QObject.connect(self.ui.buttonFindPathLogFile, QtCore.SIGNAL('clicked()'), self.defineLogFile)
         QtCore.QObject.connect(self.ui.buttonFindPathParser, QtCore.SIGNAL('clicked()'), self.defineParser)
         QtCore.QObject.connect(self.ui.buttonBuild, QtCore.SIGNAL('clicked()'), self.buildFilePcv)
@@ -45,11 +47,8 @@ class Buildpanel (QtGui.QDialog):
         else:
             print "C and C++ still are not implemented"
             pass
-                self.parent.image = picviz.Image(str(self.parent.pcvfile), self.parent.filter)
-                self.parent.paint_ImageView()
+
+        self.parent.image = picviz.Image(str(self.parent.pcvfile), self.parent.filter)
+        self.parent.paint_ImageView()
         #commandBuildPcv = "pcv -Tpngcairo " + self.namePcv  + self.nameGraphic
         #os.system(commandBuildPcv)
-
-
-
-

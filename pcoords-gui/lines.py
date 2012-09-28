@@ -11,7 +11,6 @@ class Line:
         self.ui = ui
         self.comboList = comboList
 
-
     def hex2dec(self, s):
         '''This function converts an hex string to an integer value)'''
         return int(s, 16)
@@ -108,7 +107,6 @@ class Line:
                 self.scene.removeItem(each)
             itemnb = itemnb + 1
 
-
     def showLines(self, show_max):
         itemnb = 0
         counter = self.hideValue * (self.axes_number - 1)
@@ -125,7 +123,6 @@ class Line:
                 #    plotnb = plotnb + 1
                 #    self.ui.tableWidget.setItem(i, plotnb, QtGui.QTableWidgetItem(each))
         self.hideValue = show_max
-
 
     def update_lines_view(self, value):
         count_item = 0
@@ -151,7 +148,6 @@ class Line:
         for i in reversed_range:
             self.ui.tableWidget.removeRow(i)
 
-
     def maxLinesGet(self):
         linecounter = 0
         for line in self.image['lines']:
@@ -164,14 +160,13 @@ class Line:
             if count > self.axes_number - 1:
                 each.decreaseWidth()
             count = count + 1
+
     def increaseWidth(self):
         count = 0
         for each in self.graph_item:
             if count > self.axes_number - 1:
                 each.increaseWidth()
             count = count + 1
-
-
 
 
 class lineItem(QtGui.QGraphicsLineItem):
@@ -191,12 +186,11 @@ class lineItem(QtGui.QGraphicsLineItem):
         self.select_pen.setWidthF(self.selectWidth)
         self.parentSelected = False
 
-
     def getLayer(self):
         return self.layer
+
     def setLayer(self, name):
         self.layer = name
-
 
     def setOneRow(self, row1):
         self.tableItem1 = row1
@@ -206,7 +200,6 @@ class lineItem(QtGui.QGraphicsLineItem):
         self.tableItem1 = row1
         self.tableItem2 = row2
         self.haveTwoItems = True
-
 
     def testprint(self):
         print "I'm printable!"
@@ -272,7 +265,6 @@ class lineItem(QtGui.QGraphicsLineItem):
     def setParentSelected(self, value):
         self.parentSelected = value
 
-
     def mySetSelected(self, selection, first):
         if (selection):
             print "Aplicou"
@@ -298,7 +290,6 @@ class lineItem(QtGui.QGraphicsLineItem):
             self.tableItem2.setSelected(self.selec)
         self.tableItem1.setSelected(self.selec)
 
-
     def getId(self):
         return self.id
 
@@ -314,5 +305,3 @@ class lineItem(QtGui.QGraphicsLineItem):
                 self.setPen(self.backupPen)
                 self.selec = False
         return value
-
-

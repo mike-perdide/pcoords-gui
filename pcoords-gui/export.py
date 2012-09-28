@@ -1,5 +1,6 @@
 from PyQt4 import QtGui
 
+
 class ExportGraph:
     """
     Export the graph stored in the datastructure
@@ -80,4 +81,3 @@ class ExportGraph:
                     axispos += 1
             fp.write("}\n")
             fp.close()
-

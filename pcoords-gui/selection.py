@@ -2,7 +2,9 @@ from PyQt4 import QtCore, QtGui
 
 import defaults
 
+
 class SelectionItem(QtGui.QGraphicsItem):
+
     def __init__(self, image, scene, lines, x, y):
         QtGui.QGraphicsItem.__init__(self)
         self.color = QtGui.QColor(QtCore.qrand() % 256, QtCore.qrand() % 256,
@@ -44,7 +46,6 @@ class SelectionItem(QtGui.QGraphicsItem):
         self.hideAxisItems(self.axisid, limits)
         #self.lines.addLines(self.lines.maxLinesGet(), self.axislimits)
 
-
     def mousePressEvent(self, event):
             if event.button() != QtCore.Qt.LeftButton:
                     event.ignore()
@@ -64,5 +65,3 @@ class SelectionItem(QtGui.QGraphicsItem):
             if itemnb == self.image['axes_number']:
                 print "New line"
                 itemnb = 0
-
-

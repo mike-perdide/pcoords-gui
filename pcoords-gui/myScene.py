@@ -1,12 +1,15 @@
 from __future__ import division
 from PyQt4 import QtCore, QtGui
 import sys
+
+
 class myScene(QtGui.QGraphicsScene):
     #sys.stdout = open("/var/log/picviz.log","a")
     listUndoStatement = []
     currentIncrease = 0
     countUndo = 0 #Define the last statement of picviz log file that can be to perform
     layers={}
+
     def getItems(self, items, axes):
         self.graph_items = items
         self.size_items = len(items)
@@ -21,7 +24,6 @@ class myScene(QtGui.QGraphicsScene):
         for i in range(0, self.axes_number):
             paxis = self.graph_items[i].line()
             self.maximum.append(paxis.y2())
-
 
     def getUi(self, ui, dic):
         self.ui = ui
@@ -51,7 +53,6 @@ class myScene(QtGui.QGraphicsScene):
 
         progress = QtGui.QProgressDialog("Removing lines..","Cancel", 0, 100, self.ui.graphicsView, QtCore.Qt.WindowFlags())
         progress.show()
-
 
         for i in headlist:
             percent = i / len(self.graph_items)
@@ -124,8 +125,6 @@ class myScene(QtGui.QGraphicsScene):
         g = self.hex2dec(color[3:5])
         b = self.hex2dec(color[5:7])
         return QtGui.QColor(r, g, b)
-
-
 
     def hideShowAxes(self):
         for i in range(0, self.axes_number - 1):
@@ -233,7 +232,6 @@ class myScene(QtGui.QGraphicsScene):
         self.dic['lines'][int(paramLine)]['color'] = color
         count = count + 1
 
-
     def hideSelected(self):
         count = 0
         selected = self.selectedItems()
@@ -255,8 +253,6 @@ class myScene(QtGui.QGraphicsScene):
         self.clearSelection()
         self.groups[len(self.groups) - 1].hide()
 
-
-
     def hideSelected2(self, paramLine):
         count = 0
         each = self.graph_items[int(paramLine) + self.axes_number]
@@ -268,7 +264,6 @@ class myScene(QtGui.QGraphicsScene):
         self.dic['lines'][each.getId() - self.axes_number]['hidden'] = 0
         self.clearSelection()
         self.groups[len(self.groups) - 1].hide()
-
 
     def hideNotSelected(self):
         count = 0
@@ -384,7 +379,6 @@ class myScene(QtGui.QGraphicsScene):
         self.clearSelection()
         self.groups[len(self.groups) - 1].hide()
 
-
     def showAllLines(self):
         count = 0
         #for i in range(len(self.listUndoStatement) - 1, self.countUndo - 1, -1):
@@ -400,7 +394,6 @@ class myScene(QtGui.QGraphicsScene):
         for i in range(0, self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.showRow(i)
         #self.countUndo = len(self.listUndoStatement) #- 1
-
 
     def showAllLines2(self, paramLine):
         count = 0
@@ -466,9 +459,6 @@ class myScene(QtGui.QGraphicsScene):
         else:
             item.show()
 
-
-
-
     def selectLayer(self, treeItem, column):
         self.clearSelection()
         treeItem = self.ui.layersTreeWidget.selectedItems()[0]
@@ -506,7 +496,6 @@ class myScene(QtGui.QGraphicsScene):
                         self.ui.tableWidget.showRow((i / (self.axes_number - 1)) - 2)
                 self.layers[selected]['hidden'] = False
 
-
     def falseTrue(self, boolean):
         if boolean:
             return 2
@@ -521,7 +510,6 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.removeItemWidget(item, 1)
             self.ui.layersTreeWidget.removeItemWidget(item, 2)
             del self.layers[layer]
-
 
     def addLayer(self):
         ok = False
@@ -540,7 +528,6 @@ class myScene(QtGui.QGraphicsScene):
                 each.setLayer(newLayerName[0].__str__().__str__())
         else:
             pass
-
 
     def removeLayer(self):
         current = self.ui.layersTreeWidget.currentItem()
@@ -586,7 +573,6 @@ class myScene(QtGui.QGraphicsScene):
         #self.countUndo = self.countUndo + 1
         self.countUndo = len(self.listUndoStatement) #- 1'''
 
-
     def removeLayer2(self, name):
         current = self.ui.layersTreeWidget.findItems(name)[2]
         if current != None and current.text(2).__str__() != 'default':
@@ -622,4 +608,3 @@ class myScene(QtGui.QGraphicsScene):
         #self.semaphore = False
         #self.changed()
         #self.layers[previous.text(0).__str__()].append(group)'''
-
