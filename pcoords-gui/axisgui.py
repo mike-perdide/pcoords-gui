@@ -6,7 +6,7 @@ import selection, defaults
 #class AxisName(QtGui.QWidget):
 class AxisName(QtGui.QComboBox):
 
-    def __init__(self, ui, parent = None):
+    def __init__(self, ui, parent=None):
         QtGui.QWidget.__init__(self, parent)
                 #self.combo = QtGui.QComboBox(parent)
         #self.combo = combo
@@ -40,7 +40,7 @@ class AxisButton(QtGui.QWidget):
     #It needs to handle lines/engine/axesDict
     #The axes dict translate the axis name in combobox to axis name in image dict.
 
-    def __init__(self, ui, comboList, axesDict, scene, parent = None ):
+    def __init__(self, ui, comboList, axesDict, scene, parent=None ):
         #Class Constructor
         QtGui.QWidget.__init__(self, parent)
         self.button = QtGui.QPushButton() #Hold the button object

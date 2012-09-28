@@ -5,7 +5,7 @@ from selectAxisIdDialogUi import Ui_axisSpinBox
 
 class buildSelectIdPanel (QtGui.QDialog):
 
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_axisSpinBox()
         self.ui.setupUi(self)

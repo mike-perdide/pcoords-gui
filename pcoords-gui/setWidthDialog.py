@@ -5,7 +5,7 @@ from setWidthDialogUi import Ui_setWidth
 
 class buildWidthPanel (QtGui.QDialog):
 
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_setWidth()
         self.ui.setupUi(self)
