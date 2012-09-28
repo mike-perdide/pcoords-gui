@@ -8,9 +8,7 @@
 #     2009 Gabriel Cavalcante
 
 # Python libs
-import os
 import sys
-import time
 import string
 
 # QT
@@ -21,7 +19,7 @@ from PyQt4 import QtCore, QtGui
 import picviz
 
 # UI
-from PicvizGui import axisgui, export, lines, defaults, selection, UiPicviz
+from PicvizGui import axisgui, export, lines, UiPicviz
 from PicvizGui.buildgraphicgui import Buildpanel
 from PicvizGui.UiPicviz import Ui_MainWindow
 from PicvizGui.myScene import myScene

@@ -1,6 +1,6 @@
 from PyQt4 import QtCore, QtGui
 
-import selection, defaults
+import defaults
 
 
 #class AxisName(QtGui.QWidget):
