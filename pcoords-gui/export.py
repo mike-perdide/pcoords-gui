@@ -29,7 +29,7 @@ class ExportGraph:
 
         if path:
             pixmap = QtGui.QPixmap(scene.width() + 20, scene.height() + 20)
-            painter =  QtGui.QPainter(pixmap)
+            painter = QtGui.QPainter(pixmap)
             painter.setRenderHint(QtGui.QPainter.Antialiasing)
             scene.render(painter)
             painter.end()

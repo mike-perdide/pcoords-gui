@@ -11,7 +11,7 @@ class myScene(QtGui.QGraphicsScene):
     # Define the last statement of picviz log file that can be to perform
     countUndo = 0
 
-    layers={}
+    layers = {}
 
     def getItems(self, items, axes):
         self.graph_items = items
@@ -118,7 +118,7 @@ class myScene(QtGui.QGraphicsScene):
         green = "%X" % g
         if (green == '0'):
             green = "00"
-        blue =  "%X" % b
+        blue = "%X" % b
         if (blue == '0'):
             blue = "00"
         return "#" + red + green + blue
@@ -169,7 +169,7 @@ class myScene(QtGui.QGraphicsScene):
         del self.semaphore
         del self.axes_number
         del self.layers
-        self.layers={}
+        self.layers = {}
 
     def keyPressEvent(self, key):
         pressedKey = key.key()
@@ -343,7 +343,7 @@ class myScene(QtGui.QGraphicsScene):
 
     def changeWidth2(self, paramLine, width):
         count = 0
-        each =     self.graph_items[int(paramLine) + self.axes_number]
+        each = self.graph_items[int(paramLine) + self.axes_number]
         self.dic['lines'][int(paramLine)]['penwidth'] = int(width)
         each.setWidth(float(width))
         count = count + 1
@@ -364,8 +364,8 @@ class myScene(QtGui.QGraphicsScene):
                     self.maximum[axis] = p1.y1() * 1.1
                 count = count + self.axes_number - 1
 
-        elif(axis ==  self.axes_number - 1):
-            diff =  0
+        elif(axis == self.axes_number - 1):
+            diff = 0
             while (count < self.size_items):
                 #ajuste o P1-X1Y1 do count
                 p1 = self.graph_items[count - 1].line()
@@ -375,7 +375,7 @@ class myScene(QtGui.QGraphicsScene):
                     self.maximum[axis - 1] = p1.y2() * 1.1
                 count = count + self.axes_number - 1
         else:
-            diff =  0
+            diff = 0
             while (count < self.size_items):
                 #ajuste o P1-X1Y1 do count
                 p1 = self.graph_items[count].line()
@@ -474,8 +474,9 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.insertTopLevelItem(0, item)
             self.ui.layersTreeWidget.header().resizeSection(0, 22)
             self.ui.layersTreeWidget.header().resizeSection(1, 25)
-            self.layers[name]={'items': [index], 'hidden': False,
-                               'blocked': False, 'group': None, 'widget': item}
+            self.layers[name] = {'items': [index], 'hidden': False,
+                                 'blocked': False, 'group': None,
+                                 'widget': item}
 
         else:
             self.layers[name]['items'].append(index)
@@ -554,7 +555,7 @@ class myScene(QtGui.QGraphicsScene):
 
     def addLayer(self):
         ok = False
-        selected =  self.selectedItems()
+        selected = self.selectedItems()
         self.clearSelection()
 
         newLayerName = QtGui.QInputDialog.getText(
