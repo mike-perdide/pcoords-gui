@@ -342,7 +342,7 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
                         self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "REMOVELAYER":
                         i = 1
-                        while strList[i] != False and strList[i] != True:
+                        while not strList[i] and not strList[i]:
                             i += 1
                         for j in range(i):
                             self.scene.createLayer(
@@ -499,7 +499,7 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
                     self.image['axes'][axis]['label'],
                     self.image['axes'][axis]['id'])
                 # set the combo names
-                if (dictFull == False):
+                if not dictFull False:
                     if (self.image['axes'][axis]['label']):
                         axesDict[self.image['axes'][axis]['label']] = axis
                         #Add translate for dict if it have label

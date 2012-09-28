@@ -580,7 +580,7 @@ class myScene(QtGui.QGraphicsScene):
 
     def removeLayer(self):
         current = self.ui.layersTreeWidget.currentItem()
-        if current != None and current.text(2).__str__() != 'default':
+        if current is not None and current.text(2).__str__() != 'default':
             dic = self.layers[current.text(2).__str__()]
             print dic
             self.ui.layersTreeWidget.removeItemWidget(current, 0)
@@ -603,7 +603,7 @@ class myScene(QtGui.QGraphicsScene):
                 self.layers['default']['items'].sort()
             del self.layers[current.text(2).__str__()]
 
-        elif current == None:
+        elif current is None:
             QtGui.QMessageBox.information(
                 self.ui.layersTreeWidget,
                 self.trUtf8("Layers"),
@@ -623,7 +623,7 @@ class myScene(QtGui.QGraphicsScene):
 
     def removeLayer2(self, name):
         current = self.ui.layersTreeWidget.findItems(name)[2]
-        if current != None and current.text(2).__str__() != 'default':
+        if current is not None and current.text(2).__str__() != 'default':
             dic = self.layers[current.text(2).__str__()]
             self.ui.layersTreeWidget.removeItemWidget(current, 0)
             self.ui.layersTreeWidget.removeItemWidget(current, 1)
@@ -643,7 +643,7 @@ class myScene(QtGui.QGraphicsScene):
                     self.createLayer('default', each, self.graph_items[each])
                 self.layers['default']['items'].sort()
 
-        elif current == None:
+        elif current is None:
             QtGui.QMessageBox.information(
                 self.ui.layersTreeWidget,
                 self.trUtf8("Layers"),
