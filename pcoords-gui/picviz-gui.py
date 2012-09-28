@@ -499,7 +499,7 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
                     self.image['axes'][axis]['label'],
                     self.image['axes'][axis]['id'])
                 # set the combo names
-                if not dictFull False:
+                if not dictFull:
                     if (self.image['axes'][axis]['label']):
                         axesDict[self.image['axes'][axis]['label']] = axis
                         #Add translate for dict if it have label
