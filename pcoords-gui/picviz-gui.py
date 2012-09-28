@@ -76,7 +76,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         print '+Buildgraphic'
 
     def init_view (self, pcvFileBuilded):
-        self.axes_number=0
+        self.axes_number = 0
         self.filter = None
         if len(sys.argv) < 2:
             #self.pcvfile = QtGui.QFileDialog.getOpenFileName(None, "Open Picviz graph", "", "Picviz Files (*.pcv)")
@@ -172,7 +172,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
 
     def redoProcess(self):
         try:
-            #print "In Redo %d" %(self.scene.countUndo)
+            #print "In Redo %d" % (self.scene.countUndo)
             if self.scene.countUndo < 0:
                 QtGui.QMessageBox.information(self,self.trUtf8("Redo"),self.trUtf8("There isn't Statement to Redo!"))
             else:
@@ -182,25 +182,25 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 string = ''.join(strList[:1])
             #    print statementList
                 if string == "COLOR":
-                    num = (len(strList)-1)/2
-                    for i in range(1,len(strList)-1,2):
-            #            print "ID=%s COLOR=%s count=%d"%(strList[i],strList[i+1],self.scene.countUndo)
-                        self.scene.brushSelection2(strList[i],strList[i+1],num)
-                    self.scene.countUndo = self.scene.countUndo + 1 #+ (self.scene.axes_number-1)
+                    num = (len(strList) - 1) / 2
+                    for i in range(1,len(strList) - 1,2):
+            #            print "ID=%s COLOR=%s count=%d" % (strList[i],strList[i + 1],self.scene.countUndo)
+                        self.scene.brushSelection2(strList[i],strList[i + 1],num)
+                    self.scene.countUndo = self.scene.countUndo + 1 #+ (self.scene.axes_number - 1)
                 elif string == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
                     for i in range (num_selected_lines):
-                        for j in range (self.scene.axes_number-1):
+                        for j in range (self.scene.axes_number - 1):
                             self.scene.hideSelected2(''.join(strList[1:2]))
                             self.scene.countUndo = self.scene.countUndo - 1
-                            cmd = str(statementList[len(statementList)-self.scene.countUndo])
+                            cmd = str(statementList[len(statementList) - self.scene.countUndo])
                             strList = cmd.split()
                 elif string == "HIDE":
                     num_selected_lines = len(strList)
-            #        print "selected %d" %(num_selected_lines)
+            #        print "selected %d" % (num_selected_lines)
                     for i in range (1,num_selected_lines,1):
                         self.scene.hideSelected2(strList[i])
-            #            print "ID=%s count=%d"%(strList[i],self.scene.countUndo)
+            #            print "ID=%s count=%d" % (strList[i],self.scene.countUndo)
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif string == "ZOOM+":
                     self.plusZoom2()
@@ -211,46 +211,46 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 elif string == "CHANGE":
                     listParam = []
                     num_selected_lines = len(strList)
-            #        print "selected %d" %(num_selected_lines)
+            #        print "selected %d" % (num_selected_lines)
                     for i in range (1,num_selected_lines,3):
                         #self.scene.hideSelected2(strList[i])
                         listParam.append(strList[i])
-                        listParam.append(strList[i+1])
-                        listParam.append(strList[i+2])
+                        listParam.append(strList[i + 1])
+                        listParam.append(strList[i + 2])
                         self.axisButton.buttonPressed2(listParam)
-            #            print "Combo1=%s Combo2=%s Comobo3= %s count=%d"%(strList[i],strList[i+1],strList[i+2],self.scene.countUndo)
+            #            print "Combo1=%s Combo2=%s Comobo3= %s count=%d" % (strList[i],strList[i + 1],strList[i + 2],self.scene.countUndo)
                         listParam = []
 
                     self.scene.countUndo = self.scene.countUndo + 1
 
                     #listParam = []
                     #for i in range(self.scene.axes_number):
-                #        listParam.append(strList[i+1])
+                #        listParam.append(strList[i + 1])
                 #    print "Param CHANGE"
                 #    print strList
                 #    self.axisButton.buttonPressed2(listParam)
                 #    self.scene.countUndo = self.scene.countUndo + 1
                 elif string == "WIDTH":
                     #print "width"
-                    num_selected_lines = len(strList)-1
+                    num_selected_lines = len(strList) - 1
                     for i in range (1,num_selected_lines,3):
-            #            print "ID=%s Width= %s count=%d"%(strList[i],strList[i+1],self.scene.countUndo)
-                        self.scene.changeWidth2(strList[i],strList[i+1])
+            #            print "ID=%s Width= %s count=%d" % (strList[i],strList[i + 1],self.scene.countUndo)
+                        self.scene.changeWidth2(strList[i],strList[i + 1])
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif string == "ADDLAYER":
                     sel.scene.addLayer(strList[1],strList[2],strList[3])
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif string == "REMOVELAYER":
                         self.scene.removeLayer2(strList[1])
-            #            print "REMOVE LAYER %s"%(strList[1])
+            #            print "REMOVE LAYER %s" % (strList[1])
                         self.scene.countUndo = self.scene.countUndo + 1
 
 
             #print self.scene.countUndo
         except:
             QtGui.QMessageBox.information(self,self.trUtf8("Redo"),self.trUtf8("There isn't Statement to Redo!"))
-            if self.scene.countUndo > (len(statementList)-1):
-                self.scene.countUndo = len(statementList)-1
+            if self.scene.countUndo > (len(statementList) - 1):
+                self.scene.countUndo = len(statementList) - 1
 
 
     def undoProcess(self):
@@ -261,30 +261,30 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
             else:
 
                 statementList = self.scene.listUndoStatement
-            #    print "In Undo count = %d Len= %d" %(self.scene.countUndo,len(statementList)-1)
-                cmd = str(statementList[self.scene.countUndo-1])
+            #    print "In Undo count = %d Len= %d" % (self.scene.countUndo,len(statementList) - 1)
+                cmd = str(statementList[self.scene.countUndo - 1])
                 strList = cmd.split()
                 string = ''.join(strList[:1])
             #    print strList
                 if string == "COLOR":
-                    num = (len(strList)-1)/2
-                    for i in range(len(strList)-1,1,-2):
-            #            print "ID=%s COLOR=%s count=%d"%(strList[i-1],strList[i],self.scene.countUndo)
-                        self.scene.brushSelection2(strList[i-1],strList[i],num)
-                    self.scene.countUndo = self.scene.countUndo -1 #+(self.scene.axes_number-1)
+                    num = (len(strList) - 1) / 2
+                    for i in range(len(strList) - 1,1,-2):
+            #            print "ID=%s COLOR=%s count=%d" % (strList[i - 1],strList[i],self.scene.countUndo)
+                        self.scene.brushSelection2(strList[i - 1],strList[i],num)
+                    self.scene.countUndo = self.scene.countUndo - 1 #+(self.scene.axes_number - 1)
                 elif string == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
                     for i in range (num_selected_lines):
-                        for j in range (self.scene.axes_number-1):
+                        for j in range (self.scene.axes_number - 1):
                             self.scene.hideSelected2(''.join(strList[1:2]))
                             self.scene.countUndo = self.scene.countUndo + 1
-                            cmd = str(statementList[len(statementList)-self.scene.countUndo])
+                            cmd = str(statementList[len(statementList) - self.scene.countUndo])
                             strList = cmd.split()
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif string == "HIDE":
-                        num_selected_lines = (len(strList)-1)
+                        num_selected_lines = (len(strList) - 1)
                         for i in range (num_selected_lines,0,-1):
-            #                print "ID=%s count=%d"%(strList[i],self.scene.countUndo)
+            #                print "ID=%s count=%d" % (strList[i],self.scene.countUndo)
                             self.scene.showAllLines2(strList[i])
                         self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "ZOOM+":
@@ -296,38 +296,38 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                 elif string == "CHANGE":
                         listParam = []
                         num_selected_lines = len(strList)
-            #            print "selected %d" %(num_selected_lines)
-                        for i in range (num_selected_lines-1,0,-3):
+            #            print "selected %d" % (num_selected_lines)
+                        for i in range (num_selected_lines - 1,0,-3):
                             #self.scene.hideSelected2(strList[i])
-                            listParam.append(strList[i-2])
-                            listParam.append(strList[i-1])
+                            listParam.append(strList[i - 2])
+                            listParam.append(strList[i - 1])
                             listParam.append(strList[i])
                             self.axisButton.buttonPressed2(listParam)
-            #                print "Combo1=%s Combo2=%s Comobo3= %s count=%d"%(strList[i-2],strList[i-1],strList[i],self.scene.countUndo)
+            #                print "Combo1=%s Combo2=%s Comobo3= %s count=%d" % (strList[i - 2],strList[i - 1],strList[i],self.scene.countUndo)
                             listParam = []
                         self.scene.countUndo = self.scene.countUndo - 1
                     #listParam = []
                     #for i in range(self.scene.axes_number):
-                    #    listParam.append(strList[i+1])
+                    #    listParam.append(strList[i + 1])
                     #self.axisButton.buttonPressed2(listParam)
                     #self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "WIDTH":
-                        num_selected_lines = len(strList)-1
+                        num_selected_lines = len(strList) - 1
                         for i in range (num_selected_lines,0,-3):
-            #                print "ID=%s Width= %s count=%d"%(strList[i-2],strList[i-1],self.scene.countUndo)
-                            self.scene.changeWidth2(strList[i-2],strList[i-1])
+            #                print "ID=%s Width= %s count=%d" % (strList[i - 2],strList[i - 1],self.scene.countUndo)
+                            self.scene.changeWidth2(strList[i - 2],strList[i - 1])
                         self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "ADDLAYER":
                         self.scene.removeLayer2(strList[1])
-            #            print "REMOVE LAYER %s"%(strList[1])
+            #            print "REMOVE LAYER %s" % (strList[1])
                         self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "REMOVELAYER":
                         i = 1
                         while strList[i] != False and strList[i] != True:
                             i += 1
                         for j in range(i):
-                            self.scene.createLayer(strList[1],strList[2+j],strList[2+(i-1)])
-            #                print "ADD LAYER %s %s %s" %(strList[1],strList[2+j],strList[2+(i-1)])
+                            self.scene.createLayer(strList[1],strList[2 + j],strList[2 + (i - 1)])
+            #                print "ADD LAYER %s %s %s" % (strList[1],strList[2 + j],strList[2 + (i - 1)])
                         self.scene.countUndo = self.scene.countUndo - 1
             #    print self.scene.countUndo
 
@@ -349,7 +349,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1.15,1.15)
         self.line.decreaseWidth()
-            for i in range(len(self.scene.listUndoStatement)-1,self.scene.countUndo-1,-1):
+            for i in range(len(self.scene.listUndoStatement) - 1,self.scene.countUndo - 1,-1):
                     del self.scene.listUndoStatement[i]
         self.scene.listUndoStatement.append("ZOOM+")
 #        self.scene.countUndo = self.scene.countUndo + 1
@@ -365,9 +365,9 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
     def lessZoom (self):
         #self.matrix.scale(0.5,0.5)
         #self.ui.graphicsView.setMatrix(self.matrix)
-        self.ui.graphicsView.scale(1/1.15,1/1.15)
+        self.ui.graphicsView.scale(1 / 1.15,1 / 1.15)
         self.line.increaseWidth()
-        for i in range(len(self.scene.listUndoStatement)-1,self.scene.countUndo-1,-1):
+        for i in range(len(self.scene.listUndoStatement) - 1,self.scene.countUndo - 1,-1):
             del self.scene.listUndoStatement[i]
         #print "ZOOM-"
         self.scene.listUndoStatement.append("ZOOM-")
@@ -378,7 +378,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
     def lessZoom2 (self):
         #self.matrix.scale(0.5,0.5)
         #self.ui.graphicsView.setMatrix(self.matrix)
-        self.ui.graphicsView.scale(1/1.15,1/1.15)
+        self.ui.graphicsView.scale(1 / 1.15,1 / 1.15)
         self.line.increaseWidth()
         #print "ZOOM-"
 
@@ -386,7 +386,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         tableHeader = []
         comboList = []
         axesDict = {} #Handler of engine/ComboBox axis name translate
-        dictFull=False #Flag for not duplicate lines!
+        dictFull = False #Flag for not duplicate lines!
         # combo = axisgui.AxisName(self.ui, self)
         # combo.show()
         self.ui.tableWidget.setHorizontalHeaderLabels(tableHeader)
@@ -436,7 +436,7 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         tableHeader = []
         comboList = []
         axesDict = {} #Handler of engine/ComboBox axis name translate
-        dictFull=False #Flag for not duplicate lines!
+        dictFull = False #Flag for not duplicate lines!
 
         while i < self.axes_number:
             combo = axisgui.AxisName(self.ui, self)
@@ -452,12 +452,12 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
                         axesDict[self.image['axes'][axis]['label']] = axis
                         #Add translate for dict if it have label
                     else:
-                        axesDict['axis%d' % temp_index]=axis  #Add translate if it not have label
+                        axesDict['axis%d' % temp_index] = axis  #Add translate if it not have label
                 if i == 0:
                     tableHeader.append(itemlabel)
                     self.ui.tableWidget.insertColumn(self.ui.tableWidget.columnCount())
                 temp_index = temp_index + 1
-            dictFull=True #Set the flag in first iteration
+            dictFull = True #Set the flag in first iteration
             combo.setCurrentIndex(i)
             comboList.append(combo)
             i = i + 1
@@ -470,8 +470,8 @@ class PicvizApp (QtGui.QMainWindow,Ui_MainWindow):#(QtGui.QMainWindow):
         for self.line in self.image['lines']:
             #if(not self.line['hidden']):
             linenb = linenb + 1
-        self.ui.horizontalSlider.setMaximum(linenb/(self.axes_number-1))
-        self.ui.horizontalSlider.setValue(linenb/(self.axes_number-1))
+        self.ui.horizontalSlider.setMaximum(linenb / (self.axes_number - 1))
+        self.ui.horizontalSlider.setValue(linenb / (self.axes_number - 1))
 
         #ui.menubar.hide()
 

@@ -37,8 +37,8 @@ class Buildpanel (QtGui.QDialog):
         dic_TypeParser = {0:'python',1:'perl',2:'bash',3:'./',4:'./',5:'java'}
         index = self.ui.comboTypeParser.currentIndex()
         if index != 3 and index != 4:
-            commandParse = dic_TypeParser[index] + " " + self.nameParserFile.__str__() + " " + self.nameLogFile.__str__() +" > " + self.namePgdlFile.__str__()
-            print "Command: "+ commandParse
+            commandParse = dic_TypeParser[index] + " " + self.nameParserFile.__str__() + " " + self.nameLogFile.__str__() + " > " + self.namePgdlFile.__str__()
+            print "Command: " + commandParse
             os.system(commandParse)
             QtGui.QMessageBox.information(self,self.trUtf8("Concluded"),self.trUtf8("The Pgdl file was created sucessfull!"))
             self.close()

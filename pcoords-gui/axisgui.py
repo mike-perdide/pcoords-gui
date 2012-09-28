@@ -57,33 +57,33 @@ class AxisButton(QtGui.QWidget):
         self.scene = scene
         ui.horizontalLayout.addWidget(self.button) #Put the button in the same layout where are located the combos
         self.connect(self.button, QtCore.SIGNAL('pressed()'),self.buttonPressed) #Add function to respond an signal.
-        self.semaphore=False
+        self.semaphore = False
 
     def buttonPressed(self):
         #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
-        name_list=[] #This list is responsable for hold names of axesa
+        name_list = [] #This list is responsable for hold names of axesa
         label = "CHANGE"
         for i in self.currentComboBoxes:
-            label = label +" "+ i
+            label = label + " " + i
 #        print label
         #self.scene.countUndo = self.scene.countUndo + 1
         #self.scene.listUndoStatement.append(label)
         #label2 = "CHANGE"
         #print "CHANGE AXIS"
 
-            #for i in range(len(self.scene.listUndoStatement)-1,self.scene.countUndo-1,-1):
+            #for i in range(len(self.scene.listUndoStatement) - 1,self.scene.countUndo - 1,-1):
             #    del self.scene.listUndoStatement[i]
 
         for each in self.comboBoxes:
             name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
-            label = label + " %s "%(each.currentText().__str__())
+            label = label + " %s " % (each.currentText().__str__())
         #self.scene.listUndoStatement.append(label)
         #print self.scene.listUndoStatement
             #translate is for engine name and store on list
         self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
         self.lines.clean()
         self.scene.removeGroup()
-        self.lines.addLines(len(self.image['lines'])/(len(self.image['axeslist'])-1))
+        self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
         self.currentComboBoxes = []
@@ -93,9 +93,9 @@ class AxisButton(QtGui.QWidget):
 
     def buttonPressed2(self,listAxis):
         #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
-        name_list=[] #This list is responsable for hold names of axesa
+        name_list = [] #This list is responsable for hold names of axesa
         #label = "CHANGE"
-        #for i in range(len(listAxis)-1):
+        #for i in range(len(listAxis) - 1):
         j = 0
         for i in self.comboBoxes:
             index = i.findText(listAxis[j])
@@ -109,7 +109,7 @@ class AxisButton(QtGui.QWidget):
         self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
         self.lines.clean()
         self.scene.removeGroup()
-        self.lines.addLines(len(self.image['lines'])/(len(self.image['axeslist'])-1))
+        self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
         self.currentComboBoxes = []
@@ -120,14 +120,14 @@ class AxisButton(QtGui.QWidget):
 
     def updateAfterRemoveDuplicated(self):
         #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
-        #name_list=[] #This list is responsable for hold names of axes
+        #name_list = [] #This list is responsable for hold names of axes
         #for each in self.comboBoxes:
         #    name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
             #translate is for engine name and store on list
         #self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
         self.lines.clean()
         self.scene.removeGroup()
-        self.lines.addLines(len(self.image['lines'])/(len(self.image['axeslist'])-1))
+        self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
 
@@ -159,7 +159,7 @@ def addAxes(image, scene, lines, axes_number, ui):
     while i < axes_number:
         scene.addLine(i * defaults.axiswidth, 0, i * defaults.axiswidth, image['height'], pen) #Draw axes lines
     # Removed for 0.1 release. Be back on trunk soon
-        #item = selection.SelectionItem(image, scene, lines, i*defaults.axiswidth , 0)
+        #item = selection.SelectionItem(image, scene, lines, i * defaults.axiswidth , 0)
             #scene.addItem(item)
         i = i + 1
 

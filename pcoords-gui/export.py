@@ -25,7 +25,7 @@ class ExportGraph:
     def asPNG(self, scene):
         path = QtGui.QFileDialog.getSaveFileName(None, "Save Png", "", "Png File (*.png)")
         if path:
-            pixmap = QtGui.QPixmap(scene.width()+20,scene.height()+20)
+            pixmap = QtGui.QPixmap(scene.width() + 20,scene.height() + 20)
             painter =  QtGui.QPainter(pixmap)
             painter.setRenderHint(QtGui.QPainter.Antialiasing)
             scene.render(painter)
@@ -54,7 +54,7 @@ class ExportGraph:
                     fp.write("%s=\"%s\", " %
                              (self.__getAxisposLabel(image, axispos), line['x1_strval']))
                     fp.write("%s=\"%s\"" %
-                             (self.__getAxisposLabel(image, axispos+1), line['x2_strval']))
+                             (self.__getAxisposLabel(image, axispos + 1), line['x2_strval']))
                     # Write properties
                     props = self.__getLineProperties(line)
                     i = 1

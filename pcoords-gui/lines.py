@@ -25,18 +25,18 @@ class Line:
 
     def addLines(self, show_max, axislimits=None):
         pen = QtGui.QPen()
-        self.backupRows=[]
+        self.backupRows = []
         self.backupRows.append([])
         #print str(axislimits)
         parentcontainer = []
-        linecounter = self.axes_number-1
+        linecounter = self.axes_number - 1
         plotnb = -1
-        parentDict={}
+        parentDict = {}
         row = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(row)
-        hidden=[]
+        hidden = []
         for line in self.image['lines']:
-            plotnb=plotnb+1
+            plotnb = plotnb + 1
             linecounter = linecounter + 1
             qtcolor = self.QTColorGet(line['color'])
             pen.setColor(qtcolor)
@@ -55,18 +55,18 @@ class Line:
             parentcontainer.append(linecounter)
             if line['hidden']:
                 hidden.append(currentLine)
-            if plotnb == self.axes_number-2:
-                self.ui.tableWidget.setItem(row, plotnb+1, QtGui.QTableWidgetItem(line['x2_strval']))
-                currentLine.setTwoRow(self.ui.tableWidget.item(row,plotnb),self.ui.tableWidget.item(row,plotnb+1))
+            if plotnb == self.axes_number - 2:
+                self.ui.tableWidget.setItem(row, plotnb + 1, QtGui.QTableWidgetItem(line['x2_strval']))
+                currentLine.setTwoRow(self.ui.tableWidget.item(row,plotnb),self.ui.tableWidget.item(row,plotnb + 1))
                 self.backupRows[row].append(line['x2_strval'])
                 row = self.ui.tableWidget.rowCount()
                 self.backupRows.append([])
                 self.ui.tableWidget.insertRow(row)
                 for each in parentcontainer:
-                    parentDict[each]=parentcontainer
+                    parentDict[each] = parentcontainer
                 del parentcontainer
                 parentcontainer = []
-                plotnb=-1
+                plotnb = -1
 
         count = 0 #Set the headers of tableWidget
         for each in self.comboList:
@@ -75,11 +75,11 @@ class Line:
         #remove a unused row
         self.ui.tableWidget.removeRow(row)
         #Sets a backup control value, to slider hide/show correctly and efficient
-        self.hideValue = linecounter-(self.axes_number-1)/(self.axes_number-1)
+        self.hideValue = linecounter - (self.axes_number - 1) / (self.axes_number - 1)
         #Gets items of scene only 1 time
         self.graph_item = self.scene.items()
         self.scene.getItems(self.graph_item,self.axes_number)
-        self.graph_size= len(self.graph_item)
+        self.graph_size = len(self.graph_item)
 
         for each in parentDict:
             count = 0
@@ -88,7 +88,7 @@ class Line:
                 variant = QtCore.QVariant(i)
                 self.graph_item[each].setData(count,variant)
                 parentList.append(self.graph_item[i])
-                count=count+1
+                count = count + 1
             self.graph_item[each].setParents(parentList, self.graph_item,each)
             del parentList
         self.doSelectable()
@@ -97,43 +97,43 @@ class Line:
     def doSelectable(self):
         count = 0
         for each in self.graph_item:
-            if (count>self.axes_number-1):
+            if (count > self.axes_number - 1):
                 each.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
             count = count + 1
 
     def removeLines(self):
-        itemnb=0
+        itemnb = 0
         for each in self.graph_item:
-            if itemnb>=self.axes_number:
+            if itemnb >= self.axes_number:
                 self.scene.removeItem(each)
-            itemnb=itemnb+1
+            itemnb = itemnb + 1
 
 
     def showLines(self, show_max):
         itemnb = 0
-        counter = self.hideValue*(self.axes_number-1)
-        while(counter<=show_max*(self.axes_number-1)+(self.axes_number-1)):
+        counter = self.hideValue * (self.axes_number - 1)
+        while(counter <= show_max * (self.axes_number - 1) + (self.axes_number - 1)):
             if (counter < self.graph_size):
                 self.graph_item[counter].show()
-            counter=counter+1
+            counter = counter + 1
 
-        if(show_max>=self.hideValue):
+        if(show_max >= self.hideValue):
             for i in range(self.hideValue,show_max):
                 self.ui.tableWidget.showRow(i)
-                #plotnb=-1
+                #plotnb = -1
                 #for each in self.backupRows[i]:
-                #    plotnb=plotnb+1
+                #    plotnb = plotnb + 1
                 #    self.ui.tableWidget.setItem(i, plotnb, QtGui.QTableWidgetItem(each))
-        self.hideValue=show_max
+        self.hideValue = show_max
 
 
     def update_lines_view(self, value):
-        count_item=0
+        count_item = 0
         for item in self.graph_item:
-            if (count_item >= self.axes_number and (count_item>value*(self.axes_number-1)+self.axes_number-1)):
+            if (count_item >= self.axes_number and (count_item > value * (self.axes_number - 1) + self.axes_number - 1)):
                 item.hide()
-            count_item = count_item+1
-        reversed_range=range(value,self.hideValue)
+            count_item = count_item + 1
+        reversed_range = range(value,self.hideValue)
         reversed_range.reverse()
         for i in reversed_range:
             self.ui.tableWidget.hideRow(i)
@@ -146,7 +146,7 @@ class Line:
         del self.graph_item
         del self.graph_size
 
-        reversed_range=range(0,self.ui.tableWidget.rowCount()+1)
+        reversed_range = range(0,self.ui.tableWidget.rowCount() + 1)
         reversed_range.reverse()
         for i in reversed_range:
             self.ui.tableWidget.removeRow(i)
@@ -161,13 +161,13 @@ class Line:
     def decreaseWidth(self):
         count = 0
         for each in self.graph_item:
-            if count > self.axes_number-1:
+            if count > self.axes_number - 1:
                 each.decreaseWidth()
             count = count + 1
     def increaseWidth(self):
         count = 0
         for each in self.graph_item:
-            if count > self.axes_number-1:
+            if count > self.axes_number - 1:
                 each.increaseWidth()
             count = count + 1
 
@@ -180,16 +180,16 @@ class lineItem(QtGui.QGraphicsLineItem):
         # = parentList
         self.parentList = [item for item in parentList if not item in [self]]
 
-        self.selec=False
-        self.allItems=allItems
-        self.ctrlPressed=False
-        self.backupPen=self.pen()
+        self.selec = False
+        self.allItems = allItems
+        self.ctrlPressed = False
+        self.backupPen = self.pen()
         self.selectWidth = 2.5
-        self.id=Id
+        self.id = Id
         self.select_pen = QtGui.QPen(QtCore.Qt.gray)
         self.select_pen.setStyle(QtCore.Qt.DotLine)
         self.select_pen.setWidthF(self.selectWidth)
-        self.parentSelected=False
+        self.parentSelected = False
 
 
     def getLayer(self):
@@ -199,13 +199,13 @@ class lineItem(QtGui.QGraphicsLineItem):
 
 
     def setOneRow(self,row1):
-        self.tableItem1=row1
-        self.haveTwoItems=False
+        self.tableItem1 = row1
+        self.haveTwoItems = False
 
     def setTwoRow(self,row1,row2):
-        self.tableItem1=row1
-        self.tableItem2=row2
-        self.haveTwoItems=True
+        self.tableItem1 = row1
+        self.tableItem2 = row2
+        self.haveTwoItems = True
 
 
     def testprint(self):
@@ -216,13 +216,13 @@ class lineItem(QtGui.QGraphicsLineItem):
 
     def setPressed(self,key):
         #print "Yes"
-        if(key==QtCore.Qt.Key_Control):
-            self.ctrlPressed=True
+        if(key == QtCore.Qt.Key_Control):
+            self.ctrlPressed = True
 
     def setUnPressed(self,key):
         #print "No"
-        if(key==QtCore.Qt.Key_Control):
-            self.ctrlPressed=False
+        if(key == QtCore.Qt.Key_Control):
+            self.ctrlPressed = False
 
     def myIsSelected(self):
         return self.selec
@@ -239,24 +239,24 @@ class lineItem(QtGui.QGraphicsLineItem):
     def decreaseWidth(self):
         pen = self.pen()
         if(self.myIsSelected()):
-            pen.setWidthF(pen.widthF()*1/1.05)
+            pen.setWidthF(pen.widthF() * 1 / 1.05)
             self.selectWidth = pen.widthF()
-            self.backupPen.setWidthF(self.backupPen.widthF()*1/1.05)
+            self.backupPen.setWidthF(self.backupPen.widthF() * 1 / 1.05)
         else:
-            pen.setWidthF(pen.widthF()*1/1.05)
-            self.selectWidth = self.selectWidth*1/1.05
+            pen.setWidthF(pen.widthF() * 1 / 1.05)
+            self.selectWidth = self.selectWidth * 1 / 1.05
             self.backupPen = pen
         self.setPen(pen)
 
     def increaseWidth(self):
         pen = self.pen()
         if(self.myIsSelected()):
-            pen.setWidthF(pen.widthF()*1.05)
+            pen.setWidthF(pen.widthF() * 1.05)
             self.selectWidth = pen.widthF()
-            self.backupPen.setWidthF(self.backupPen.widthF()*1.05)
+            self.backupPen.setWidthF(self.backupPen.widthF() * 1.05)
         else:
-            pen.setWidthF(pen.widthF()*1.05)
-            self.selectWidth = self.selectWidth*1.05
+            pen.setWidthF(pen.widthF() * 1.05)
+            self.selectWidth = self.selectWidth * 1.05
             self.backupPen = pen
         self.setPen(pen)
 
@@ -270,7 +270,7 @@ class lineItem(QtGui.QGraphicsLineItem):
             each.setSelected(selection)
 
     def setParentSelected(self,value):
-        self.parentSelected=value
+        self.parentSelected = value
 
 
     def mySetSelected(self,selection,first):
@@ -286,7 +286,7 @@ class lineItem(QtGui.QGraphicsLineItem):
             #self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
             if (first):
                 self.selectParents(False)
-        self.selec=selection
+        self.selec = selection
 
     def deselectRow(self):
         if(self.haveTwoItems):
@@ -309,10 +309,10 @@ class lineItem(QtGui.QGraphicsLineItem):
         if event == QtGui.QGraphicsItem.ItemSelectedHasChanged:
             if self.isSelected():
                 self.setPen(self.select_pen)
-                self.selec=True
+                self.selec = True
             else:
                 self.setPen(self.backupPen)
-                self.selec=False
+                self.selec = False
         return value
 
 
