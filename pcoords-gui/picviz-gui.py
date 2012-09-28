@@ -49,7 +49,7 @@ except ImportError:
     print 'Running without psyco (http://psyco.sourceforge.net/).'
 
 
-class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
+class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
@@ -73,7 +73,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
         test.show()
         print '+Buildgraphic'
 
-    def init_view (self, pcvFileBuilded):
+    def init_view(self, pcvFileBuilded):
         self.axes_number = 0
         self.filter = None
         if len(sys.argv) < 2:
@@ -86,7 +86,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                 self.filter = string.join(self.filtertable, " ")
             self.image = picviz.Image(str(self.pcvfile), self.filter)
 
-    def openPcvFile (self):
+    def openPcvFile(self):
         self.pcvfile = QtGui.QFileDialog.getOpenFileName(
             None,
             "Open Picviz graph", "",
@@ -104,7 +104,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
             self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing,
                                                False)
 
-    def destroyComboBoxes (self):
+    def destroyComboBoxes(self):
         for each in self.comboList:
             each.close()
         for each in self.buttonChange:
@@ -119,7 +119,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
         panel.show()
         del panel
 
-    def create_window_after_init_view (self):
+    def create_window_after_init_view(self):
         #picviz.Debug()
         self.ui.setupUi(self)
         self.setWindowTitle("Picviz Frontend [%s]" % (self.pcvfile))
@@ -208,8 +208,8 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
 
                 elif string == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
-                    for i in range (num_selected_lines):
-                        for j in range (self.scene.axes_number - 1):
+                    for i in range(num_selected_lines):
+                        for j in range(self.scene.axes_number - 1):
                             self.scene.hideSelected2(''.join(strList[1:2]))
                             self.scene.countUndo = self.scene.countUndo - 1
                             cmd = str(statementList[len(statementList)
@@ -219,7 +219,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                 elif string == "HIDE":
                     num_selected_lines = len(strList)
 
-                    for i in range (1, num_selected_lines, 1):
+                    for i in range(1, num_selected_lines, 1):
                         self.scene.hideSelected2(strList[i])
 
                     self.scene.countUndo = self.scene.countUndo + 1
@@ -233,7 +233,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                     listParam = []
                     num_selected_lines = len(strList)
 
-                    for i in range (1, num_selected_lines, 3):
+                    for i in range(1, num_selected_lines, 3):
                         listParam.append(strList[i])
                         listParam.append(strList[i + 1])
                         listParam.append(strList[i + 2])
@@ -252,7 +252,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                 elif string == "WIDTH":
                     #print "width"
                     num_selected_lines = len(strList) - 1
-                    for i in range (1, num_selected_lines, 3):
+                    for i in range(1, num_selected_lines, 3):
                         self.scene.changeWidth2(strList[i], strList[i + 1])
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif string == "ADDLAYER":
@@ -293,8 +293,8 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
 
                 elif string == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
-                    for i in range (num_selected_lines):
-                        for j in range (self.scene.axes_number - 1):
+                    for i in range(num_selected_lines):
+                        for j in range(self.scene.axes_number - 1):
                             self.scene.hideSelected2(''.join(strList[1:2]))
                             self.scene.countUndo = self.scene.countUndo + 1
                             cmd = str(statementList[len(statementList)
@@ -304,7 +304,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
 
                 elif string == "HIDE":
                         num_selected_lines = (len(strList) - 1)
-                        for i in range (num_selected_lines, 0, -1):
+                        for i in range(num_selected_lines, 0, -1):
                             self.scene.showAllLines2(strList[i])
                         self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "ZOOM+":
@@ -317,7 +317,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                         listParam = []
                         num_selected_lines = len(strList)
             #            print "selected %d" % (num_selected_lines)
-                        for i in range (num_selected_lines - 1, 0, -3):
+                        for i in range(num_selected_lines - 1, 0, -3):
                             #self.scene.hideSelected2(strList[i])
                             listParam.append(strList[i - 2])
                             listParam.append(strList[i - 1])
@@ -332,7 +332,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                     #self.scene.countUndo = self.scene.countUndo - 1
                 elif string == "WIDTH":
                         num_selected_lines = len(strList) - 1
-                        for i in range (num_selected_lines, 0, -3):
+                        for i in range(num_selected_lines, 0, -3):
                             self.scene.changeWidth2(strList[i - 2],
                                                     strList[i - 1])
                         self.scene.countUndo = self.scene.countUndo - 1
@@ -367,7 +367,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
         panel.show()
         del panel
 
-    def plusZoom (self):
+    def plusZoom(self):
         #self.matrix.scale(2, 2)
         #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1.15, 1.15)
@@ -381,14 +381,14 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
 #        self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
 
-    def plusZoom2 (self):
+    def plusZoom2(self):
         #self.matrix.scale(2, 2)
         #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1.15, 1.15)
         self.line.decreaseWidth()
         #print "ZOOM+"
 
-    def lessZoom (self):
+    def lessZoom(self):
         #self.matrix.scale(0.5, 0.5)
         #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1 / 1.15, 1 / 1.15)
@@ -403,14 +403,14 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
         #self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
 
-    def lessZoom2 (self):
+    def lessZoom2(self):
         #self.matrix.scale(0.5, 0.5)
         #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1 / 1.15, 1 / 1.15)
         self.line.increaseWidth()
         #print "ZOOM-"
 
-    def empty_ImageView (self):
+    def empty_ImageView(self):
         tableHeader = []
         comboList = []
 
@@ -435,7 +435,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
     def exportToPNG(self):
         self.exporter.asPNG(self.scene)
 
-    def paint_ImageView (self):
+    def paint_ImageView(self):
         self.scene = myScene(self.ui.graphicsView)
         self.scene.setBackgroundBrush(QtCore.Qt.white)
         self.scene.getUi(self.ui, self.image)
@@ -499,7 +499,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
                     self.image['axes'][axis]['label'],
                     self.image['axes'][axis]['id'])
                 # set the combo names
-                if (dictFull == False) :
+                if (dictFull == False):
                     if (self.image['axes'][axis]['label']):
                         axesDict[self.image['axes'][axis]['label']] = axis
                         #Add translate for dict if it have label
@@ -560,7 +560,7 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
         self.axisButton.setSlider(self.ui.horizontalSlider)
         self.buttonChange.append(self.axisButton)
 
-    def Close (self):
+    def Close(self):
         print "Closing Window!"
         self.close()
 

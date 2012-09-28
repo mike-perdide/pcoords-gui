@@ -58,7 +58,7 @@ class myScene(QtGui.QGraphicsScene):
 
         for i in headlist:
             percent = i / len(self.graph_items)
-            progress.setValue( percent * 100)
+            progress.setValue(percent * 100)
             count = i + self.axes_number - 1
             while count < len(self.graph_items):
                 compares_count = 0
@@ -353,7 +353,7 @@ class myScene(QtGui.QGraphicsScene):
         self.currentIncrease = axis
         axis = axis - 1
         count = axis + (self.axes_number)
-        if ( axis == 0 ):
+        if (axis == 0):
             diff = 0
             while (count < self.size_items):
                 #ajuste o P1-X1Y1 do count
@@ -364,7 +364,7 @@ class myScene(QtGui.QGraphicsScene):
                     self.maximum[axis] = p1.y1() * 1.1
                 count = count + self.axes_number - 1
 
-        elif( axis ==  self.axes_number - 1):
+        elif(axis ==  self.axes_number - 1):
             diff =  0
             while (count < self.size_items):
                 #ajuste o P1-X1Y1 do count
@@ -470,7 +470,7 @@ class myScene(QtGui.QGraphicsScene):
             item.setText(2, QtCore.QString(name))
             item.setCheckState(1, QtCore.Qt.Checked);
             item.setCheckState(0, QtCore.Qt.Unchecked);
-            #item.setSizeHint (0, QtCore.QSize(5, 5) )
+            #item.setSizeHint (0, QtCore.QSize(5, 5))
             self.ui.layersTreeWidget.insertTopLevelItem(0, item)
             self.ui.layersTreeWidget.header().resizeSection(0, 22)
             self.ui.layersTreeWidget.header().resizeSection(1, 25)
@@ -598,7 +598,7 @@ class myScene(QtGui.QGraphicsScene):
                 self.layers['default']['items'].sort()
             else:
                 for each in dic['items']:
-                    self.createLayer('default', each, self.graph_items[each] )
+                    self.createLayer('default', each, self.graph_items[each])
                 self.layers['default']['items'].sort()
             del self.layers[current.text(2).__str__()]
 
@@ -639,7 +639,7 @@ class myScene(QtGui.QGraphicsScene):
                 self.layers['default']['items'].sort()
             else:
                 for each in dic['items']:
-                    self.createLayer('default', each, self.graph_items[each] )
+                    self.createLayer('default', each, self.graph_items[each])
                 self.layers['default']['items'].sort()
 
         elif current == None:

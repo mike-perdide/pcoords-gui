@@ -7,7 +7,7 @@ import os
 import picviz
 
 
-class Buildpanel (QtGui.QDialog):
+class Buildpanel(QtGui.QDialog):
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
@@ -32,23 +32,23 @@ class Buildpanel (QtGui.QDialog):
             self.savePgdl)
         print "---Build created"
 
-    def defineLogFile (self):
+    def defineLogFile(self):
         self.nameLogFile = pcvfile = QtGui.QFileDialog.getOpenFileName(
             None, "Open Log File", "", "")
         self.ui.pathLogfile.setText(self.nameLogFile)
 
-    def defineParser (self):
+    def defineParser(self):
         self.nameParserFile = pcvfile = QtGui.QFileDialog.getOpenFileName(
             None, "Open Parser File", "", "")
         self.ui.pathParser.setText(self.nameParserFile)
 
-    def savePgdl (self):
+    def savePgdl(self):
         self.namePgdlFile = pgdlfile = QtGui.QFileDialog.getSaveFileName(
             None, "Save Parser File", "/home", "")
         self.ui.pathPgdl.setText(self.namePgdlFile)
         self.parent.pcvfile = self.namePgdlFile
 
-    def buildFilePcv (self):
+    def buildFilePcv(self):
         self.namePcv = "unknow.pcv"
         self.nameGraphic = "unknow.png"
         dic_TypeParser = {

@@ -47,7 +47,7 @@ class AxisButton(QtGui.QWidget):
 
     """
 
-    def __init__(self, ui, comboList, axesDict, scene, parent=None ):
+    def __init__(self, ui, comboList, axesDict, scene, parent=None):
         #Class Constructor
         QtGui.QWidget.__init__(self, parent)
 
