@@ -15,7 +15,8 @@ class AxisName(QtGui.QComboBox):
         #self.connect(self.combo, QtCore.SIGNAL('currentIndexChanged(int)'),
         #        self.indexChanged)
 
-    def setItemName(self, label, id): #Set the item name in Combo Box
+    def setItemName(self, label, id):
+        """Set the item name in Combo Box"""
         itemlabel = ""
         if label:
             itemlabel = label
@@ -49,15 +50,20 @@ class AxisButton(QtGui.QWidget):
     def __init__(self, ui, comboList, axesDict, scene, parent=None ):
         #Class Constructor
         QtGui.QWidget.__init__(self, parent)
-        self.button = QtGui.QPushButton() #Hold the button object
-        self.button.setText("Change") #Label of button
+
+        # Hold the button object
+        self.button = QtGui.QPushButton()
+
+        # Label of button
+        self.button.setText("Change")
 
         # Block button to no expand when user resize window
         self.button.setSizePolicy(
             QtGui.QSizePolicy.Fixed,
             QtGui.QSizePolicy.Fixed)
 
-        self.button.setGeometry(21, 21, 21, 21) #Size of button
+        # Size of button
+        self.button.setGeometry(21, 21, 21, 21)
 
         # Hold comboList, this object contains all of comboboxes in gui. The
         # button needs this to get the axis names.
@@ -85,7 +91,8 @@ class AxisButton(QtGui.QWidget):
         self.semaphore = False
 
     def buttonPressed(self):
-        name_list = [] #This list is responsable for hold names of axesa
+        # This list is responsible for holding the names of the axes
+        name_list = []
         label = "CHANGE"
         for i in self.currentComboBoxes:
             label = label + " " + i
@@ -117,10 +124,11 @@ class AxisButton(QtGui.QWidget):
         self.currentComboBoxes = []
         for i in self.comboBoxes:
             self.currentComboBoxes.append(i.currentText().__str__())
-        self.scene.countUndo = len(self.scene.listUndoStatement) #- 1
+        self.scene.countUndo = len(self.scene.listUndoStatement)
 
     def buttonPressed2(self, listAxis):
-        name_list = [] #This list is responsable for hold names of axesa
+        # This list is responsible for holding the names of the axes
+        name_list = []
         #label = "CHANGE"
         #for i in range(len(listAxis) - 1):
         j = 0
@@ -170,14 +178,17 @@ class AxisButton(QtGui.QWidget):
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
 
-    def setLines(self, scene_lines, line_number): #Presenting Lines
+    def setLines(self, scene_lines, line_number):
+        """Presenting Lines"""
         self.lines = scene_lines
         self.linenb = line_number
 
-    def setImage(self, scene_image): #Presenting image file
+    def setImage(self, scene_image):
+        """Presenting image file"""
         self.image = scene_image
 
-    def setCurrentEngine(self, engine): #Presenting current import
+    def setCurrentEngine(self, engine):
+        """Presenting current import"""
         self.picviz = engine
 
     def setSlider(self, slider):

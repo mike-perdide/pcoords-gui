@@ -88,7 +88,8 @@ class Line:
                 parentcontainer = []
                 plotnb = -1
 
-        count = 0 #Set the headers of tableWidget
+        # Set the headers of tableWidget
+        count = 0
         for each in self.comboList:
             self.ui.tableWidget.horizontalHeaderItem(count).setText(
                 each.currentText().__str__()

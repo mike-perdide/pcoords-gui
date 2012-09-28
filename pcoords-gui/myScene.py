@@ -228,7 +228,7 @@ class myScene(QtGui.QGraphicsScene):
             self.listUndoStatement.append(statement)
 #            print "COLOR"
 #            print self.listUndoStatement
-            self.countUndo = len(self.listUndoStatement) #- 1
+            self.countUndo = len(self.listUndoStatement)
 
     def brushSelection2(self, paramLine, paramColor, paramSelected):
         colorPen = QtGui.QColor(paramColor)
@@ -333,7 +333,7 @@ class myScene(QtGui.QGraphicsScene):
         if statement != "WIDTH":
             self.listUndoStatement.append(statement)
             #self.countUndo = self.countUndo + 1
-            self.countUndo = len(self.listUndoStatement) #- 1
+            self.countUndo = len(self.listUndoStatement)
 
         #del self.listUndoStatement[len(self.listUndoStatement) - 1]
         # print "WIDTH"
@@ -483,7 +483,7 @@ class myScene(QtGui.QGraphicsScene):
         statement = "ADDLAYER %s %s %s" % (name, index, line)
         self.listUndoStatement.append(statement)
         #self.countUndo = self.countUndo + 1
-        self.countUndo = len(self.listUndoStatement) #- 1
+        self.countUndo = len(self.listUndoStatement)
 
     def updateItem(self, name, item):
         item.setFlag(QtGui.QGraphicsItem.ItemIsSelectable,

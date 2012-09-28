@@ -49,7 +49,7 @@ except ImportError:
     print 'Running without psyco (http://psyco.sourceforge.net/).'
 
 
-class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
+class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
@@ -413,8 +413,12 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
     def empty_ImageView (self):
         tableHeader = []
         comboList = []
-        axesDict = {} #Handler of engine/ComboBox axis name translate
-        dictFull = False #Flag for not duplicate lines!
+
+        # Handler of engine/ComboBox axis name translate
+        axesDict = {}
+
+        # Flag for not duplicate lines!
+        dictFull = False
         # combo = axisgui.AxisName(self.ui, self)
         # combo.show()
         self.ui.tableWidget.setHorizontalHeaderLabels(tableHeader)
@@ -478,8 +482,11 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
         i = 0
         tableHeader = []
         comboList = []
-        axesDict = {} #Handler of engine/ComboBox axis name translate
-        dictFull = False #Flag for not duplicate lines!
+        # Handler of engine/ComboBox axis name translate
+        axesDict = {}
+
+        # Flag for not duplicate lines!
+        dictFull = False
 
         while i < self.axes_number:
             combo = axisgui.AxisName(self.ui, self)
@@ -504,7 +511,9 @@ class PicvizApp (QtGui.QMainWindow, Ui_MainWindow):#(QtGui.QMainWindow):
                     self.ui.tableWidget.insertColumn(
                                             self.ui.tableWidget.columnCount())
                 temp_index = temp_index + 1
-            dictFull = True #Set the flag in first iteration
+
+            # Set the flag in first iteration
+            dictFull = True
             combo.setCurrentIndex(i)
             comboList.append(combo)
             i = i + 1
