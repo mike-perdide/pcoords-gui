@@ -51,7 +51,7 @@ class myScene(QtGui.QGraphicsScene):
             headlist.append(count)
             count = count + self.axes_number - 1
 
-        progress = QtGui.QProgressDialog("Removing lines..","Cancel", 0, 100,
+        progress = QtGui.QProgressDialog("Removing lines..", "Cancel", 0, 100,
                                          self.ui.graphicsView,
                                          QtCore.Qt.WindowFlags())
         progress.show()
@@ -633,7 +633,7 @@ class myScene(QtGui.QGraphicsScene):
                     0, self.falseTrue(self.layers['default']['blocked'])
                 )
                 current.setCheckState(
-                    1 ,self.falseTrue(not self.layers['default']['hidden'])
+                    1, self.falseTrue(not self.layers['default']['hidden'])
                 )
                 for each in dic['items']:
                     self.layers['default']['items'].append(each)
