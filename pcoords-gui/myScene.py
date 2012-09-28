@@ -463,7 +463,7 @@ class myScene(QtGui.QGraphicsScene):
             line.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
             line.setLayer('default')
             name = 'default'
-        if (not self.layers.has_key(name)):
+        if (not name in self.layers):
             index_list = [index]
 
             item = QtGui.QTreeWidgetItem()
@@ -587,7 +587,7 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.removeItemWidget(current, 1)
             self.ui.layersTreeWidget.removeItemWidget(current, 2)
 
-            if self.layers.has_key('default'):
+            if 'default' in self.layers:
                 current.setCheckState(
                     0, self.falseTrue(self.layers['default']['blocked'])
                 )
@@ -628,7 +628,7 @@ class myScene(QtGui.QGraphicsScene):
             self.ui.layersTreeWidget.removeItemWidget(current, 0)
             self.ui.layersTreeWidget.removeItemWidget(current, 1)
             self.ui.layersTreeWidget.removeItemWidget(current, 2)
-            if self.layers.has_key('default'):
+            if 'default' in self.layers:
                 current.setCheckState(
                     0, self.falseTrue(self.layers['default']['blocked'])
                 )
