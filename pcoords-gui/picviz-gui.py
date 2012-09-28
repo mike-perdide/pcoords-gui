@@ -504,7 +504,7 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
                         axesDict[self.image['axes'][axis]['label']] = axis
                         #Add translate for dict if it have label
                     else:
-                        # Add translate if it not have label 
+                        # Add translate if it not have label
                         axesDict['axis%d' % temp_index] = axis
                 if i == 0:
                     tableHeader.append(itemlabel)
