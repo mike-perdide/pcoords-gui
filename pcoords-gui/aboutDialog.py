@@ -17,8 +17,8 @@ class buildAboutPanel (QtGui.QDialog):
 
     def getAboutDotHTML(self):
         variables = {
-            "GUIVERSION" : "0.7",
-            "APIVERSION" : self.apiversion
+            "GUIVERSION": "0.7",
+            "APIVERSION": self.apiversion
             }
         html = """
 <html>

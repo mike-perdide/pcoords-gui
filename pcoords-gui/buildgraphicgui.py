@@ -52,12 +52,12 @@ class Buildpanel (QtGui.QDialog):
         self.namePcv = "unknow.pcv"
         self.nameGraphic = "unknow.png"
         dic_TypeParser = {
-            0:'python',
-            1:'perl',
-            2:'bash',
-            3:'./',
-            4:'./',
-            5:'java'}
+            0: 'python',
+            1: 'perl',
+            2: 'bash',
+            3: './',
+            4: './',
+            5: 'java'}
         index = self.ui.comboTypeParser.currentIndex()
         if index != 3 and index != 4:
             commandParse = dic_TypeParser[index] + " " + \
