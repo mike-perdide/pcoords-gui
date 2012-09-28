@@ -33,7 +33,7 @@ class ExportGraph:
             painter.setRenderHint(QtGui.QPainter.Antialiasing)
             scene.render(painter)
             painter.end()
-            pixmap.save(path);
+            pixmap.save(path)
 
     def asPGDL(self, image):
         path = QtGui.QFileDialog.getSaveFileName(

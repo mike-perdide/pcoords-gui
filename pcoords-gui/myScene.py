@@ -468,8 +468,8 @@ class myScene(QtGui.QGraphicsScene):
 
             item = QtGui.QTreeWidgetItem()
             item.setText(2, QtCore.QString(name))
-            item.setCheckState(1, QtCore.Qt.Checked);
-            item.setCheckState(0, QtCore.Qt.Unchecked);
+            item.setCheckState(1, QtCore.Qt.Checked)
+            item.setCheckState(0, QtCore.Qt.Unchecked)
             #item.setSizeHint (0, QtCore.QSize(5, 5))
             self.ui.layersTreeWidget.insertTopLevelItem(0, item)
             self.ui.layersTreeWidget.header().resizeSection(0, 22)
