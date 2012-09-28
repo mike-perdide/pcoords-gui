@@ -25,7 +25,7 @@ class ExportGraph:
     def asPNG(self, scene):
         path = QtGui.QFileDialog.getSaveFileName(None, "Save Png", "", "Png File (*.png)")
         if path:
-            pixmap = QtGui.QPixmap(scene.width() + 20,scene.height() + 20)
+            pixmap = QtGui.QPixmap(scene.width() + 20, scene.height() + 20)
             painter =  QtGui.QPainter(pixmap)
             painter.setRenderHint(QtGui.QPainter.Antialiasing)
             scene.render(painter)

@@ -44,8 +44,8 @@ class AxisButton(QtGui.QWidget):
         QtGui.QWidget.__init__(self, parent)
         self.button = QtGui.QPushButton() #Hold the button object
         self.button.setText("Change") #Label of button
-        self.button.setSizePolicy(QtGui.QSizePolicy.Fixed,QtGui.QSizePolicy.Fixed) #Block button to no expand when user resize window
-        self.button.setGeometry(21,21,21,21) #Size of button
+        self.button.setSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed) #Block button to no expand when user resize window
+        self.button.setGeometry(21, 21, 21, 21) #Size of button
 
         self.comboBoxes = comboList #Hold comboList, this object contains all of comboboxes in gui. The button need this to get axis names.
         self.currentComboBoxes = []
@@ -56,7 +56,7 @@ class AxisButton(QtGui.QWidget):
         self.ui = ui
         self.scene = scene
         ui.horizontalLayout.addWidget(self.button) #Put the button in the same layout where are located the combos
-        self.connect(self.button, QtCore.SIGNAL('pressed()'),self.buttonPressed) #Add function to respond an signal.
+        self.connect(self.button, QtCore.SIGNAL('pressed()'), self.buttonPressed) #Add function to respond an signal.
         self.semaphore = False
 
     def buttonPressed(self):
@@ -71,7 +71,7 @@ class AxisButton(QtGui.QWidget):
         #label2 = "CHANGE"
         #print "CHANGE AXIS"
 
-            #for i in range(len(self.scene.listUndoStatement) - 1,self.scene.countUndo - 1,-1):
+            #for i in range(len(self.scene.listUndoStatement) - 1, self.scene.countUndo - 1, -1):
             #    del self.scene.listUndoStatement[i]
 
         for each in self.comboBoxes:
@@ -80,7 +80,7 @@ class AxisButton(QtGui.QWidget):
         #self.scene.listUndoStatement.append(label)
         #print self.scene.listUndoStatement
             #translate is for engine name and store on list
-        self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
+        self.picviz.setAxesOrder(self.image, name_list) #Call engine for change axis
         self.lines.clean()
         self.scene.removeGroup()
         self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
@@ -91,7 +91,7 @@ class AxisButton(QtGui.QWidget):
             self.currentComboBoxes.append(i.currentText().__str__())
         self.scene.countUndo = len(self.scene.listUndoStatement) #- 1
 
-    def buttonPressed2(self,listAxis):
+    def buttonPressed2(self, listAxis):
         #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
         name_list = [] #This list is responsable for hold names of axesa
         #label = "CHANGE"
@@ -106,7 +106,7 @@ class AxisButton(QtGui.QWidget):
         for each in self.comboBoxes:
             name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
             #translate is for engine name and store on list
-        self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
+        self.picviz.setAxesOrder(self.image, name_list) #Call engine for change axis
         self.lines.clean()
         self.scene.removeGroup()
         self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
@@ -124,7 +124,7 @@ class AxisButton(QtGui.QWidget):
         #for each in self.comboBoxes:
         #    name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
             #translate is for engine name and store on list
-        #self.picviz.setAxesOrder(self.image,name_list) #Call engine for change axis
+        #self.picviz.setAxesOrder(self.image, name_list) #Call engine for change axis
         self.lines.clean()
         self.scene.removeGroup()
         self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
@@ -133,17 +133,17 @@ class AxisButton(QtGui.QWidget):
 
 
 
-    def setLines(self,scene_lines,line_number): #Presenting Lines
+    def setLines(self, scene_lines, line_number): #Presenting Lines
         self.lines = scene_lines
         self.linenb = line_number
 
-    def setImage(self,scene_image): #Presenting image file
+    def setImage(self, scene_image): #Presenting image file
         self.image = scene_image
 
-    def setCurrentEngine(self,engine): #Presenting current import
+    def setCurrentEngine(self, engine): #Presenting current import
         self.picviz = engine
 
-    def setSlider(self,slider):
+    def setSlider(self, slider):
         self.horizontalSlider = slider
 
     def Close(self):

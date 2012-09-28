@@ -12,7 +12,7 @@ class Line:
         self.comboList = comboList
 
 
-    def hex2dec(self,s):
+    def hex2dec(self, s):
         '''This function converts an hex string to an integer value)'''
         return int(s, 16)
 
@@ -21,7 +21,7 @@ class Line:
         r = self.hex2dec(color[1:3])
         g = self.hex2dec(color[3:5])
         b = self.hex2dec(color[5:7])
-        return QtGui.QColor(r,g,b)
+        return QtGui.QColor(r, g, b)
 
     def addLines(self, show_max, axislimits=None):
         pen = QtGui.QPen()
@@ -47,17 +47,17 @@ class Line:
             currentLine.setPen(pen)
             currentLine.setCursor(QtCore.Qt.OpenHandCursor)
             currentLine.setLayer(line['layer'])
-            self.scene.createLayer(line['layer'],linecounter,currentLine)
+            self.scene.createLayer(line['layer'], linecounter, currentLine)
             self.scene.addItem(currentLine)
             self.ui.tableWidget.setItem(row, plotnb, QtGui.QTableWidgetItem(line['x1_strval']))
             self.backupRows[row].append(line['x1_strval'])
-            currentLine.setOneRow(self.ui.tableWidget.item(row,plotnb))
+            currentLine.setOneRow(self.ui.tableWidget.item(row, plotnb))
             parentcontainer.append(linecounter)
             if line['hidden']:
                 hidden.append(currentLine)
             if plotnb == self.axes_number - 2:
                 self.ui.tableWidget.setItem(row, plotnb + 1, QtGui.QTableWidgetItem(line['x2_strval']))
-                currentLine.setTwoRow(self.ui.tableWidget.item(row,plotnb),self.ui.tableWidget.item(row,plotnb + 1))
+                currentLine.setTwoRow(self.ui.tableWidget.item(row, plotnb), self.ui.tableWidget.item(row, plotnb + 1))
                 self.backupRows[row].append(line['x2_strval'])
                 row = self.ui.tableWidget.rowCount()
                 self.backupRows.append([])
@@ -78,7 +78,7 @@ class Line:
         self.hideValue = linecounter - (self.axes_number - 1) / (self.axes_number - 1)
         #Gets items of scene only 1 time
         self.graph_item = self.scene.items()
-        self.scene.getItems(self.graph_item,self.axes_number)
+        self.scene.getItems(self.graph_item, self.axes_number)
         self.graph_size = len(self.graph_item)
 
         for each in parentDict:
@@ -86,10 +86,10 @@ class Line:
             parentList = []
             for i in parentDict[each]:
                 variant = QtCore.QVariant(i)
-                self.graph_item[each].setData(count,variant)
+                self.graph_item[each].setData(count, variant)
                 parentList.append(self.graph_item[i])
                 count = count + 1
-            self.graph_item[each].setParents(parentList, self.graph_item,each)
+            self.graph_item[each].setParents(parentList, self.graph_item, each)
             del parentList
         self.doSelectable()
         self.scene.hideList(hidden)
@@ -118,7 +118,7 @@ class Line:
             counter = counter + 1
 
         if(show_max >= self.hideValue):
-            for i in range(self.hideValue,show_max):
+            for i in range(self.hideValue, show_max):
                 self.ui.tableWidget.showRow(i)
                 #plotnb = -1
                 #for each in self.backupRows[i]:
@@ -133,7 +133,7 @@ class Line:
             if (count_item >= self.axes_number and (count_item > value * (self.axes_number - 1) + self.axes_number - 1)):
                 item.hide()
             count_item = count_item + 1
-        reversed_range = range(value,self.hideValue)
+        reversed_range = range(value, self.hideValue)
         reversed_range.reverse()
         for i in reversed_range:
             self.ui.tableWidget.hideRow(i)
@@ -146,7 +146,7 @@ class Line:
         del self.graph_item
         del self.graph_size
 
-        reversed_range = range(0,self.ui.tableWidget.rowCount() + 1)
+        reversed_range = range(0, self.ui.tableWidget.rowCount() + 1)
         reversed_range.reverse()
         for i in reversed_range:
             self.ui.tableWidget.removeRow(i)
@@ -176,7 +176,7 @@ class Line:
 
 class lineItem(QtGui.QGraphicsLineItem):
 
-    def setParents(self,parentList,allItems,Id):
+    def setParents(self, parentList, allItems, Id):
         # = parentList
         self.parentList = [item for item in parentList if not item in [self]]
 
@@ -194,15 +194,15 @@ class lineItem(QtGui.QGraphicsLineItem):
 
     def getLayer(self):
         return self.layer
-    def setLayer(self,name):
+    def setLayer(self, name):
         self.layer = name
 
 
-    def setOneRow(self,row1):
+    def setOneRow(self, row1):
         self.tableItem1 = row1
         self.haveTwoItems = False
 
-    def setTwoRow(self,row1,row2):
+    def setTwoRow(self, row1, row2):
         self.tableItem1 = row1
         self.tableItem2 = row2
         self.haveTwoItems = True
@@ -211,15 +211,15 @@ class lineItem(QtGui.QGraphicsLineItem):
     def testprint(self):
         print "I'm printable!"
 
-    def dragEnterEvent(self,event):
+    def dragEnterEvent(self, event):
         print event
 
-    def setPressed(self,key):
+    def setPressed(self, key):
         #print "Yes"
         if(key == QtCore.Qt.Key_Control):
             self.ctrlPressed = True
 
-    def setUnPressed(self,key):
+    def setUnPressed(self, key):
         #print "No"
         if(key == QtCore.Qt.Key_Control):
             self.ctrlPressed = False
@@ -230,7 +230,7 @@ class lineItem(QtGui.QGraphicsLineItem):
     def isPressed(self):
         return self.ctrlPressed
 
-    def setBackupPen(self,pen):
+    def setBackupPen(self, pen):
         self.backupPen = pen
 
     def getBackupPen(self):
@@ -260,20 +260,20 @@ class lineItem(QtGui.QGraphicsLineItem):
             self.backupPen = pen
         self.setPen(pen)
 
-    def setWidth(self,width):
+    def setWidth(self, width):
         self.backupPen.setWidthF(width)
         self.setPen(self.backupPen)
 
-    def selectParents(self,selection):
+    def selectParents(self, selection):
         for each in self.parentList:
             #each.setParentSelected(selection)
             each.setSelected(selection)
 
-    def setParentSelected(self,value):
+    def setParentSelected(self, value):
         self.parentSelected = value
 
 
-    def mySetSelected(self,selection,first):
+    def mySetSelected(self, selection, first):
         if (selection):
             print "Aplicou"
             self.setPen(self.pen)
@@ -302,10 +302,10 @@ class lineItem(QtGui.QGraphicsLineItem):
     def getId(self):
         return self.id
 
-    def hoverEnterEvent(self,event):
+    def hoverEnterEvent(self, event):
         print event
 
-    def itemChange(self,event,value):
+    def itemChange(self, event, value):
         if event == QtGui.QGraphicsItem.ItemSelectedHasChanged:
             if self.isSelected():
                 self.setPen(self.select_pen)
