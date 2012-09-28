@@ -11,7 +11,8 @@ class SelectionItem(QtGui.QGraphicsItem):
                 QtCore.qrand() % 256)
         self.setToolTip("Drag this item over the axis to remove lines")
         self.setCursor(QtCore.Qt.OpenHandCursor)
-        self.axisPosY = y # Internal variable to get the global selection position on the axis
+        # Internal variable to get the global selection position on the axis
+        self.axisPosY = y
         self.axisPosX = x
         self.setPos(x, y)
         self.scene = scene

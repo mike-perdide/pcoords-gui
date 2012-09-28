@@ -18,7 +18,6 @@ class buildAboutPanel (QtGui.QDialog):
     def getAboutDotHTML(self):
         variables = {
             "GUIVERSION" : "0.7",
-            "REVISION" : "$Id: aboutDialog.py 763 2009-09-08 20:03:38Z gabriel $",
             "APIVERSION" : self.apiversion
             }
         html = """
@@ -26,14 +25,22 @@ class buildAboutPanel (QtGui.QDialog):
 <b>Picviz-GUI GUIVERSION<br></b>
 
 <p>
-Revision number: REVISION<br/>
 API version: APIVERSION<br/>
 </p>
 
 
-<p>URL: <a href="http://www.wallinfire.net/picviz">http://wallinfire.net/picviz</a><br></p>
-<p>Help: <a href="mailto:picviz@wallinfire.net">picviz@wallinfire.net</a><br></p>
-<p>IRC: #picviz at <a href="http://www.freenode.net">freenode.org</a><br><br></p>
+<p>URL: <a href="http://www.wallinfire.net/picviz">
+            http://wallinfire.net/picviz
+        </a>
+<br></p>
+<p>Help: <a href="mailto:picviz@wallinfire.net">
+            picviz@wallinfire.net
+        </a>
+<br></p>
+<p>IRC: #picviz at <a href="http://www.freenode.net">
+            freenode.org
+        </a>
+<br><br></p>
 
 <p><b>Maintainers:</b> <br>
 Gabriel "EsCoVa" Cavalcante <br>

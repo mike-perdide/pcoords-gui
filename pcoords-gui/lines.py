@@ -40,23 +40,44 @@ class Line:
             qtcolor = self.QTColorGet(line['color'])
             pen.setColor(qtcolor)
             pen.setWidthF(line['penwidth'])
-            currentLine = lineItem(plotnb * defaults.axiswidth, self.image['height'] - line['y1'], (plotnb + 1) *
-                         defaults.axiswidth, self.image['height'] - line['y2'])
-            currentLine.setToolTip("%s -> %s" % (line['x1_strval'], line['x2_strval']))
+
+            currentLine = lineItem(
+                plotnb * defaults.axiswidth,
+                self.image['height'] - line['y1'],
+                (plotnb + 1) * defaults.axiswidth,
+                self.image['height'] - line['y2'])
+
+            currentLine.setToolTip(
+                "%s -> %s" % (line['x1_strval'],
+                              line['x2_strval'])
+            )
+
             currentLine.setPen(pen)
             currentLine.setCursor(QtCore.Qt.OpenHandCursor)
             currentLine.setLayer(line['layer'])
             self.scene.createLayer(line['layer'], linecounter, currentLine)
             self.scene.addItem(currentLine)
-            self.ui.tableWidget.setItem(row, plotnb, QtGui.QTableWidgetItem(line['x1_strval']))
+
+            self.ui.tableWidget.setItem(
+                row, plotnb, QtGui.QTableWidgetItem(line['x1_strval'])
+            )
+
             self.backupRows[row].append(line['x1_strval'])
             currentLine.setOneRow(self.ui.tableWidget.item(row, plotnb))
             parentcontainer.append(linecounter)
             if line['hidden']:
                 hidden.append(currentLine)
+
             if plotnb == self.axes_number - 2:
-                self.ui.tableWidget.setItem(row, plotnb + 1, QtGui.QTableWidgetItem(line['x2_strval']))
-                currentLine.setTwoRow(self.ui.tableWidget.item(row, plotnb), self.ui.tableWidget.item(row, plotnb + 1))
+                self.ui.tableWidget.setItem(
+                    row, plotnb + 1, QtGui.QTableWidgetItem(line['x2_strval'])
+                )
+
+                currentLine.setTwoRow(
+                    self.ui.tableWidget.item(row, plotnb),
+                    self.ui.tableWidget.item(row, plotnb + 1)
+                )
+
                 self.backupRows[row].append(line['x2_strval'])
                 row = self.ui.tableWidget.rowCount()
                 self.backupRows.append([])
@@ -69,12 +90,17 @@ class Line:
 
         count = 0 #Set the headers of tableWidget
         for each in self.comboList:
-            self.ui.tableWidget.horizontalHeaderItem(count).setText(each.currentText().__str__())
+            self.ui.tableWidget.horizontalHeaderItem(count).setText(
+                each.currentText().__str__()
+            )
             count = count + 1
         #remove a unused row
         self.ui.tableWidget.removeRow(row)
-        #Sets a backup control value, to slider hide/show correctly and efficient
-        self.hideValue = linecounter - (self.axes_number - 1) / (self.axes_number - 1)
+        # Sets a backup control value, to slider hide/show correctly and
+        # efficiently
+        self.hideValue = linecounter - \
+                         (self.axes_number - 1) / (self.axes_number - 1)
+
         #Gets items of scene only 1 time
         self.graph_item = self.scene.items()
         self.scene.getItems(self.graph_item, self.axes_number)
@@ -110,7 +136,8 @@ class Line:
     def showLines(self, show_max):
         itemnb = 0
         counter = self.hideValue * (self.axes_number - 1)
-        while(counter <= show_max * (self.axes_number - 1) + (self.axes_number - 1)):
+        while(counter <= show_max * (self.axes_number - 1)
+                         + (self.axes_number - 1)):
             if (counter < self.graph_size):
                 self.graph_item[counter].show()
             counter = counter + 1
@@ -118,16 +145,15 @@ class Line:
         if(show_max >= self.hideValue):
             for i in range(self.hideValue, show_max):
                 self.ui.tableWidget.showRow(i)
-                #plotnb = -1
-                #for each in self.backupRows[i]:
-                #    plotnb = plotnb + 1
-                #    self.ui.tableWidget.setItem(i, plotnb, QtGui.QTableWidgetItem(each))
+
         self.hideValue = show_max
 
     def update_lines_view(self, value):
         count_item = 0
         for item in self.graph_item:
-            if (count_item >= self.axes_number and (count_item > value * (self.axes_number - 1) + self.axes_number - 1)):
+            if (count_item >= self.axes_number and
+                (count_item > value * (self.axes_number - 1)
+                              + self.axes_number - 1)):
                 item.hide()
             count_item = count_item + 1
         reversed_range = range(value, self.hideValue)

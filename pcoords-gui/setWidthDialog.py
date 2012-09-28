@@ -11,7 +11,8 @@ class buildWidthPanel (QtGui.QDialog):
         self.ui.setupUi(self)
         self.parent = parent
         self.ui.widthSpinBox.setMaximum(10)
-        QtCore.QObject.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'), self.accept)
+        QtCore.QObject.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'),
+                               self.accept)
 
     def accept(self):
         self.parent.scene.changeWidth(self.ui.widthSpinBox.value())

@@ -35,33 +35,56 @@ class AxisName(QtGui.QComboBox):
 
 
 class AxisButton(QtGui.QWidget):
-    #This Class is responsable for button Change, located at rigth side of comboboxes.
-    #This Button call SetAxesOrder in the engine, and after this call update lines to redraw the graph.
-    #It needs to handle lines/engine/axesDict
-    #The axes dict translate the axis name in combobox to axis name in image dict.
+    """ This Class is responsible for button Change
+
+    This button is located at the right side of the comboboxes. It calls
+    SetAxesOrder in the engine, and after this call update lines to redraw the
+    graph.
+
+    It needs to handle lines/engine/axesDict. The axes dict translates the axis
+    name in combobox to axis name in image dict.
+
+    """
 
     def __init__(self, ui, comboList, axesDict, scene, parent=None ):
         #Class Constructor
         QtGui.QWidget.__init__(self, parent)
         self.button = QtGui.QPushButton() #Hold the button object
         self.button.setText("Change") #Label of button
-        self.button.setSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed) #Block button to no expand when user resize window
+
+        # Block button to no expand when user resize window
+        self.button.setSizePolicy(
+            QtGui.QSizePolicy.Fixed,
+            QtGui.QSizePolicy.Fixed)
+
         self.button.setGeometry(21, 21, 21, 21) #Size of button
 
-        self.comboBoxes = comboList #Hold comboList, this object contains all of comboboxes in gui. The button need this to get axis names.
+        # Hold comboList, this object contains all of comboboxes in gui. The
+        # button needs this to get the axis names.
+        self.comboBoxes = comboList
+
         self.currentComboBoxes = []
         for i in self.comboBoxes:
             self.currentComboBoxes.append(i.currentText().__str__())
 
-        self.dicAxes = axesDict #H lds the correspondent axis name on image file for all names in comboBoxes
+        # H lds the correspondent axis name on image file for all names in
+        # comboBoxes
+        self.dicAxes = axesDict
         self.ui = ui
         self.scene = scene
-        ui.horizontalLayout.addWidget(self.button) #Put the button in the same layout where are located the combos
-        self.connect(self.button, QtCore.SIGNAL('pressed()'), self.buttonPressed) #Add function to respond an signal.
+
+        # Put the button in the same layout where the combos are located
+        ui.horizontalLayout.addWidget(self.button)
+
+        # Add function to respond to signal.
+        self.connect(
+            self.button,
+            QtCore.SIGNAL('pressed()'),
+            self.buttonPressed)
+
         self.semaphore = False
 
     def buttonPressed(self):
-        #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
         name_list = [] #This list is responsable for hold names of axesa
         label = "CHANGE"
         for i in self.currentComboBoxes:
@@ -72,19 +95,23 @@ class AxisButton(QtGui.QWidget):
         #label2 = "CHANGE"
         #print "CHANGE AXIS"
 
-            #for i in range(len(self.scene.listUndoStatement) - 1, self.scene.countUndo - 1, -1):
-            #    del self.scene.listUndoStatement[i]
-
         for each in self.comboBoxes:
-            name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
+            # Get the name of axis in comboBox
+            name_list.append(self.dicAxes[each.currentText().__str__()])
             label = label + " %s " % (each.currentText().__str__())
         #self.scene.listUndoStatement.append(label)
         #print self.scene.listUndoStatement
             #translate is for engine name and store on list
-        self.picviz.setAxesOrder(self.image, name_list) #Call engine for change axis
+
+        # Call engine for change axis
+        self.picviz.setAxesOrder(self.image, name_list)
         self.lines.clean()
         self.scene.removeGroup()
-        self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
+
+        self.lines.addLines(
+            len(self.image['lines']) / (len(self.image['axeslist']) - 1)
+        )
+
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
         self.currentComboBoxes = []
@@ -93,7 +120,6 @@ class AxisButton(QtGui.QWidget):
         self.scene.countUndo = len(self.scene.listUndoStatement) #- 1
 
     def buttonPressed2(self, listAxis):
-        #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
         name_list = [] #This list is responsable for hold names of axesa
         #label = "CHANGE"
         #for i in range(len(listAxis) - 1):
@@ -105,12 +131,19 @@ class AxisButton(QtGui.QWidget):
 
         #print label
         for each in self.comboBoxes:
-            name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
+            # Get the name of axis in comboBox,
+            name_list.append(self.dicAxes[each.currentText().__str__()])
             #translate is for engine name and store on list
-        self.picviz.setAxesOrder(self.image, name_list) #Call engine for change axis
+
+        # Call engine to change axis order
+        self.picviz.setAxesOrder(self.image, name_list)
+
         self.lines.clean()
         self.scene.removeGroup()
-        self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
+        self.lines.addLines(
+            len(self.image['lines']) / (len(self.image['axeslist']) - 1)
+        )
+
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
         self.currentComboBoxes = []
@@ -118,15 +151,22 @@ class AxisButton(QtGui.QWidget):
             self.currentComboBoxes.append(i.currentText().__str__())
 
     def updateAfterRemoveDuplicated(self):
-        #self.lines.removeLines() #Clean the lines of scene, the axes is not deleted
+        # Clean the lines of scene, the axes is not deleted
+        #self.lines.removeLines()
         #name_list = [] #This list is responsable for hold names of axes
         #for each in self.comboBoxes:
-        #    name_list.append(self.dicAxes[each.currentText().__str__()]) #Get the name of axis in comboBox,
-            #translate is for engine name and store on list
-        #self.picviz.setAxesOrder(self.image, name_list) #Call engine for change axis
+        #    # Get the name of axis in comboBox,
+        #    # translate is for engine name and store on list
+        #    name_list.append(self.dicAxes[each.currentText().__str__()])
+        # Call engine to change axis order
+        #self.picviz.setAxesOrder(self.image, name_list)
+
         self.lines.clean()
         self.scene.removeGroup()
-        self.lines.addLines(len(self.image['lines']) / (len(self.image['axeslist']) - 1))
+        self.lines.addLines(
+            len(self.image['lines']) / (len(self.image['axeslist']) - 1)
+        )
+
         #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
 
@@ -144,7 +184,8 @@ class AxisButton(QtGui.QWidget):
         self.horizontalSlider = slider
 
     def Close(self):
-        self.ui.horizontalLayout.removeWidget(self.button) #Put the button in the same layout where are located the combos
+        # Put the button in the same layout where are located the combos
+        self.ui.horizontalLayout.removeWidget(self.button)
         self.button.close()
         self.close()
 
@@ -155,8 +196,18 @@ def addAxes(image, scene, lines, axes_number, ui):
 
     i = 0
     while i < axes_number:
-        scene.addLine(i * defaults.axiswidth, 0, i * defaults.axiswidth, image['height'], pen) #Draw axes lines
+        # Draw axes lines
+        scene.addLine(
+            i * defaults.axiswidth, 0,
+            i * defaults.axiswidth, image['height'],
+            pen)
+
     # Removed for 0.1 release. Be back on trunk soon
-        #item = selection.SelectionItem(image, scene, lines, i * defaults.axiswidth , 0)
-            #scene.addItem(item)
+        #item = selection.SelectionItem(
+        #    image,
+        #    scene,
+        #    lines,
+        #    i * defaults.axiswidth,
+        #    0)
+        #scene.addItem(item)
         i = i + 1

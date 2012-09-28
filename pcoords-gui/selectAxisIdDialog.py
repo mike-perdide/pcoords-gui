@@ -12,7 +12,8 @@ class buildSelectIdPanel (QtGui.QDialog):
         self.parent = parent
         self.ui.axisIdSpinBox.setMinimum(1)
         self.ui.axisIdSpinBox.setMaximum(self.parent.axes_number)
-        QtCore.QObject.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'), self.accept)
+        QtCore.QObject.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'),
+                               self.accept)
 
     def accept(self):
         self.parent.scene.AxisIncrease(self.ui.axisIdSpinBox.value())
