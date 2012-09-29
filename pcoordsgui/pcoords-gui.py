@@ -19,13 +19,13 @@ from PyQt4 import QtCore, QtGui
 import pcoords
 
 # UI
-from PcoordsGui import axisgui, export, lines, UiPcoords
-from PcoordsGui.buildgraphicgui import Buildpanel
-from PcoordsGui.UiPcoords import Ui_MainWindow
-from PcoordsGui.myScene import myScene
-from PcoordsGui.setWidthDialog import buildWidthPanel
-from PcoordsGui.selectAxisIdDialog import buildSelectIdPanel
-from PcoordsGui.aboutDialog import buildAboutPanel
+from pcoordsgui import axisgui, export, lines, UiPcoords
+from pcoordsgui.buildgraphicgui import Buildpanel
+from pcoordsgui.UiPcoords import Ui_MainWindow
+from pcoordsgui.myScene import myScene
+from pcoordsgui.setWidthDialog import buildWidthPanel
+from pcoordsgui.selectAxisIdDialog import buildSelectIdPanel
+from pcoordsgui.aboutDialog import buildAboutPanel
 #class Timeout:
 #    def __init__(self, last):
 #        self.last_timeout = last

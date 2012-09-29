@@ -10,7 +10,7 @@ class buildAboutPanel (QtGui.QDialog):
         self.apiversion = apiversion
         self.ui.plainTextEdit.textCursor().insertHtml(self.getAboutDotHTML())
 
-        # about_text = open("PcoordsGui/about.html","r")
+        # about_text = open("pcoordsgui/about.html","r")
         # string = about_text.readlines()
         # for each in string:
         #     self.ui.plainTextEdit.textCursor().insertHtml(each)
