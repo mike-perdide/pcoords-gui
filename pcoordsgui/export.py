@@ -54,7 +54,6 @@ class ExportGraph:
             strpos = 2
             axispos = 0
             for line in image['lines']:
-#                print str(line)
                 if line['hidden'] == 1:
                     continue
                 if axispos == 0:
