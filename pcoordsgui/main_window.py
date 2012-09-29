@@ -371,40 +371,23 @@ class MainWindow(QMainWindow):
         self.ui.graphicsView.setScene(self.scene)
         self.ui.graphicsView.setDragMode(2)
 
-        self.connect(self.ui.hideSelectionButton, QtCore.SIGNAL('clicked()'),
-                     self.scene.hideSelected)
-        self.connect(self.ui.brushButton, QtCore.SIGNAL('clicked()'),
-                     self.scene.brushSelection)
-        self.connect(self.ui.showOnlyButton, QtCore.SIGNAL('clicked()'),
-                     self.scene.hideNotSelected)
-        self.connect(self.ui.showAllButton, QtCore.SIGNAL('clicked()'),
-                     self.scene.showAllLines)
+        ui = self.ui
+        ui.hideSelectionButton.clicked.connect(self.scene.hideSelected)
+        ui.brushButton.clicked.connect(self.scene.brushSelection)
+        ui.showOnlyButton.clicked.connect(self.scene.hideNotSelected)
+        ui.showAllButton.clicked.connect(self.scene.showAllLines)
 
-        self.connect(self.ui.actionHide, QtCore.SIGNAL('triggered()'),
-                     self.scene.hideSelected)
-        self.connect(self.ui.actionBrush, QtCore.SIGNAL('triggered()'),
-                     self.scene.brushSelection)
-        self.connect(self.ui.actionShow_only, QtCore.SIGNAL('triggered()'),
-                     self.scene.hideNotSelected)
-        self.connect(self.ui.actionShow_all, QtCore.SIGNAL('triggered()'),
-                     self.scene.showAllLines)
+        ui.actionHide.triggered.connect(self.scene.hideSelected)
+        ui.actionBrush.triggered.connect(self.scene.brushSelection)
+        ui.actionShow_only.triggered.connect(self.scene.hideNotSelected)
+        ui.actionShow_all.triggered.connect(self.scene.showAllLines)
 
         #Layer Buttons
-        self.connect(self.ui.layersTreeWidget,
-                     QtCore.SIGNAL('itemClicked(QTreeWidgetItem*, int)'),
-                     self.scene.selectLayer)
-        self.connect(self.ui.sortLayerButton,
-                     QtCore.SIGNAL('clicked()'),
-                     self.sortLayers)
-        self.connect(self.ui.removeLayerButton,
-                     QtCore.SIGNAL('clicked()'),
-                     self.scene.removeLayer)
-        self.connect(self.ui.addLayerButton,
-                     QtCore.SIGNAL('clicked()'),
-                     self.scene.addLayer)
-        self.connect(self.ui.selectLayerButton,
-                     QtCore.SIGNAL('clicked()'),
-                     self.scene.doSelectLayer)
+        ui.layersTreeWidget.itemClicked.connect(self.scene.selectLayer)
+        ui.sortLayerButton.clicked.connect(self.sortLayers)
+        ui.removeLayerButton.clicked.connect(self.scene.removeLayer)
+        ui.addLayerButton.clicked.connect(self.scene.addLayer)
+        ui.selectLayerButton.clicked.connect(self.scene.doSelectLayer)
 
         self.axes_number = len(self.image['axeslist'])
         i = 0
