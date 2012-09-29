@@ -116,12 +116,9 @@ class MainWindow(QMainWindow):
 
     def antiAliasing(self):
         """Activate or deactivate the anti-aliasing."""
-        if (self.ui.QCheckAntiAliasing.isChecked()):
-            self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing,
-                                               True)
-        else:
-            self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing,
-                                               False)
+        graphics_view = self.ui.graphicsView
+        is_checked = self.ui.QCheckAntiAliasing.isChecked()
+        graphics_view.setRenderHint(QtGui.QPainter.Antialiasing, is_checked)
 
     def destroyComboBoxes(self):
         for each in self.comboList:
