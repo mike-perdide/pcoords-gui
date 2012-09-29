@@ -116,7 +116,10 @@ class Line:
                 self.graph_item[each].setData(count, variant)
                 parentList.append(self.graph_item[i])
                 count = count + 1
-            self.graph_item[each].setParents(parentList, self.graph_item, each)
+
+            if isinstance(self.graph_item[each], lineItem):
+                self.graph_item[each].setParents(parentList,
+                                                 self.graph_item, each)
             del parentList
         self.doSelectable()
         self.scene.hideList(hidden)
@@ -196,21 +199,32 @@ class Line:
             count = count + 1
 
 
-class lineItem(QtGui.QGraphicsLineItem):
+class lineItem(QGraphicsLineItem):
 
-    def setParents(self, parentList, allItems, Id):
-        self.parentList = [item for item in parentList if not item in [self]]
-
+    def __init__(self, x1, y1, x2, y2, parent=None, scene=None):
+        QGraphicsItem.__init__(self, x1, y1, x2, y2,
+                               parent=parent, scene=scene)
         self.selec = False
-        self.allItems = allItems
         self.ctrlPressed = False
-        self.backupPen = self.pen()
         self.selectWidth = 2.5
-        self.id = Id
+        self.id = None
+        self.parentSelected = False
+        self.parentList = []
+        self.allItems = []
+
+        self.backupPen = self.pen()
+
         self.select_pen = QPen(QtCore.Qt.gray)
         self.select_pen.setStyle(QtCore.Qt.DotLine)
         self.select_pen.setWidthF(self.selectWidth)
+
+    def setParents(self, parentList, allItems, id):
+        self.parentList = [item for item in parentList
+                           if not item == self]
+
         self.parentSelected = False
+        self.id = id
+        self.allItems = allItems
 
     def getLayer(self):
         return self.layer

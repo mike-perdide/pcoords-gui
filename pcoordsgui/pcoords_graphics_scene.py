@@ -37,7 +37,8 @@ class myScene(QtGui.QGraphicsScene):
     def mouseReleaseEvent(self, event):
         if not self.semaphore:
             for each in self.selectedItems():
-                each.selectParents(True)
+                if hasattr(each, "selectParents"):
+                    each.selectParents(True)
         else:
             self.semaphore = False
 
