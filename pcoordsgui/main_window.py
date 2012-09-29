@@ -51,10 +51,10 @@ class MainWindow(QMainWindow):
         self.comboList = []
         self.buttonChange = []
         self.exporter = export.ExportGraph()
-        self.connect_signals()
+        self.connectSignals()
         #addLines(window, image)
 
-    def connect_signals(self):
+    def connectSignals(self):
         """Connect the objects to the slots."""
         ui = self.ui
 
@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
         ui.actionExport_png.triggered.connect(self.exportToPNG)
         ui.action_Build.triggered.connect(self.Buildgraphic)
         ui.action_Open.triggered.connect(self.openPcvFile)
-        ui.action_Quit.triggered.connect(self.Close)
+        ui.action_Quit.triggered.connect(self.close)
 
         ui.zoomButtonPlus.clicked.connect(self.plusZoom)
         ui.zoomButtonLess.clicked.connect(self.plusZoom)
