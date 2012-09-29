@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Picviz Frontend</string>
+   <string>Pcoords Frontend</string>
   </property>
   <widget class="QWidget" name="centralwidget" >
    <property name="minimumSize" >
@@ -61,7 +61,7 @@
         </property>
         <property name="icon" >
          <iconset>
-          <normaloff>../../../../../../../usr/share/picviz-gui/icons/morezoom.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/morezoom.png</iconset>
+          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/morezoom.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/morezoom.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -93,7 +93,7 @@
         </property>
         <property name="icon" >
          <iconset>
-          <normaloff>../../../../../../../usr/share/picviz-gui/icons/lesszoom.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/lesszoom.png</iconset>
+          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/lesszoom.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/lesszoom.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -123,7 +123,7 @@
         </property>
         <property name="icon" >
          <iconset>
-          <normaloff>../../../../../../../usr/share/picviz-gui/icons/brush.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/brush.png</iconset>
+          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/brush.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/brush.png</iconset>
         </property>
         <property name="flat" >
          <bool>true</bool>
@@ -140,7 +140,7 @@
         </property>
         <property name="icon" >
          <iconset>
-          <normaloff>../../../../../../../usr/share/picviz-gui/icons/width.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/width.png</iconset>
+          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/width.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/width.png</iconset>
         </property>
         <property name="flat" >
          <bool>true</bool>
@@ -287,7 +287,7 @@
            </property>
            <property name="icon" >
             <iconset>
-             <normaloff>../../../../../../../usr/share/picviz-gui/icons/more.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/more.png</iconset>
+             <normaloff>../../../../../../../usr/share/pcoords-gui/icons/more.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/more.png</iconset>
            </property>
            <property name="flat" >
             <bool>false</bool>
@@ -310,7 +310,7 @@
            </property>
            <property name="icon" >
             <iconset>
-             <normaloff>../../../../../../../usr/share/picviz-gui/icons/less.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/less.png</iconset>
+             <normaloff>../../../../../../../usr/share/pcoords-gui/icons/less.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/less.png</iconset>
            </property>
            <property name="flat" >
             <bool>false</bool>
@@ -403,7 +403,7 @@
             </property>
             <property name="icon" >
              <iconset>
-              <normaloff>../../../../../../../usr/share/picviz-gui/icons/lock.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/lock.png</iconset>
+              <normaloff>../../../../../../../usr/share/pcoords-gui/icons/lock.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/lock.png</iconset>
             </property>
            </column>
            <column>
@@ -412,7 +412,7 @@
             </property>
             <property name="icon" >
              <iconset>
-              <normaloff>../../../../../../../usr/share/picviz-gui/icons/hide.png</normaloff>../../../../../../../usr/share/picviz-gui/icons/hide.png</iconset>
+              <normaloff>../../../../../../../usr/share/pcoords-gui/icons/hide.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/hide.png</iconset>
             </property>
            </column>
            <column>

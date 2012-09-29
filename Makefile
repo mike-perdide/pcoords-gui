@@ -1,4 +1,4 @@
-SRCDIRS = picviz-gui
+SRCDIRS = pcoords-gui
 GENTARGETS = all clean test
 
 $(GENTARGETS): $(SRCDIRS)

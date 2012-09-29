@@ -111,7 +111,7 @@ class AxisButton(QtGui.QWidget):
             #translate is for engine name and store on list
 
         # Call engine for change axis
-        self.picviz.setAxesOrder(self.image, name_list)
+        self.pcoords.setAxesOrder(self.image, name_list)
         self.lines.clean()
         self.scene.removeGroup()
 
@@ -144,7 +144,7 @@ class AxisButton(QtGui.QWidget):
             #translate is for engine name and store on list
 
         # Call engine to change axis order
-        self.picviz.setAxesOrder(self.image, name_list)
+        self.pcoords.setAxesOrder(self.image, name_list)
 
         self.lines.clean()
         self.scene.removeGroup()
@@ -167,7 +167,7 @@ class AxisButton(QtGui.QWidget):
         #    # translate is for engine name and store on list
         #    name_list.append(self.dicAxes[each.currentText().__str__()])
         # Call engine to change axis order
-        #self.picviz.setAxesOrder(self.image, name_list)
+        #self.pcoords.setAxesOrder(self.image, name_list)
 
         self.lines.clean()
         self.scene.removeGroup()
@@ -189,7 +189,7 @@ class AxisButton(QtGui.QWidget):
 
     def setCurrentEngine(self, engine):
         """Presenting current import"""
-        self.picviz = engine
+        self.pcoords = engine
 
     def setSlider(self, slider):
         self.horizontalSlider = slider

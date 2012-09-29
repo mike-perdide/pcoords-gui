@@ -37,7 +37,7 @@ class ExportGraph:
 
     def asPGDL(self, image):
         path = QtGui.QFileDialog.getSaveFileName(
-            None, "Save PGDL", "", "Picviz File (*.pgdl)")
+            None, "Save PGDL", "", "Pcoords File (*.pgdl)")
 
         if path:
             fp = open(path, "w")

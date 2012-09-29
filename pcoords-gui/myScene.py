@@ -4,11 +4,11 @@ import sys
 
 
 class myScene(QtGui.QGraphicsScene):
-    #sys.stdout = open("/var/log/picviz.log","a")
+    #sys.stdout = open("/var/log/pcoords.log","a")
     listUndoStatement = []
     currentIncrease = 0
 
-    # Define the last statement of picviz log file that can be to perform
+    # Define the last statement of pcoords log file that can be to perform
     countUndo = 0
 
     layers = {}
@@ -103,7 +103,7 @@ class myScene(QtGui.QGraphicsScene):
         self.axisButton.updateAfterRemoveDuplicated()
         del progress
         dialog = QtGui.QMessageBox(self.ui.graphicsView)
-        dialog.setWindowTitle("Picviz-GUI")
+        dialog.setWindowTitle("Pcoords-GUI")
         dialog.setIcon(1)
         dialog.setText("Removed %d normal lines. \nRemoved %d hidden lines." %
                     (count_showed / (self.axes_number - 1),

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 ######################
-# Frontend for Picviz
+# Frontend for Pcoords
 ######################
 # (C) 2008 Sebastien Tricaud
 #     2009 Victor Amaducci
@@ -15,17 +15,17 @@ import string
 from PyQt4 import QtCore, QtGui
 
 
-# Picviz
-import picviz
+# Pcoords
+import pcoords
 
 # UI
-from PicvizGui import axisgui, export, lines, UiPicviz
-from PicvizGui.buildgraphicgui import Buildpanel
-from PicvizGui.UiPicviz import Ui_MainWindow
-from PicvizGui.myScene import myScene
-from PicvizGui.setWidthDialog import buildWidthPanel
-from PicvizGui.selectAxisIdDialog import buildSelectIdPanel
-from PicvizGui.aboutDialog import buildAboutPanel
+from PcoordsGui import axisgui, export, lines, UiPcoords
+from PcoordsGui.buildgraphicgui import Buildpanel
+from PcoordsGui.UiPcoords import Ui_MainWindow
+from PcoordsGui.myScene import myScene
+from PcoordsGui.setWidthDialog import buildWidthPanel
+from PcoordsGui.selectAxisIdDialog import buildSelectIdPanel
+from PcoordsGui.aboutDialog import buildAboutPanel
 #class Timeout:
 #    def __init__(self, last):
 #        self.last_timeout = last
@@ -49,11 +49,11 @@ except ImportError:
     print 'Running without psyco (http://psyco.sourceforge.net/).'
 
 
-class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
+class PcoordsApp(QtGui.QMainWindow, Ui_MainWindow):
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
-        self.ui = UiPicviz.Ui_MainWindow()
+        self.ui = UiPcoords.Ui_MainWindow()
         self.ui.setupUi(self)
         #self = QtGui.QMainWindow(self)
         self.scene = QtGui.QGraphicsScene()
@@ -84,14 +84,14 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
             if len(sys.argv) > 2:
                 self.filtertable = sys.argv[2:]
                 self.filter = string.join(self.filtertable, " ")
-            self.image = picviz.Image(str(self.pcvfile), self.filter)
+            self.image = pcoords.Image(str(self.pcvfile), self.filter)
 
     def openPcvFile(self):
         self.pcvfile = QtGui.QFileDialog.getOpenFileName(
             None,
-            "Open Picviz graph", "",
-            "Picviz Files (*.pgdl *.pcv)")
-        self.image = picviz.Image(str(self.pcvfile), self.filter)
+            "Open Pcoords graph", "",
+            "Pcoords Files (*.pgdl *.pcv)")
+        self.image = pcoords.Image(str(self.pcvfile), self.filter)
         #print self.image
         self.destroyComboBoxes()
         self.paint_ImageView()
@@ -115,14 +115,14 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
         #    del self.image
 
     def showCredits(self):
-        panel = buildAboutPanel(picviz.Version(), self)
+        panel = buildAboutPanel(pcoords.Version(), self)
         panel.show()
         del panel
 
     def create_window_after_init_view(self):
-        #picviz.Debug()
+        #pcoords.Debug()
         self.ui.setupUi(self)
-        self.setWindowTitle("Picviz Frontend [%s]" % (self.pcvfile))
+        self.setWindowTitle("Pcoords Frontend [%s]" % (self.pcvfile))
         self.show()
 
         #self.matrix = QtGui.QMatrix() #Natrix to apply Zoom on GraphicsView
@@ -556,7 +556,7 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
                      self.line.update_lines_view)
         self.axisButton.setLines(self.line, linenb)
         self.axisButton.setImage(self.image)
-        self.axisButton.setCurrentEngine(picviz)
+        self.axisButton.setCurrentEngine(pcoords)
         self.axisButton.setSlider(self.ui.horizontalSlider)
         self.buttonChange.append(self.axisButton)
 
@@ -571,14 +571,14 @@ class PicvizApp(QtGui.QMainWindow, Ui_MainWindow):
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    PicViz = PicvizApp()
-    PicViz.init_view(None)
-    PicViz.create_window_after_init_view()
-    if not PicViz.image:
+    PCoords = PcoordsApp()
+    PCoords.init_view(None)
+    PCoords.create_window_after_init_view()
+    if not PCoords.image:
         #if not pcvFileBuilded:
-        PicViz.empty_ImageView()
+        PCoords.empty_ImageView()
         print "*** Could not create image. Exiting."
         #sys.exit(1)
-    if PicViz.image:
-        PicViz.paint_ImageView()
+    if PCoords.image:
+        PCoords.paint_ImageView()
     sys.exit(app.exec_())

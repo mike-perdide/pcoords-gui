@@ -10,7 +10,7 @@ class buildAboutPanel (QtGui.QDialog):
         self.apiversion = apiversion
         self.ui.plainTextEdit.textCursor().insertHtml(self.getAboutDotHTML())
 
-        # about_text = open("PicvizGui/about.html","r")
+        # about_text = open("PcoordsGui/about.html","r")
         # string = about_text.readlines()
         # for each in string:
         #     self.ui.plainTextEdit.textCursor().insertHtml(each)
@@ -22,22 +22,22 @@ class buildAboutPanel (QtGui.QDialog):
             }
         html = """
 <html>
-<b>Picviz-GUI GUIVERSION<br></b>
+<b>Pcoords-GUI GUIVERSION<br></b>
 
 <p>
 API version: APIVERSION<br/>
 </p>
 
 
-<p>URL: <a href="http://www.wallinfire.net/picviz">
-            http://wallinfire.net/picviz
+<p>URL: <a href="http://www.wallinfire.net/pcoords">
+            http://wallinfire.net/pcoords
         </a>
 <br></p>
-<p>Help: <a href="mailto:picviz@wallinfire.net">
-            picviz@wallinfire.net
+<p>Help: <a href="mailto:pcoords@wallinfire.net">
+            pcoords@wallinfire.net
         </a>
 <br></p>
-<p>IRC: #picviz at <a href="http://www.freenode.net">
+<p>IRC: #pcoords at <a href="http://www.freenode.net">
             freenode.org
         </a>
 <br><br></p>

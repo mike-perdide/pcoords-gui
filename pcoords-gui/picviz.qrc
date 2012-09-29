@@ -1,5 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
-	<qresource prefix="/picviz-gui/icons">
+	<qresource prefix="/pcoords-gui/icons">
 		<file alias="brush.png">icons/brush.png</file>
 		<file alias="hide.png">icons/hide.png</file>
 		<file alias="less.png">icons/less.png</file>

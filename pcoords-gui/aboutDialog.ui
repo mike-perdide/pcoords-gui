@@ -22,7 +22,7 @@
    </size>
   </property>
   <property name="windowTitle" >
-   <string>About Picviz</string>
+   <string>About Pcoords</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox" >
    <property name="geometry" >

@@ -3,8 +3,8 @@ from PyQt4 import QtCore, QtGui
 
 from buildgraphicDialog import Ui_Dialog_Build
 import os
-# Picviz
-import picviz
+# Pcoords
+import pcoords
 
 
 class Buildpanel(QtGui.QDialog):
@@ -76,7 +76,7 @@ class Buildpanel(QtGui.QDialog):
             print "C and C++ still are not implemented"
             pass
 
-        self.parent.image = picviz.Image(
+        self.parent.image = pcoords.Image(
             str(self.parent.pcvfile), self.parent.filter)
         self.parent.paint_ImageView()
         #commandBuildPcv = "pcv -Tpngcairo " + self.namePcv  + self.nameGraphic
