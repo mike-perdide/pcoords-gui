@@ -41,7 +41,8 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         """Initialization method."""
-        QtGui.QWidget.__init__(self, parent)
+        QMainWindow.__init__(self, parent)
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
