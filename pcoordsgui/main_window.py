@@ -226,7 +226,7 @@ class MainWindow(QMainWindow):
                         self.scene.changeWidth2(strList[i], strList[i + 1])
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif command == "ADDLAYER":
-                    sel.scene.addLayer(strList[1], strList[2], strList[3])
+                    self.scene.addLayer(strList[1], strList[2], strList[3])
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif command == "REMOVELAYER":
                         self.scene.removeLayer2(strList[1])
