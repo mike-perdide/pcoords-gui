@@ -13,12 +13,13 @@ import sys
 from PyQt4.QtGui import QApplication
 
 from pcoordsgui.main_window import MainWindow
+from pcoordsgui.utils import get_pcv_filename
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    pcvfile = "New.pcv"
+    pcvfile = None
     filters = None
 
     if len(sys.argv) > 1:
@@ -28,7 +29,11 @@ if __name__ == "__main__":
         filtertable = sys.argv[2:]
         filters = ' '.join(filtertable)
 
-    pcoords_app = MainWindow(pcvfile=pcvfile, filters=filters)
-    pcoords_app.show()
+    if not pcvfile:
+        pcvfile = get_pcv_filename()
 
-    sys.exit(app.exec_())
+    if pcvfile:
+        pcoords_app = MainWindow(pcvfile=pcvfile, filters=filters)
+        pcoords_app.show()
+
+        sys.exit(app.exec_())

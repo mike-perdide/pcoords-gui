@@ -62,15 +62,17 @@ class MainWindow(QMainWindow):
         self.exporter = export.ExportGraph()
         self.connectSignals()
 
-        self.setWindowTitle("Pcoords Frontend [%s]" % pcvfile)
         self.show()
 
     def setPcvFile(self, pcvfile, filters=None):
         self.image = pcoords.Image(str(pcvfile), filters)
 
+        self.setWindowTitle("Pcoords Frontend [%s]" % pcvfile)
+
         if filters:
             self.filters = filters
 
+        self.destroyComboBoxes()
         self.paint_ImageView()
 
     def connectSignals(self):
@@ -110,13 +112,7 @@ class MainWindow(QMainWindow):
 
     def openPcvFile(self):
         """Opens the PCV file with a QFileDialog."""
-        self.pcvfile = QtGui.QFileDialog.getOpenFileName(
-            None,
-            "Open Pcoords graph", "",
-            "Pcoords Files (*.pgdl *.pcv)")
-        self.image = pcoords.Image(str(self.pcvfile), self.filters)
-        self.destroyComboBoxes()
-        self.paint_ImageView()
+        self.setPcvFile(get_pcv_filename())
 
     def antiAliasing(self):
         """Activate or deactivate the anti-aliasing."""
