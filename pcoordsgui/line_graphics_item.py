@@ -36,6 +36,7 @@ class Line:
         row = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(row)
         hidden = []
+
         for line in self.image['lines']:
             plotnb = plotnb + 1
             linecounter = linecounter + 1
@@ -67,6 +68,7 @@ class Line:
             self.backupRows[row].append(line['x1_strval'])
             currentLine.setOneRow(self.ui.tableWidget.item(row, plotnb))
             parentcontainer.append(linecounter)
+
             if line['hidden']:
                 hidden.append(currentLine)
 
@@ -84,8 +86,10 @@ class Line:
                 row = self.ui.tableWidget.rowCount()
                 self.backupRows.append([])
                 self.ui.tableWidget.insertRow(row)
+
                 for each in parentcontainer:
                     parentDict[each] = parentcontainer
+
                 parentcontainer = []
                 plotnb = -1
 
@@ -248,12 +252,10 @@ class lineItem(QGraphicsLineItem):
         print event
 
     def setPressed(self, key):
-        #print "Yes"
         if(key == QtCore.Qt.Key_Control):
             self.ctrlPressed = True
 
     def setUnPressed(self, key):
-        #print "No"
         if(key == QtCore.Qt.Key_Control):
             self.ctrlPressed = False
 
