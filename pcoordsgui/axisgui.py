@@ -8,12 +8,6 @@ class AxisName(QtGui.QComboBox):
 
     def __init__(self, ui, parent=None):
         QtGui.QWidget.__init__(self, parent)
-                #self.combo = QtGui.QComboBox(parent)
-        #self.combo = combo
-        #ui.horizontalLayout.addWidget(self)
-                #ui.horizontalLayout.addItem(combo)
-        #self.connect(self.combo, QtCore.SIGNAL('currentIndexChanged(int)'),
-        #        self.indexChanged)
 
     def setItemName(self, label, id):
         """Set the item name in Combo Box"""
@@ -24,12 +18,6 @@ class AxisName(QtGui.QComboBox):
             itemlabel = "axis%d" % id
         self.addItem(itemlabel)
         return itemlabel
-
-    def indexChanged(self, id):
-        print "Change axis id: %d" % id
-
-    #def setCurrentIndex(self, i):
-    #    self.setCurrentIndex(i)
 
     def getCurrentIndex(self):
         return self.currentIndex()
@@ -111,7 +99,6 @@ class AxisButton(QtGui.QWidget):
             len(self.image['lines']) / (len(self.image['axeslist']) - 1)
         )
 
-        #self.lines.doSelectable()
         self.lines.update_lines_view(self.horizontalSlider.value())
         self.currentComboBoxes = []
         for i in self.comboBoxes:
@@ -121,8 +108,6 @@ class AxisButton(QtGui.QWidget):
     def buttonPressed2(self, listAxis):
         # This list is responsible for holding the names of the axes
         name_list = []
-        #label = "CHANGE"
-        #for i in range(len(listAxis) - 1):
         j = 0
         for i in self.comboBoxes:
             index = i.findText(listAxis[j])
@@ -150,16 +135,6 @@ class AxisButton(QtGui.QWidget):
             self.currentComboBoxes.append(i.currentText().__str__())
 
     def updateAfterRemoveDuplicated(self):
-        # Clean the lines of scene, the axes is not deleted
-        #self.lines.removeLines()
-        #name_list = [] #This list is responsable for hold names of axes
-        #for each in self.comboBoxes:
-        #    # Get the name of axis in comboBox,
-        #    # translate is for engine name and store on list
-        #    name_list.append(self.dicAxes[each.currentText().__str__()])
-        # Call engine to change axis order
-        #self.pcoords.setAxesOrder(self.image, name_list)
-
         self.lines.clean()
         self.scene.removeGroup()
         self.lines.addLines(
@@ -199,17 +174,8 @@ def addAxes(image, scene, lines, axes_number, ui):
     i = 0
     while i < axes_number:
         # Draw axes lines
-        scene.addLine(
-            i * defaults.axiswidth, 0,
-            i * defaults.axiswidth, image['height'],
-            pen)
+        scene.addLine(i * defaults.axiswidth, 0,
+                      i * defaults.axiswidth, image['height'],
+                      pen)
 
-    # Removed for 0.1 release. Be back on trunk soon
-        #item = selection.SelectionItem(
-        #    image,
-        #    scene,
-        #    lines,
-        #    i * defaults.axiswidth,
-        #    0)
-        #scene.addItem(item)
         i = i + 1
