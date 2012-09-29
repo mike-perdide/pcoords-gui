@@ -81,10 +81,6 @@ class MainWindow(QMainWindow):
         ui.actionViewLayers.toggled.connect(self.viewLayers)
         ui.actionViewTable.toggled.connect(self.viewTable)
 
-    def ComboIndexChange(widget):
-        pass
-#    print "foo"
-
     def Buildgraphic(self):
         test = Buildpanel(self)
         test.show()
