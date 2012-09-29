@@ -18,16 +18,17 @@ from pcoordsgui.main_window import MainWindow
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    pcoords_app = MainWindow()
-    pcoords_app.init_view()
-    pcoords_app.create_window_after_init_view()
+    pcvfile = "New.pcv"
+    filters = None
 
-    if not pcoords_app.image:
-        #if not pcvFileBuilded:
-        pcoords_app.empty_ImageView()
-        print "*** Could not create image. Exiting."
-        #sys.exit(1)
-    if pcoords_app.image:
-        pcoords_app.paint_ImageView()
+    if len(sys.argv) > 1:
+        pcvfile = sys.argv[1]
+
+    if len(sys.argv) > 2:
+        filtertable = sys.argv[2:]
+        filters = ' '.join(filtertable)
+
+    pcoords_app = MainWindow(pcvfile=pcvfile, filters=filters)
+    pcoords_app.show()
 
     sys.exit(app.exec_())

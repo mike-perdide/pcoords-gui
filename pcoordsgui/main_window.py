@@ -39,7 +39,7 @@ except ImportError:
 class MainWindow(QMainWindow):
     """Describes the pcoords main window."""
 
-    def __init__(self, parent=None):
+    def __init__(self, pcvfile=None, filters=None, parent=None):
         """Initialization method."""
         QMainWindow.__init__(self, parent)
 
@@ -51,8 +51,29 @@ class MainWindow(QMainWindow):
         self.image = 0
         self.comboList = []
         self.buttonChange = []
+        self.axes_number = 0
+        self.filters = None
+
+        if pcvfile:
+            print pcvfile
+            self.setPcvFile(pcvfile, filters=filters)
+        else:
+            self.openPcvFile()
+
         self.exporter = export.ExportGraph()
         self.connectSignals()
+
+        self.setWindowTitle("Pcoords Frontend [%s]" % pcvfile)
+        self.show()
+
+    def setPcvFile(self, pcvfile, filters=None):
+        self.image = pcoords.Image(str(pcvfile), filters)
+        print self.image
+
+        if filters:
+            self.filters = filters
+
+        self.paint_ImageView()
 
     def connectSignals(self):
         """Connect the objects to the slots."""
@@ -89,25 +110,13 @@ class MainWindow(QMainWindow):
         test = Buildpanel(self)
         test.show()
 
-    def init_view(self):
-        self.axes_number = 0
-        self.filter = None
-        if len(sys.argv) < 2:
-            self.pcvfile = "New.pcv"
-        else:
-            self.pcvfile = sys.argv[1]
-            if len(sys.argv) > 2:
-                self.filtertable = sys.argv[2:]
-                self.filter = ' '.join(self.filtertable)
-            self.image = pcoords.Image(str(self.pcvfile), self.filter)
-
     def openPcvFile(self):
         """Opens the PCV file with a QFileDialog."""
         self.pcvfile = QtGui.QFileDialog.getOpenFileName(
             None,
             "Open Pcoords graph", "",
             "Pcoords Files (*.pgdl *.pcv)")
-        self.image = pcoords.Image(str(self.pcvfile), self.filter)
+        self.image = pcoords.Image(str(self.pcvfile), self.filters)
         self.destroyComboBoxes()
         self.paint_ImageView()
 
@@ -128,12 +137,6 @@ class MainWindow(QMainWindow):
         panel = buildAboutPanel(pcoords.Version(), self)
         panel.show()
         del panel
-
-    def create_window_after_init_view(self):
-        """Show the window once the view has been initialized."""
-        self.ui.setupUi(self)
-        self.setWindowTitle("Pcoords Frontend [%s]" % (self.pcvfile))
-        self.show()
 
     def viewLayers(self, checked):
         """Display the layers box."""
