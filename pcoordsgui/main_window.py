@@ -217,9 +217,8 @@ class MainWindow(QMainWindow):
                     self.scene.addLayer(strList[1], strList[2], strList[3])
                     self.scene.countUndo = self.scene.countUndo + 1
                 elif command == "REMOVELAYER":
-                        self.scene.removeLayer2(strList[1])
-            #            print "REMOVE LAYER %s" % (strList[1])
-                        self.scene.countUndo = self.scene.countUndo + 1
+                    self.scene.removeLayer2(strList[1])
+                    self.scene.countUndo = self.scene.countUndo + 1
 
         except:
             QtGui.QMessageBox.information(
@@ -260,10 +259,10 @@ class MainWindow(QMainWindow):
                     self.scene.countUndo = self.scene.countUndo + 1
 
                 elif command == "HIDE":
-                        num_selected_lines = (len(strList) - 1)
-                        for i in range(num_selected_lines, 0, -1):
-                            self.scene.showAllLines2(strList[i])
-                        self.scene.countUndo = self.scene.countUndo - 1
+                    num_selected_lines = (len(strList) - 1)
+                    for i in range(num_selected_lines, 0, -1):
+                        self.scene.showAllLines2(strList[i])
+                    self.scene.countUndo = self.scene.countUndo - 1
                 elif command == "ZOOM+":
                     self.lessZoom2()
                     self.scene.countUndo = self.scene.countUndo - 1
@@ -271,42 +270,37 @@ class MainWindow(QMainWindow):
                     self.plusZoom2()
                     self.scene.countUndo = self.scene.countUndo - 1
                 elif command == "CHANGE":
+                    listParam = []
+                    num_selected_lines = len(strList)
+
+                    for i in range(num_selected_lines - 1, 0, -3):
+                        listParam.append(strList[i - 2])
+                        listParam.append(strList[i - 1])
+                        listParam.append(strList[i])
+                        self.axisButton.buttonPressed2(listParam)
                         listParam = []
-                        num_selected_lines = len(strList)
-            #            print "selected %d" % (num_selected_lines)
-                        for i in range(num_selected_lines - 1, 0, -3):
-                            #self.scene.hideSelected2(strList[i])
-                            listParam.append(strList[i - 2])
-                            listParam.append(strList[i - 1])
-                            listParam.append(strList[i])
-                            self.axisButton.buttonPressed2(listParam)
-                            listParam = []
-                        self.scene.countUndo = self.scene.countUndo - 1
-                    #listParam = []
-                    #for i in range(self.scene.axes_number):
-                    #    listParam.append(strList[i + 1])
-                    #self.axisButton.buttonPressed2(listParam)
-                    #self.scene.countUndo = self.scene.countUndo - 1
+                    self.scene.countUndo = self.scene.countUndo - 1
+
                 elif command == "WIDTH":
-                        num_selected_lines = len(strList) - 1
-                        for i in range(num_selected_lines, 0, -3):
-                            self.scene.changeWidth2(strList[i - 2],
-                                                    strList[i - 1])
-                        self.scene.countUndo = self.scene.countUndo - 1
+                    num_selected_lines = len(strList) - 1
+                    for i in range(num_selected_lines, 0, -3):
+                        self.scene.changeWidth2(strList[i - 2],
+                                                strList[i - 1])
+                    self.scene.countUndo = self.scene.countUndo - 1
+
                 elif command == "ADDLAYER":
-                        self.scene.removeLayer2(strList[1])
-            #            print "REMOVE LAYER %s" % (strList[1])
-                        self.scene.countUndo = self.scene.countUndo - 1
+                    self.scene.removeLayer2(strList[1])
+                    self.scene.countUndo = self.scene.countUndo - 1
+
                 elif command == "REMOVELAYER":
-                        i = 1
-                        while not strList[i] and not strList[i]:
-                            i += 1
-                        for j in range(i):
-                            self.scene.createLayer(
-                                strList[1], strList[2 + j],
-                                strList[2 + (i - 1)])
-                        self.scene.countUndo = self.scene.countUndo - 1
-            #    print self.scene.countUndo
+                    i = 1
+                    while not strList[i] and not strList[i]:
+                        i += 1
+                    for j in range(i):
+                        self.scene.createLayer(
+                            strList[1], strList[2 + j],
+                            strList[2 + (i - 1)])
+                    self.scene.countUndo = self.scene.countUndo - 1
 
         except:
             QtGui.QMessageBox.information(
