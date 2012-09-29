@@ -131,7 +131,7 @@ class MainWindow(QMainWindow):
         del panel
 
     def create_window_after_init_view(self):
-        #pcoords.Debug()
+        """Show the window once the view has been initialized."""
         self.ui.setupUi(self)
         self.setWindowTitle("Pcoords Frontend [%s]" % (self.pcvfile))
         self.show()
