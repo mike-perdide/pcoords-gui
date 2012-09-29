@@ -96,7 +96,7 @@ class MainWindow(QMainWindow):
             self.pcvfile = sys.argv[1]
             if len(sys.argv) > 2:
                 self.filtertable = sys.argv[2:]
-                self.filter = string.join(self.filtertable, " ")
+                self.filter = ' '.join(self.filtertable)
             self.image = pcoords.Image(str(self.pcvfile), self.filter)
 
     def openPcvFile(self):
@@ -167,16 +167,16 @@ class MainWindow(QMainWindow):
                 statementList = self.scene.listUndoStatement
                 cmd = str(statementList[self.scene.countUndo])
                 strList = cmd.split()
-                string = ''.join(strList[:1])
+                command = ''.join(strList[:1])
 
-                if string == "COLOR":
+                if command == "COLOR":
                     num = (len(strList) - 1) / 2
                     for i in range(1, len(strList) - 1, 2):
                         self.scene.brushSelection2(strList[i], strList[i + 1],
                                                    num)
                     self.scene.countUndo = self.scene.countUndo + 1
 
-                elif string == "SHOWALL":
+                elif command == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
                     for i in range(num_selected_lines):
                         for j in range(self.scene.axes_number - 1):
@@ -186,20 +186,20 @@ class MainWindow(QMainWindow):
                                                     - self.scene.countUndo])
                             strList = cmd.split()
 
-                elif string == "HIDE":
+                elif command == "HIDE":
                     num_selected_lines = len(strList)
 
                     for i in range(1, num_selected_lines, 1):
                         self.scene.hideSelected2(strList[i])
 
                     self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "ZOOM+":
+                elif command == "ZOOM+":
                     self.plusZoom2()
                     self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "ZOOM-":
+                elif command == "ZOOM-":
                     self.lessZoom2()
                     self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "CHANGE":
+                elif command == "CHANGE":
                     listParam = []
                     num_selected_lines = len(strList)
 
@@ -219,16 +219,16 @@ class MainWindow(QMainWindow):
                 #    print strList
                 #    self.axisButton.buttonPressed2(listParam)
                 #    self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "WIDTH":
+                elif command == "WIDTH":
                     #print "width"
                     num_selected_lines = len(strList) - 1
                     for i in range(1, num_selected_lines, 3):
                         self.scene.changeWidth2(strList[i], strList[i + 1])
                     self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "ADDLAYER":
+                elif command == "ADDLAYER":
                     sel.scene.addLayer(strList[1], strList[2], strList[3])
                     self.scene.countUndo = self.scene.countUndo + 1
-                elif string == "REMOVELAYER":
+                elif command == "REMOVELAYER":
                         self.scene.removeLayer2(strList[1])
             #            print "REMOVE LAYER %s" % (strList[1])
                         self.scene.countUndo = self.scene.countUndo + 1
@@ -253,15 +253,15 @@ class MainWindow(QMainWindow):
                 statementList = self.scene.listUndoStatement
                 cmd = str(statementList[self.scene.countUndo - 1])
                 strList = cmd.split()
-                string = ''.join(strList[:1])
-                if string == "COLOR":
+                command = ''.join(strList[:1])
+                if command == "COLOR":
                     num = (len(strList) - 1) / 2
                     for i in range(len(strList) - 1, 1, -2):
                         self.scene.brushSelection2(strList[i - 1],
                                                    strList[i], num)
                     self.scene.countUndo = self.scene.countUndo - 1
 
-                elif string == "SHOWALL":
+                elif command == "SHOWALL":
                     num_selected_lines = int(''.join(strList[2:]))
                     for i in range(num_selected_lines):
                         for j in range(self.scene.axes_number - 1):
@@ -272,18 +272,18 @@ class MainWindow(QMainWindow):
                             strList = cmd.split()
                     self.scene.countUndo = self.scene.countUndo + 1
 
-                elif string == "HIDE":
+                elif command == "HIDE":
                         num_selected_lines = (len(strList) - 1)
                         for i in range(num_selected_lines, 0, -1):
                             self.scene.showAllLines2(strList[i])
                         self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "ZOOM+":
+                elif command == "ZOOM+":
                     self.lessZoom2()
                     self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "ZOOM-":
+                elif command == "ZOOM-":
                     self.plusZoom2()
                     self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "CHANGE":
+                elif command == "CHANGE":
                         listParam = []
                         num_selected_lines = len(strList)
             #            print "selected %d" % (num_selected_lines)
@@ -300,17 +300,17 @@ class MainWindow(QMainWindow):
                     #    listParam.append(strList[i + 1])
                     #self.axisButton.buttonPressed2(listParam)
                     #self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "WIDTH":
+                elif command == "WIDTH":
                         num_selected_lines = len(strList) - 1
                         for i in range(num_selected_lines, 0, -3):
                             self.scene.changeWidth2(strList[i - 2],
                                                     strList[i - 1])
                         self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "ADDLAYER":
+                elif command == "ADDLAYER":
                         self.scene.removeLayer2(strList[1])
             #            print "REMOVE LAYER %s" % (strList[1])
                         self.scene.countUndo = self.scene.countUndo - 1
-                elif string == "REMOVELAYER":
+                elif command == "REMOVELAYER":
                         i = 1
                         while not strList[i] and not strList[i]:
                             i += 1
