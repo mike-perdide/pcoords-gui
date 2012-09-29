@@ -1,0 +1,22 @@
+Coding styles
+=============
+
+We follow PEP8 here, with an exception for the methods name, which are formatted
+with camelCase.
+
+Please read: http://bitesofcode.blogspot.fr/2011/10/pyqt-coding-style-guidelines.html
+
+Ui filenames
+------------
+The ui filenames should reflect the fonction they are performing and the 
+implemented class. For instance, the following names are valid:
+
+ * find_file_dialog.py
+ * display_graph_widget.py
+ * main_window.py
+
+PyQt4 signals
+-------------
+
+We're using new-style PyQt4 signals.
+More information: http://www.riverbankcomputing.co.uk/static/Docs/PyQt4/html/new_style_signals_slots.html
