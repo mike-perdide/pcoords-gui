@@ -34,10 +34,6 @@ class SelectionItem(QtGui.QGraphicsItem):
         self.moveBy(0, event.pos().y())
 
     def mouseReleaseEvent(self, event):
-        #print str(self.axisPosY)
-        #for item in self.scene.items():
-        #    item.hide()
-
         limits = {}
 
         limits['min'] = 0
@@ -52,8 +48,6 @@ class SelectionItem(QtGui.QGraphicsItem):
                     event.ignore()
                     return
 
-        #print "Press"
-
     def axisGetfromX(self, x):
         return int(x / defaults.axiswidth)
 
@@ -61,8 +55,6 @@ class SelectionItem(QtGui.QGraphicsItem):
         itemnb = 0
         for item in self.scene.items():
             if itemnb == 0:
-                print "Get my coords"
             itemnb = itemnb + 1
             if itemnb == self.image['axes_number']:
-                print "New line"
                 itemnb = 0

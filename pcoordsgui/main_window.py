@@ -87,7 +87,6 @@ class MainWindow(QMainWindow):
         """Shows the buildpanel."""
         test = Buildpanel(self)
         test.show()
-        print '+Buildgraphic'
 
     def init_view(self):
         self.axes_number = 0
@@ -108,7 +107,6 @@ class MainWindow(QMainWindow):
             "Open Pcoords graph", "",
             "Pcoords Files (*.pgdl *.pcv)")
         self.image = pcoords.Image(str(self.pcvfile), self.filter)
-        #print self.image
         self.destroyComboBoxes()
         self.paint_ImageView()
 
@@ -189,12 +187,15 @@ class MainWindow(QMainWindow):
                         self.scene.hideSelected2(strList[i])
 
                     self.scene.countUndo = self.scene.countUndo + 1
+
                 elif command == "ZOOM+":
                     self.plusZoom2()
                     self.scene.countUndo = self.scene.countUndo + 1
+
                 elif command == "ZOOM-":
                     self.lessZoom2()
                     self.scene.countUndo = self.scene.countUndo + 1
+
                 elif command == "CHANGE":
                     listParam = []
                     num_selected_lines = len(strList)
@@ -213,9 +214,11 @@ class MainWindow(QMainWindow):
                     for i in range(1, num_selected_lines, 3):
                         self.scene.changeWidth2(strList[i], strList[i + 1])
                     self.scene.countUndo = self.scene.countUndo + 1
+
                 elif command == "ADDLAYER":
                     self.scene.addLayer(strList[1], strList[2], strList[3])
                     self.scene.countUndo = self.scene.countUndo + 1
+
                 elif command == "REMOVELAYER":
                     self.scene.removeLayer2(strList[1])
                     self.scene.countUndo = self.scene.countUndo + 1
@@ -263,12 +266,15 @@ class MainWindow(QMainWindow):
                     for i in range(num_selected_lines, 0, -1):
                         self.scene.showAllLines2(strList[i])
                     self.scene.countUndo = self.scene.countUndo - 1
+
                 elif command == "ZOOM+":
                     self.lessZoom2()
                     self.scene.countUndo = self.scene.countUndo - 1
+
                 elif command == "ZOOM-":
                     self.plusZoom2()
                     self.scene.countUndo = self.scene.countUndo - 1
+
                 elif command == "CHANGE":
                     listParam = []
                     num_selected_lines = len(strList)

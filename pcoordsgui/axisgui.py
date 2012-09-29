@@ -96,19 +96,11 @@ class AxisButton(QtGui.QWidget):
         label = "CHANGE"
         for i in self.currentComboBoxes:
             label = label + " " + i
-#        print label
-        #self.scene.countUndo = self.scene.countUndo + 1
-        #self.scene.listUndoStatement.append(label)
-        #label2 = "CHANGE"
-        #print "CHANGE AXIS"
 
         for each in self.comboBoxes:
             # Get the name of axis in comboBox
             name_list.append(self.dicAxes[each.currentText().__str__()])
             label = label + " %s " % (each.currentText().__str__())
-        #self.scene.listUndoStatement.append(label)
-        #print self.scene.listUndoStatement
-            #translate is for engine name and store on list
 
         # Call engine for change axis
         self.pcoords.setAxesOrder(self.image, name_list)
@@ -137,7 +129,6 @@ class AxisButton(QtGui.QWidget):
             i.setCurrentIndex(index)
             j = j + 1
 
-        #print label
         for each in self.comboBoxes:
             # Get the name of axis in comboBox,
             name_list.append(self.dicAxes[each.currentText().__str__()])

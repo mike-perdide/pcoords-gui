@@ -309,7 +309,6 @@ class lineItem(QGraphicsLineItem):
 
     def mySetSelected(self, selection, first):
         if (selection):
-            print "Aplicou"
             self.setPen(self.pen)
             self.setSelected(selection)
             if (first):

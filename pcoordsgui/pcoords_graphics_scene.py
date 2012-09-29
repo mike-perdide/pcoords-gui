@@ -133,10 +133,8 @@ class myScene(QtGui.QGraphicsScene):
     def hideShowAxes(self):
         for i in range(0, self.axes_number - 1):
             self.graph_items[i].hide()
-#            print "HIDE %d" % (i)
         for i in range(0, self.axes_number - 1):
             self.graph_items[i].show()
-#            print "SHOW %d" % (i)
 
     def selChanged(self):
         if (not self.semaphore):
@@ -227,8 +225,6 @@ class myScene(QtGui.QGraphicsScene):
                     + " %s " % (self.dic['lines'][each.getId() - self.axes_number]['color'])
 
             self.listUndoStatement.append(statement)
-#            print "COLOR"
-#            print self.listUndoStatement
             self.countUndo = len(self.listUndoStatement)
 
     def brushSelection2(self, paramLine, paramColor, paramSelected):
@@ -259,8 +255,6 @@ class myScene(QtGui.QGraphicsScene):
             self.dic['lines'][each.getId() - self.axes_number]['hidden'] = 1
         #self.listUndoStatement.append(statement)
         self.groups.append(self.createItemGroup(selected))
-        #print "Hided:"
-        #print self.listUndoStatement
         #self.countUndo = self.countUndo + 1
         #self.countUndo = len(self.listUndoStatement) #- 1
         self.clearSelection()
@@ -308,7 +302,6 @@ class myScene(QtGui.QGraphicsScene):
     def changeWidth(self, width):
         count = 0
         statement = "WIDTH"
-        #print self.dic['lines']
         selected_items2 = self.selectedItems()
         for i in range(len(self.listUndoStatement) - 1,
                        self.countUndo - 1, -1):
@@ -330,15 +323,10 @@ class myScene(QtGui.QGraphicsScene):
                                   self.dic['lines'][each.getId() - self.axes_number]['penwidth'],
                                   len(self.selected_items) - 1)
 
-        #print "Statement width: %s" % (statement)
         if statement != "WIDTH":
             self.listUndoStatement.append(statement)
             #self.countUndo = self.countUndo + 1
             self.countUndo = len(self.listUndoStatement)
-
-        #del self.listUndoStatement[len(self.listUndoStatement) - 1]
-        # print "WIDTH"
-        # print self.listUndoStatement
 
         self.clearSelection()
 
@@ -419,13 +407,11 @@ class myScene(QtGui.QGraphicsScene):
 
         for each in self.groups:
             for i in each.childItems():
-                #self.countUndo = 1
                 each.removeFromGroup(i)
                 i.mySetSelected(False, False)
         self.clearSelection()
         for i in range(0, self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.showRow(i)
-        #self.countUndo = len(self.listUndoStatement) #- 1
 
     def showAllLines2(self, paramLine):
         count = 0
@@ -583,7 +569,6 @@ class myScene(QtGui.QGraphicsScene):
         current = self.ui.layersTreeWidget.currentItem()
         if current is not None and current.text(2).__str__() != 'default':
             dic = self.layers[current.text(2).__str__()]
-            print dic
             self.ui.layersTreeWidget.removeItemWidget(current, 0)
             self.ui.layersTreeWidget.removeItemWidget(current, 1)
             self.ui.layersTreeWidget.removeItemWidget(current, 2)
@@ -619,7 +604,6 @@ class myScene(QtGui.QGraphicsScene):
 
     def removeAllLayers(self):
         self.ui.layersTreeWidget.clear()
-        #print self.layers
         self.layers.clear()
 
     def removeLayer2(self, name):
