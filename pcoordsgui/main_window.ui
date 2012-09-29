@@ -61,8 +61,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/morezoom.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/morezoom.png</iconset>
+         <iconset resource="pcoords.qrc">
+          <normaloff>:/pcoords-gui/icons/morezoom.png</normaloff>:/pcoords-gui/icons/morezoom.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -93,8 +93,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/lesszoom.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/lesszoom.png</iconset>
+         <iconset resource="pcoords.qrc">
+          <normaloff>:/pcoords-gui/icons/lesszoom.png</normaloff>:/pcoords-gui/icons/lesszoom.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -123,8 +123,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/brush.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/brush.png</iconset>
+         <iconset resource="pcoords.qrc">
+          <normaloff>:/pcoords-gui/icons/brush.png</normaloff>:/pcoords-gui/icons/brush.png</iconset>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -140,8 +140,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../../../../../../usr/share/pcoords-gui/icons/width.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/width.png</iconset>
+         <iconset resource="pcoords.qrc">
+          <normaloff>:/pcoords-gui/icons/width.png</normaloff>:/pcoords-gui/icons/width.png</iconset>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -287,8 +287,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../../../../../../usr/share/pcoords-gui/icons/more.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/more.png</iconset>
+            <iconset resource="pcoords.qrc">
+             <normaloff>:/pcoords-gui/icons/more.png</normaloff>:/pcoords-gui/icons/more.png</iconset>
            </property>
            <property name="flat">
             <bool>false</bool>
@@ -310,8 +310,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../../../../../../usr/share/pcoords-gui/icons/less.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/less.png</iconset>
+            <iconset resource="pcoords.qrc">
+             <normaloff>:/pcoords-gui/icons/less.png</normaloff>:/pcoords-gui/icons/less.png</iconset>
            </property>
            <property name="flat">
             <bool>false</bool>
