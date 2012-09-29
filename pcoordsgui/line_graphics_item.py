@@ -86,7 +86,6 @@ class Line:
                 self.ui.tableWidget.insertRow(row)
                 for each in parentcontainer:
                     parentDict[each] = parentcontainer
-                del parentcontainer
                 parentcontainer = []
                 plotnb = -1
 
@@ -137,7 +136,6 @@ class Line:
             itemnb = itemnb + 1
 
     def showLines(self, show_max):
-        itemnb = 0
         counter = self.hideValue * (self.axes_number - 1)
         while(counter <= show_max * (self.axes_number - 1)
                          + (self.axes_number - 1)):
@@ -201,7 +199,6 @@ class Line:
 class lineItem(QtGui.QGraphicsLineItem):
 
     def setParents(self, parentList, allItems, Id):
-        # = parentList
         self.parentList = [item for item in parentList if not item in [self]]
 
         self.selec = False
@@ -304,7 +301,6 @@ class lineItem(QtGui.QGraphicsLineItem):
         else:
             self.setPen(self.backupPen)
             self.setSelected(selection)
-            #self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
             if (first):
                 self.selectParents(False)
         self.selec = selection
