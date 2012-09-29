@@ -25,7 +25,6 @@ class Line:
         return QColor(r, g, b)
 
     def addLines(self, show_max, axislimits=None):
-        pen = QPen()
         self.backupRows = []
         self.backupRows.append([])
         #print str(axislimits)
@@ -41,29 +40,33 @@ class Line:
             plotnb = plotnb + 1
             linecounter = linecounter + 1
             qtcolor = self.QTColorGet(line['color'])
+
+            currentLine = lineItem(plotnb * defaults.axiswidth,
+                                   self.image['height'] - line['y1'],
+                                   (plotnb + 1) * defaults.axiswidth,
+                                   self.image['height'] - line['y2']
+                                  )
+
+            # Setting the pen
+            pen = QPen()
             pen.setColor(qtcolor)
             pen.setWidthF(line['penwidth'])
-
-            currentLine = lineItem(
-                plotnb * defaults.axiswidth,
-                self.image['height'] - line['y1'],
-                (plotnb + 1) * defaults.axiswidth,
-                self.image['height'] - line['y2'])
-
-            currentLine.setToolTip(
-                "%s -> %s" % (line['x1_strval'],
-                              line['x2_strval'])
-            )
-
             currentLine.setPen(pen)
+
+            currentLine.setToolTip("%s -> %s" % (line['x1_strval'],
+                                                 line['x2_strval'])
+                                  )
+
             currentLine.setCursor(QtCore.Qt.OpenHandCursor)
             currentLine.setLayer(line['layer'])
+
             self.scene.createLayer(line['layer'], linecounter, currentLine)
+
             self.scene.addItem(currentLine)
 
-            self.ui.tableWidget.setItem(
-                row, plotnb, QTableWidgetItem(line['x1_strval'])
-            )
+            self.ui.tableWidget.setItem(row, plotnb,
+                                        QTableWidgetItem(line['x1_strval'])
+                                       )
 
             self.backupRows[row].append(line['x1_strval'])
             currentLine.setOneRow(self.ui.tableWidget.item(row, plotnb))
@@ -73,9 +76,9 @@ class Line:
                 hidden.append(currentLine)
 
             if plotnb == self.axes_number - 2:
-                self.ui.tableWidget.setItem(
-                    row, plotnb + 1, QTableWidgetItem(line['x2_strval'])
-                )
+                self.ui.tableWidget.setItem(row, plotnb + 1,
+                                            QTableWidgetItem(line['x2_strval'])
+                                           )
 
                 currentLine.setTwoRow(
                     self.ui.tableWidget.item(row, plotnb),
