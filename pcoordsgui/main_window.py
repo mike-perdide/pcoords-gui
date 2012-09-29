@@ -37,8 +37,10 @@ except ImportError:
 
 
 class MainWindow(QMainWindow):
+    """Describes the pcoords main window."""
 
     def __init__(self, parent=None):
+        """Initialization method."""
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -53,6 +55,7 @@ class MainWindow(QMainWindow):
         #addLines(window, image)
 
     def connect_signals(self):
+        """Connect the objects to the slots."""
         ui = self.ui
 
         ui.actionSave.triggered.connect(self.exportToPGDL)
@@ -82,6 +85,7 @@ class MainWindow(QMainWindow):
         ui.actionViewTable.toggled.connect(self.viewTable)
 
     def Buildgraphic(self):
+        """Shows the buildpanel."""
         test = Buildpanel(self)
         test.show()
         print '+Buildgraphic'
@@ -100,6 +104,7 @@ class MainWindow(QMainWindow):
             self.image = pcoords.Image(str(self.pcvfile), self.filter)
 
     def openPcvFile(self):
+        """Opens the PCV file with a QFileDialog."""
         self.pcvfile = QtGui.QFileDialog.getOpenFileName(
             None,
             "Open Pcoords graph", "",
@@ -110,6 +115,7 @@ class MainWindow(QMainWindow):
         self.paint_ImageView()
 
     def antiAliasing(self):
+        """Activate or deactivate the anti-aliasing."""
         if (self.ui.QCheckAntiAliasing.isChecked()):
             self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing,
                                                True)
@@ -128,6 +134,7 @@ class MainWindow(QMainWindow):
         #    del self.image
 
     def showCredits(self):
+        """Show the credits in the about dialog."""
         panel = buildAboutPanel(pcoords.Version(), self)
         panel.show()
         del panel
@@ -141,6 +148,7 @@ class MainWindow(QMainWindow):
         #self.matrix = QtGui.QMatrix() #Natrix to apply Zoom on GraphicsView
 
     def viewLayers(self, checked):
+        """Display the layers box."""
         if checked:
             self.ui.LayersBox.show()
         else:
