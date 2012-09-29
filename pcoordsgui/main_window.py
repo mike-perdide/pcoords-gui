@@ -382,13 +382,7 @@ class MainWindow(QMainWindow):
 
     def empty_ImageView(self):
         tableHeader = []
-        comboList = []
 
-        # Handler of engine/ComboBox axis name translate
-        axesDict = {}
-
-        # Flag for not duplicate lines!
-        dictFull = False
         # combo = axisgui.AxisName(self.ui, self)
         # combo.show()
         self.ui.tableWidget.setHorizontalHeaderLabels(tableHeader)
