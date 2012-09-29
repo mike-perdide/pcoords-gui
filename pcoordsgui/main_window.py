@@ -49,7 +49,37 @@ class MainWindow(QMainWindow):
         self.comboList = []
         self.buttonChange = []
         self.exporter = export.ExportGraph()
+        self.connect_signals()
         #addLines(window, image)
+
+    def connect_signals(self):
+        ui = self.ui
+
+        ui.actionSave.triggered.connect(self.exportToPGDL)
+        ui.actionExport_png.triggered.connect(self.exportToPNG)
+        ui.action_Build.triggered.connect(self.Buildgraphic)
+        ui.action_Open.triggered.connect(self.openPcvFile)
+        ui.action_Quit.triggered.connect(self.Close)
+
+        ui.zoomButtonPlus.clicked.connect(self.plusZoom)
+        ui.zoomButtonLess.clicked.connect(self.plusZoom)
+
+        ui.axisIncreaseButton.clicked.connect(self.increaseAxisDialog)
+        ui.setWidthButton.clicked.connect(self.changeWidthDialog)
+        ui.QCheckAntiAliasing.clicked.connect(self.antiAliasing)
+
+        ui.actionUndo.triggered.connect(self.undoProcess)
+        ui.actionRedo.triggered.connect(self.redoProcess)
+
+        ui.action_About.triggered.connect(self.showCredits)
+
+        ui.actionZoomin.triggered.connect(self.plusZoom)
+        ui.actionZoomout.triggered.connect(self.lessZoom)
+
+        ui.actionLine_width.triggered.connect(self.changeWidthDialog)
+
+        ui.actionViewLayers.toggled.connect(self.viewLayers)
+        ui.actionViewTable.toggled.connect(self.viewTable)
 
     def ComboIndexChange(widget):
         pass
@@ -113,49 +143,6 @@ class MainWindow(QMainWindow):
         self.show()
 
         #self.matrix = QtGui.QMatrix() #Natrix to apply Zoom on GraphicsView
-
-        #scene.setSceneRect(0, 0, 875, 500)
-        self.connect(self.ui.actionSave, QtCore.SIGNAL('triggered()'),
-                     self.exportToPGDL)
-        self.connect(self.ui.actionExport_png, QtCore.SIGNAL('triggered()'),
-                     self.exportToPNG)
-        self.connect(self.ui.action_Build, QtCore.SIGNAL('triggered()'),
-                     self.Buildgraphic)
-        self.connect(self.ui.action_Open, QtCore.SIGNAL('triggered()'),
-                     self.openPcvFile)
-        self.connect(self.ui.action_Quit, QtCore.SIGNAL('triggered()'),
-                     self.Close)
-        self.connect(self.ui.zoomButtonPlus, QtCore.SIGNAL('clicked()'),
-                     self.plusZoom)
-        self.connect(self.ui.zoomButtonLess, QtCore.SIGNAL('clicked()'),
-                     self.lessZoom)
-
-        self.connect(self.ui.axisIncreaseButton, QtCore.SIGNAL('clicked()'),
-                     self.increaseAxisDialog)
-        self.connect(self.ui.setWidthButton, QtCore.SIGNAL('clicked()'),
-                     self.changeWidthDialog)
-        self.connect(self.ui.QCheckAntiAliasing, QtCore.SIGNAL('clicked()'),
-                     self.antiAliasing)
-
-        self.connect(self.ui.actionUndo, QtCore.SIGNAL('triggered()'),
-                     self.undoProcess)
-        self.connect(self.ui.actionRedo, QtCore.SIGNAL('triggered()'),
-                     self.redoProcess)
-
-        self.connect(self.ui.action_About, QtCore.SIGNAL('triggered()'),
-                     self.showCredits)
-
-        self.connect(self.ui.actionZoomin, QtCore.SIGNAL('triggered()'),
-                     self.plusZoom)
-        self.connect(self.ui.actionZoomout, QtCore.SIGNAL('triggered()'),
-                     self.lessZoom)
-        self.connect(self.ui.actionLine_width, QtCore.SIGNAL('triggered()'),
-                     self.changeWidthDialog)
-
-        self.connect(self.ui.actionViewLayers, QtCore.SIGNAL('toggled(bool)'),
-                     self.viewLayers)
-        self.connect(self.ui.actionViewTable, QtCore.SIGNAL('toggled(bool)'),
-                     self.viewTable)
 
     def viewLayers(self, checked):
         if checked:
