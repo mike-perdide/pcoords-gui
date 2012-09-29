@@ -1,36 +1,37 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1437</width>
-    <height>707</height>
+    <width>1006</width>
+    <height>516</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Pcoords Frontend</string>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <property name="minimumSize" >
+  <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
     <size>
      <width>0</width>
      <height>0</height>
     </size>
    </property>
-   <layout class="QGridLayout" name="gridLayout" >
-    <item row="0" column="0" colspan="3" >
-     <layout class="QHBoxLayout" name="horizontalLayout_2" >
-      <property name="topMargin" >
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="topMargin">
        <number>0</number>
       </property>
       <item>
-       <spacer name="horizontalSpacer" >
-        <property name="orientation" >
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
           <height>20</height>
@@ -39,162 +40,162 @@
        </spacer>
       </item>
       <item>
-       <widget class="Line" name="line_4" >
-        <property name="orientation" >
+       <widget class="Line" name="line_4">
+        <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="zoomButtonPlus" >
-        <property name="contextMenuPolicy" >
+       <widget class="QPushButton" name="zoomButtonPlus">
+        <property name="contextMenuPolicy">
          <enum>Qt::ActionsContextMenu</enum>
         </property>
-        <property name="toolTip" >
+        <property name="toolTip">
          <string>Zoom++</string>
         </property>
-        <property name="layoutDirection" >
+        <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string/>
         </property>
-        <property name="icon" >
+        <property name="icon">
          <iconset>
           <normaloff>../../../../../../../usr/share/pcoords-gui/icons/morezoom.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/morezoom.png</iconset>
         </property>
-        <property name="iconSize" >
+        <property name="iconSize">
          <size>
           <width>24</width>
           <height>24</height>
          </size>
         </property>
-        <property name="autoDefault" >
+        <property name="autoDefault">
          <bool>false</bool>
         </property>
-        <property name="default" >
+        <property name="default">
          <bool>false</bool>
         </property>
-        <property name="flat" >
+        <property name="flat">
          <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="zoomButtonLess" >
-        <property name="toolTip" >
+       <widget class="QPushButton" name="zoomButtonLess">
+        <property name="toolTip">
          <string>Zoom--</string>
         </property>
-        <property name="layoutDirection" >
+        <property name="layoutDirection">
          <enum>Qt::RightToLeft</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string/>
         </property>
-        <property name="icon" >
+        <property name="icon">
          <iconset>
           <normaloff>../../../../../../../usr/share/pcoords-gui/icons/lesszoom.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/lesszoom.png</iconset>
         </property>
-        <property name="iconSize" >
+        <property name="iconSize">
          <size>
           <width>24</width>
           <height>24</height>
          </size>
         </property>
-        <property name="flat" >
+        <property name="flat">
          <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="Line" name="line_3" >
-        <property name="orientation" >
+       <widget class="Line" name="line_3">
+        <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="brushButton" >
-        <property name="toolTip" >
+       <widget class="QPushButton" name="brushButton">
+        <property name="toolTip">
          <string>Brush Selected Lines</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string/>
         </property>
-        <property name="icon" >
+        <property name="icon">
          <iconset>
           <normaloff>../../../../../../../usr/share/pcoords-gui/icons/brush.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/brush.png</iconset>
         </property>
-        <property name="flat" >
+        <property name="flat">
          <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="setWidthButton" >
-        <property name="toolTip" >
+       <widget class="QPushButton" name="setWidthButton">
+        <property name="toolTip">
          <string>Set Thickness</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string/>
         </property>
-        <property name="icon" >
+        <property name="icon">
          <iconset>
           <normaloff>../../../../../../../usr/share/pcoords-gui/icons/width.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/width.png</iconset>
         </property>
-        <property name="flat" >
+        <property name="flat">
          <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="axisIncreaseButton" >
-        <property name="text" >
+       <widget class="QPushButton" name="axisIncreaseButton">
+        <property name="text">
          <string>Disperse Axis</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="Line" name="line" >
-        <property name="orientation" >
+       <widget class="Line" name="line">
+        <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="hideSelectionButton" >
-        <property name="text" >
+       <widget class="QPushButton" name="hideSelectionButton">
+        <property name="text">
          <string>Hide</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="showOnlyButton" >
-        <property name="text" >
+       <widget class="QPushButton" name="showOnlyButton">
+        <property name="text">
          <string>Show Only</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="showAllButton" >
-        <property name="text" >
+       <widget class="QPushButton" name="showAllButton">
+        <property name="text">
          <string>Show All</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="Line" name="line_2" >
-        <property name="orientation" >
+       <widget class="Line" name="line_2">
+        <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_2" >
-        <property name="orientation" >
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
           <height>20</height>
@@ -203,27 +204,27 @@
        </spacer>
       </item>
       <item>
-       <widget class="QCheckBox" name="QCheckAntiAliasing" >
-        <property name="text" >
+       <widget class="QCheckBox" name="QCheckAntiAliasing">
+        <property name="text">
          <string>Anti-Aliasing</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="1" column="0" colspan="3" >
-     <layout class="QHBoxLayout" name="horizontalLayout" >
-      <property name="sizeConstraint" >
+    <item row="1" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
-      <property name="topMargin" >
+      <property name="topMargin">
        <number>0</number>
       </property>
      </layout>
     </item>
-    <item row="3" column="0" >
-     <widget class="QGraphicsView" name="graphicsView" >
-      <property name="minimumSize" >
+    <item row="3" column="0">
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="minimumSize">
        <size>
         <width>800</width>
         <height>0</height>
@@ -231,114 +232,114 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0" colspan="3" >
-     <widget class="QSlider" name="horizontalSlider" >
-      <property name="orientation" >
+    <item row="4" column="0" colspan="3">
+     <widget class="QSlider" name="horizontalSlider">
+      <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
-    <item row="5" column="0" colspan="3" >
-     <widget class="QTableWidget" name="tableWidget" >
-      <property name="sizePolicy" >
-       <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+    <item row="5" column="0" colspan="3">
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>200</verstretch>
        </sizepolicy>
       </property>
      </widget>
     </item>
-    <item row="3" column="1" >
-     <widget class="QGroupBox" name="LayersBox" >
-      <property name="title" >
+    <item row="3" column="1">
+     <widget class="QGroupBox" name="LayersBox">
+      <property name="title">
        <string/>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2" >
-       <property name="spacing" >
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
         <number>4</number>
        </property>
-       <property name="margin" >
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="LayersButtonshorizontalLayout" >
-         <property name="spacing" >
+        <layout class="QHBoxLayout" name="LayersButtonshorizontalLayout">
+         <property name="spacing">
           <number>0</number>
          </property>
-         <property name="sizeConstraint" >
+         <property name="sizeConstraint">
           <enum>QLayout::SetMaximumSize</enum>
          </property>
-         <property name="topMargin" >
+         <property name="topMargin">
           <number>0</number>
          </property>
          <item>
-          <widget class="QPushButton" name="addLayerButton" >
-           <property name="maximumSize" >
+          <widget class="QPushButton" name="addLayerButton">
+           <property name="maximumSize">
             <size>
              <width>50</width>
              <height>50</height>
             </size>
            </property>
-           <property name="toolTip" >
+           <property name="toolTip">
             <string>Add new Layer from selected items</string>
            </property>
-           <property name="text" >
+           <property name="text">
             <string/>
            </property>
-           <property name="icon" >
+           <property name="icon">
             <iconset>
              <normaloff>../../../../../../../usr/share/pcoords-gui/icons/more.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/more.png</iconset>
            </property>
-           <property name="flat" >
+           <property name="flat">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="removeLayerButton" >
-           <property name="maximumSize" >
+          <widget class="QPushButton" name="removeLayerButton">
+           <property name="maximumSize">
             <size>
              <width>50</width>
              <height>50</height>
             </size>
            </property>
-           <property name="toolTip" >
+           <property name="toolTip">
             <string>Remove Selected Layer</string>
            </property>
-           <property name="text" >
+           <property name="text">
             <string/>
            </property>
-           <property name="icon" >
+           <property name="icon">
             <iconset>
              <normaloff>../../../../../../../usr/share/pcoords-gui/icons/less.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/less.png</iconset>
            </property>
-           <property name="flat" >
+           <property name="flat">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="selectLayerButton" >
-           <property name="maximumSize" >
+          <widget class="QPushButton" name="selectLayerButton">
+           <property name="maximumSize">
             <size>
              <width>50</width>
              <height>50</height>
             </size>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Selec</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="sortLayerButton" >
-           <property name="maximumSize" >
+          <widget class="QPushButton" name="sortLayerButton">
+           <property name="maximumSize">
             <size>
              <width>50</width>
              <height>50</height>
             </size>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>sort</string>
            </property>
           </widget>
@@ -346,77 +347,77 @@
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3" >
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QTreeWidget" name="layersTreeWidget" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+          <widget class="QTreeWidget" name="layersTreeWidget">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="maximumSize" >
+           <property name="maximumSize">
             <size>
              <width>300</width>
              <height>16777215</height>
             </size>
            </property>
-           <property name="frameShape" >
+           <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
-           <property name="lineWidth" >
+           <property name="lineWidth">
             <number>11</number>
            </property>
-           <property name="tabKeyNavigation" >
+           <property name="tabKeyNavigation">
             <bool>false</bool>
            </property>
-           <property name="showDropIndicator" stdset="0" >
+           <property name="showDropIndicator" stdset="0">
             <bool>false</bool>
            </property>
-           <property name="iconSize" >
+           <property name="iconSize">
             <size>
              <width>0</width>
              <height>0</height>
             </size>
            </property>
-           <property name="indentation" >
+           <property name="indentation">
             <number>-3</number>
            </property>
-           <property name="rootIsDecorated" >
+           <property name="rootIsDecorated">
             <bool>true</bool>
            </property>
-           <property name="itemsExpandable" >
+           <property name="itemsExpandable">
             <bool>true</bool>
            </property>
-           <property name="allColumnsShowFocus" >
+           <property name="allColumnsShowFocus">
             <bool>false</bool>
            </property>
-           <property name="wordWrap" >
+           <property name="wordWrap">
             <bool>false</bool>
            </property>
-           <property name="headerHidden" >
+           <property name="headerHidden">
             <bool>false</bool>
            </property>
            <column>
-            <property name="text" >
+            <property name="text">
              <string/>
             </property>
-            <property name="icon" >
+            <property name="icon">
              <iconset>
               <normaloff>../../../../../../../usr/share/pcoords-gui/icons/lock.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/lock.png</iconset>
             </property>
            </column>
            <column>
-            <property name="text" >
+            <property name="text">
              <string/>
             </property>
-            <property name="icon" >
+            <property name="icon">
              <iconset>
               <normaloff>../../../../../../../usr/share/pcoords-gui/icons/hide.png</normaloff>../../../../../../../usr/share/pcoords-gui/icons/hide.png</iconset>
             </property>
            </column>
            <column>
-            <property name="text" >
+            <property name="text">
              <string>Layers</string>
             </property>
            </column>
@@ -429,196 +430,196 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar" >
-   <property name="geometry" >
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1437</width>
+     <width>1006</width>
      <height>25</height>
     </rect>
    </property>
-   <property name="focusPolicy" >
+   <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
-   <property name="defaultUp" >
+   <property name="defaultUp">
     <bool>false</bool>
    </property>
-   <widget class="QMenu" name="menu_File" >
-    <property name="focusPolicy" >
+   <widget class="QMenu" name="menu_File">
+    <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
-    <property name="title" >
+    <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="action_Open" />
-    <addaction name="action_Build" />
-    <addaction name="separator" />
-    <addaction name="actionSave" />
-    <addaction name="actionExport_png" />
-    <addaction name="separator" />
-    <addaction name="action_Quit" />
+    <addaction name="action_Open"/>
+    <addaction name="action_Build"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionExport_png"/>
+    <addaction name="separator"/>
+    <addaction name="action_Quit"/>
    </widget>
-   <widget class="QMenu" name="menu_Help" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="action_About" />
+    <addaction name="action_About"/>
    </widget>
-   <widget class="QMenu" name="menu_Edit" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
      <string>&amp;Edit</string>
     </property>
-    <addaction name="actionUndo" />
-    <addaction name="actionRedo" />
-    <addaction name="separator" />
-    <addaction name="actionZoomin" />
-    <addaction name="actionZoomout" />
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoomin"/>
+    <addaction name="actionZoomout"/>
    </widget>
-   <widget class="QMenu" name="menu_Selection" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_Selection">
+    <property name="title">
      <string>&amp;Selection</string>
     </property>
-    <addaction name="actionBrush" />
-    <addaction name="actionLine_width" />
-    <addaction name="separator" />
-    <addaction name="actionHide" />
-    <addaction name="actionShow_only" />
-    <addaction name="actionShow_all" />
+    <addaction name="actionBrush"/>
+    <addaction name="actionLine_width"/>
+    <addaction name="separator"/>
+    <addaction name="actionHide"/>
+    <addaction name="actionShow_only"/>
+    <addaction name="actionShow_all"/>
    </widget>
-   <widget class="QMenu" name="menu_View" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
      <string>&amp;View</string>
     </property>
-    <addaction name="actionViewLayers" />
-    <addaction name="actionViewTable" />
+    <addaction name="actionViewLayers"/>
+    <addaction name="actionViewTable"/>
    </widget>
-   <addaction name="menu_File" />
-   <addaction name="menu_Edit" />
-   <addaction name="menu_Selection" />
-   <addaction name="menu_View" />
-   <addaction name="menu_Help" />
+   <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menu_Selection"/>
+   <addaction name="menu_View"/>
+   <addaction name="menu_Help"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
-  <action name="actionConnect_to_manager" >
-   <property name="text" >
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionConnect_to_manager">
+   <property name="text">
     <string>&amp;Connect to manager...</string>
    </property>
   </action>
-  <action name="action_Quit" >
-   <property name="text" >
+  <action name="action_Quit">
+   <property name="text">
     <string>&amp;Quit</string>
    </property>
   </action>
-  <action name="action_About" >
-   <property name="text" >
+  <action name="action_About">
+   <property name="text">
     <string>&amp;About</string>
    </property>
   </action>
-  <action name="action_Build" >
-   <property name="text" >
+  <action name="action_Build">
+   <property name="text">
     <string>&amp;Build</string>
    </property>
   </action>
-  <action name="action_Open" >
-   <property name="text" >
+  <action name="action_Open">
+   <property name="text">
     <string>&amp;Open</string>
    </property>
   </action>
-  <action name="actionExport_png" >
-   <property name="text" >
+  <action name="actionExport_png">
+   <property name="text">
     <string>Export (*.png)</string>
    </property>
   </action>
-  <action name="actionUndo" >
-   <property name="text" >
+  <action name="actionUndo">
+   <property name="text">
     <string>Undo</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl+Z</string>
    </property>
   </action>
-  <action name="actionRedo" >
-   <property name="text" >
+  <action name="actionRedo">
+   <property name="text">
     <string>Redo</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl+R</string>
    </property>
   </action>
-  <action name="actionSave" >
-   <property name="text" >
+  <action name="actionSave">
+   <property name="text">
     <string>Save</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionRemove_duplicated_lines" >
-   <property name="text" >
+  <action name="actionRemove_duplicated_lines">
+   <property name="text">
     <string>Remove duplicated lines</string>
    </property>
   </action>
-  <action name="actionZoomin" >
-   <property name="text" >
+  <action name="actionZoomin">
+   <property name="text">
     <string>Zoom +</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl++</string>
    </property>
   </action>
-  <action name="actionZoomout" >
-   <property name="text" >
+  <action name="actionZoomout">
+   <property name="text">
     <string>Zoom -</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl+-</string>
    </property>
   </action>
-  <action name="actionBrush" >
-   <property name="text" >
+  <action name="actionBrush">
+   <property name="text">
     <string>Brush</string>
    </property>
   </action>
-  <action name="actionLine_width" >
-   <property name="text" >
+  <action name="actionLine_width">
+   <property name="text">
     <string>Line width</string>
    </property>
   </action>
-  <action name="actionHide" >
-   <property name="text" >
+  <action name="actionHide">
+   <property name="text">
     <string>Hide</string>
    </property>
   </action>
-  <action name="actionShow_only" >
-   <property name="text" >
+  <action name="actionShow_only">
+   <property name="text">
     <string>Show only</string>
    </property>
   </action>
-  <action name="actionShow_all" >
-   <property name="text" >
+  <action name="actionShow_all">
+   <property name="text">
     <string>Show all</string>
    </property>
   </action>
-  <action name="actionViewLayers" >
-   <property name="checkable" >
+  <action name="actionViewLayers">
+   <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="checked" >
+   <property name="checked">
     <bool>true</bool>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Layers</string>
    </property>
   </action>
-  <action name="actionViewTable" >
-   <property name="checkable" >
+  <action name="actionViewTable">
+   <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="checked" >
+   <property name="checked">
     <bool>true</bool>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Table</string>
    </property>
   </action>
