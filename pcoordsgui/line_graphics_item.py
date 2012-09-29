@@ -1,4 +1,6 @@
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore
+from PyQt4.QtGui import QGraphicsLineItem, QColor, QPen, QTableWidgetItem, \
+        QGraphicsItem
 
 import defaults
 
@@ -20,10 +22,10 @@ class Line:
         r = self.hex2dec(color[1:3])
         g = self.hex2dec(color[3:5])
         b = self.hex2dec(color[5:7])
-        return QtGui.QColor(r, g, b)
+        return QColor(r, g, b)
 
     def addLines(self, show_max, axislimits=None):
-        pen = QtGui.QPen()
+        pen = QPen()
         self.backupRows = []
         self.backupRows.append([])
         #print str(axislimits)
@@ -59,7 +61,7 @@ class Line:
             self.scene.addItem(currentLine)
 
             self.ui.tableWidget.setItem(
-                row, plotnb, QtGui.QTableWidgetItem(line['x1_strval'])
+                row, plotnb, QTableWidgetItem(line['x1_strval'])
             )
 
             self.backupRows[row].append(line['x1_strval'])
@@ -70,7 +72,7 @@ class Line:
 
             if plotnb == self.axes_number - 2:
                 self.ui.tableWidget.setItem(
-                    row, plotnb + 1, QtGui.QTableWidgetItem(line['x2_strval'])
+                    row, plotnb + 1, QTableWidgetItem(line['x2_strval'])
                 )
 
                 currentLine.setTwoRow(
@@ -124,7 +126,7 @@ class Line:
         count = 0
         for each in self.graph_item:
             if (count > self.axes_number - 1):
-                each.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+                each.setFlag(QGraphicsItem.ItemIsSelectable, True)
             count = count + 1
 
     def removeLines(self):
@@ -208,7 +210,7 @@ class lineItem(QtGui.QGraphicsLineItem):
         self.backupPen = self.pen()
         self.selectWidth = 2.5
         self.id = Id
-        self.select_pen = QtGui.QPen(QtCore.Qt.gray)
+        self.select_pen = QPen(QtCore.Qt.gray)
         self.select_pen.setStyle(QtCore.Qt.DotLine)
         self.select_pen.setWidthF(self.selectWidth)
         self.parentSelected = False
@@ -324,7 +326,7 @@ class lineItem(QtGui.QGraphicsLineItem):
         print event
 
     def itemChange(self, event, value):
-        if event == QtGui.QGraphicsItem.ItemSelectedHasChanged:
+        if event == QGraphicsItem.ItemSelectedHasChanged:
             if self.isSelected():
                 self.setPen(self.select_pen)
                 self.selec = True
