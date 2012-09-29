@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        #self = QtGui.QMainWindow(self)
+
         self.scene = QtGui.QGraphicsScene()
         self.comboboxes = {}
         self.image = 0
@@ -52,7 +52,6 @@ class MainWindow(QMainWindow):
         self.buttonChange = []
         self.exporter = export.ExportGraph()
         self.connectSignals()
-        #addLines(window, image)
 
     def connectSignals(self):
         """Connect the objects to the slots."""
@@ -90,12 +89,11 @@ class MainWindow(QMainWindow):
         test.show()
         print '+Buildgraphic'
 
-    def init_view(self, pcvFileBuilded):
+    def init_view(self):
         self.axes_number = 0
         self.filter = None
         if len(sys.argv) < 2:
             self.pcvfile = "New.pcv"
-            pass
         else:
             self.pcvfile = sys.argv[1]
             if len(sys.argv) > 2:
@@ -125,10 +123,6 @@ class MainWindow(QMainWindow):
             each.close()
         for each in self.buttonChange:
             each.Close()
-        #print "Image"
-        #print self.image
-        #if self.image:
-        #    del self.image
 
     def showCredits(self):
         """Show the credits in the about dialog."""
@@ -141,8 +135,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("Pcoords Frontend [%s]" % (self.pcvfile))
         self.show()
-
-        #self.matrix = QtGui.QMatrix() #Natrix to apply Zoom on GraphicsView
 
     def viewLayers(self, checked):
         """Display the layers box."""
@@ -162,7 +154,6 @@ class MainWindow(QMainWindow):
 
     def redoProcess(self):
         try:
-            #print "In Redo %d" % (self.scene.countUndo)
             if self.scene.countUndo < 0:
                 QtGui.QMessageBox.information(
                     self, self.trUtf8("Redo"),
@@ -217,15 +208,7 @@ class MainWindow(QMainWindow):
 
                     self.scene.countUndo = self.scene.countUndo + 1
 
-                    #listParam = []
-                    #for i in range(self.scene.axes_number):
-                #        listParam.append(strList[i + 1])
-                #    print "Param CHANGE"
-                #    print strList
-                #    self.axisButton.buttonPressed2(listParam)
-                #    self.scene.countUndo = self.scene.countUndo + 1
                 elif command == "WIDTH":
-                    #print "width"
                     num_selected_lines = len(strList) - 1
                     for i in range(1, num_selected_lines, 3):
                         self.scene.changeWidth2(strList[i], strList[i + 1])
@@ -238,7 +221,6 @@ class MainWindow(QMainWindow):
             #            print "REMOVE LAYER %s" % (strList[1])
                         self.scene.countUndo = self.scene.countUndo + 1
 
-            #print self.scene.countUndo
         except:
             QtGui.QMessageBox.information(
                 self, self.trUtf8("Redo"),
@@ -330,7 +312,6 @@ class MainWindow(QMainWindow):
             QtGui.QMessageBox.information(
                 self, self.trUtf8("Undo"),
                 self.trUtf8("There isn't Statement to Undo!"))
-                #self.ui.setMenuBar(self.menubar)
 
     def changeWidthDialog(self):
         panel = buildWidthPanel(self)
@@ -343,8 +324,6 @@ class MainWindow(QMainWindow):
         del panel
 
     def plusZoom(self):
-        #self.matrix.scale(2, 2)
-        #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1.15, 1.15)
         self.line.decreaseWidth()
 
@@ -353,19 +332,13 @@ class MainWindow(QMainWindow):
             del self.scene.listUndoStatement[i]
 
         self.scene.listUndoStatement.append("ZOOM+")
-#        self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
 
     def plusZoom2(self):
-        #self.matrix.scale(2, 2)
-        #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1.15, 1.15)
         self.line.decreaseWidth()
-        #print "ZOOM+"
 
     def lessZoom(self):
-        #self.matrix.scale(0.5, 0.5)
-        #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1 / 1.15, 1 / 1.15)
         self.line.increaseWidth()
 
@@ -373,23 +346,16 @@ class MainWindow(QMainWindow):
                        self.scene.countUndo - 1, -1):
             del self.scene.listUndoStatement[i]
 
-        #print "ZOOM-"
         self.scene.listUndoStatement.append("ZOOM-")
-        #self.scene.countUndo = self.scene.countUndo + 1
         self.scene.countUndo = len(self.scene.listUndoStatement)
 
     def lessZoom2(self):
-        #self.matrix.scale(0.5, 0.5)
-        #self.ui.graphicsView.setMatrix(self.matrix)
         self.ui.graphicsView.scale(1 / 1.15, 1 / 1.15)
         self.line.increaseWidth()
-        #print "ZOOM-"
 
     def empty_ImageView(self):
         tableHeader = []
 
-        # combo = axisgui.AxisName(self.ui, self)
-        # combo.show()
         self.ui.tableWidget.setHorizontalHeaderLabels(tableHeader)
         self.ui.tableWidget.horizontalHeader().setResizeMode(
             QtGui.QListView.Adjust, QtGui.QHeaderView.Interactive)
@@ -408,7 +374,6 @@ class MainWindow(QMainWindow):
         self.scene = myScene(self.ui.graphicsView)
         self.scene.setBackgroundBrush(QtCore.Qt.white)
         self.scene.getUi(self.ui, self.image)
-        #self.ui.graphicsView.setRenderHint(QtGui.QPainter.Antialiasing)
         self.ui.graphicsView.setScene(self.scene)
         self.ui.graphicsView.setDragMode(2)
 
@@ -496,12 +461,9 @@ class MainWindow(QMainWindow):
         linenb = 0
         self.comboList = comboList
         for self.line in self.image['lines']:
-            #if(not self.line['hidden']):
             linenb = linenb + 1
         self.ui.horizontalSlider.setMaximum(linenb / (self.axes_number - 1))
         self.ui.horizontalSlider.setValue(linenb / (self.axes_number - 1))
-
-        #ui.menubar.hide()
 
         axisgui.addAxes(self.image, self.scene, self.line, self.axes_number,
                         self.ui)
@@ -529,10 +491,6 @@ class MainWindow(QMainWindow):
         self.axisButton.setCurrentEngine(pcoords)
         self.axisButton.setSlider(self.ui.horizontalSlider)
         self.buttonChange.append(self.axisButton)
-
-    def Close(self):
-        print "Closing Window!"
-        self.close()
 
     def closeEvent(self, event):
         self.scene.clearSelection()

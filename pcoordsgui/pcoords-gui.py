@@ -19,7 +19,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     pcoords_app = MainWindow()
-    pcoords_app.init_view(None)
+    pcoords_app.init_view()
     pcoords_app.create_window_after_init_view()
 
     if not pcoords_app.image:
