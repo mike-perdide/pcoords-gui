@@ -1,5 +1,5 @@
 from PyQt4 import QtGui
-from aboutDialogUi import Ui_AboutDialog
+from about_dialog_ui import Ui_AboutDialog
 
 
 class buildAboutPanel (QtGui.QDialog):

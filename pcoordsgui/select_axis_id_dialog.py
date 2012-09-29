@@ -1,6 +1,6 @@
 
 from PyQt4 import QtCore, QtGui
-from selectAxisIdDialogUi import Ui_axisSpinBox
+from select_axis_id_dialog_ui import Ui_axisSpinBox
 
 
 class buildSelectIdPanel (QtGui.QDialog):

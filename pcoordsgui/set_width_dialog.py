@@ -1,6 +1,6 @@
 
 from PyQt4 import QtCore, QtGui
-from setWidthDialogUi import Ui_setWidth
+from set_width_dialog_ui import Ui_setWidth
 
 
 class buildWidthPanel (QtGui.QDialog):

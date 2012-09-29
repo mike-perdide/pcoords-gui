@@ -19,13 +19,15 @@ from PyQt4 import QtCore, QtGui
 import pcoords
 
 # UI
-from pcoordsgui import axisgui, export, lines, UiPcoords
-from pcoordsgui.buildgraphicgui import Buildpanel
-from pcoordsgui.UiPcoords import Ui_MainWindow
-from pcoordsgui.myScene import myScene
-from pcoordsgui.setWidthDialog import buildWidthPanel
-from pcoordsgui.selectAxisIdDialog import buildSelectIdPanel
-from pcoordsgui.aboutDialog import buildAboutPanel
+from pcoordsgui import axisgui, export
+from pcoordsgui import line_graphics_item
+from pcoordsgui.pcoords_graphics_scene import myScene
+from pcoordsgui.build_graphic_dialog import Buildpanel
+from pcoordsgui.set_width_dialog import buildWidthPanel
+from pcoordsgui.select_axis_id_dialog import buildSelectIdPanel
+from pcoordsgui.about_dialog import buildAboutPanel
+
+from pcoordsgui.main_window_ui import Ui_MainWindow
 #class Timeout:
 #    def __init__(self, last):
 #        self.last_timeout = last
@@ -53,7 +55,7 @@ class PcoordsApp(QtGui.QMainWindow, Ui_MainWindow):
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
-        self.ui = UiPcoords.Ui_MainWindow()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         #self = QtGui.QMainWindow(self)
         self.scene = QtGui.QGraphicsScene()
@@ -547,8 +549,9 @@ class PcoordsApp(QtGui.QMainWindow, Ui_MainWindow):
         self.ui.tableWidget.setSelectionBehavior(
                                             QtGui.QAbstractItemView.SelectRows)
 
-        self.line = lines.Line(self.scene, self.image, self.axes_number,
-                               self.ui, self.comboList)
+        self.line = line_graphics_item.Line(self.scene, self.image,
+                                            self.axes_number, self.ui,
+                                            self.comboList)
         self.line.addLines(linenb)
 
         self.connect(self.ui.horizontalSlider,

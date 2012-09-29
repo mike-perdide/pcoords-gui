@@ -1,7 +1,7 @@
 
 from PyQt4 import QtCore, QtGui
 
-from buildgraphicDialog import Ui_Dialog_Build
+from build_graphic_dialog_ui import Ui_Dialog_Build
 import os
 # Pcoords
 import pcoords
