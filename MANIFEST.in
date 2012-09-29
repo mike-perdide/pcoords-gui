@@ -1,2 +1,2 @@
-recursive-include icons *.png
+recursive-include pcoords-gui/icons *.png
 include *.qrc *.ui
