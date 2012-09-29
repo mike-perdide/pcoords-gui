@@ -55,7 +55,6 @@ class MainWindow(QMainWindow):
         self.filters = None
 
         if pcvfile:
-            print pcvfile
             self.setPcvFile(pcvfile, filters=filters)
         else:
             self.openPcvFile()
@@ -68,7 +67,6 @@ class MainWindow(QMainWindow):
 
     def setPcvFile(self, pcvfile, filters=None):
         self.image = pcoords.Image(str(pcvfile), filters)
-        print self.image
 
         if filters:
             self.filters = filters
