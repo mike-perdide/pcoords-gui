@@ -1,8 +1,8 @@
 Coding styles
 =============
 
-We follow PEP8 here, with an exception for the methods name, which are formatted
-with camelCase.
+We follow PEP8 here, with an exception for the methods name and the Qt widget
+names, which are formatted with camelCase.
 
 Please read: http://bitesofcode.blogspot.fr/2011/10/pyqt-coding-style-guidelines.html
 
