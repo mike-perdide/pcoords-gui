@@ -1,4 +1,4 @@
-SRCDIRS = pcoords-gui
+SRCDIRS = pcoordsgui
 GENTARGETS = all clean test
 
 $(GENTARGETS): $(SRCDIRS)
