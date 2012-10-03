@@ -30,9 +30,12 @@ class PyAxisWidget(QWidget):
         # button needs this to get the axis names.
         self.comboBoxes = comboList
 
+        for comboBox in comboList:
+            self._ui.comboBoxesLayout.addWidget(comboBox)
+
         self.currentComboBoxes = []
         for i in self.comboBoxes:
-            self._ui.currentComboBoxes.append(i.currentText().__str__())
+            self.currentComboBoxes.append(i.currentText().__str__())
 
         # H lds the correspondent axis name on image file for all names in
         # comboBoxes
@@ -40,11 +43,11 @@ class PyAxisWidget(QWidget):
         self.scene = scene
 
         # Add function to respond to signal.
-#        self.changeClicked.emit()
+        self._ui.changeButton.clicked.connect(self.changeButtonClicked)
 
         self.semaphore = False
 
-    def buttonPressed(self):
+    def changeButtonClicked(self):
         # This list is responsible for holding the names of the axes
         name_list = []
         label = "CHANGE"
