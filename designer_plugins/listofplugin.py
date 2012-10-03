@@ -28,7 +28,7 @@ try:
     # used in the generated (from the .ui) python file. It depends on where
     # you'll keep the .ui of the widget that will include the plugin.
     _MODULE_INCLUDE = 'pcoordsgui.widgets.axis_widget'
-    AXIS_WIDGET = plugin(PyAxisWidget, "axis_widget", _MODULE_INCLUDE)
+    AXIS_WIDGET = plugin(PyAxisWidget, "axisWidget", _MODULE_INCLUDE)
 
 except Exception, e:
     with open(LOGFILE, "a") as handle:
