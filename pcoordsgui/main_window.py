@@ -405,7 +405,6 @@ class MainWindow(QMainWindow):
 
         while i < self.axes_number:
             combo = axisgui.AxisName(self.ui, self)
-            self.ui.horizontalLayout.addWidget(combo)
             combo.show()
             temp_index = 0
             for axis in self.image['axeslist']:
@@ -433,10 +432,10 @@ class MainWindow(QMainWindow):
             comboList.append(combo)
             i = i + 1
 
-        # Add a button in Horizontal Layout
-        self.axisButton = axisgui.AxisButton(self.ui, comboList, axesDict,
-                                             self.scene, self)
-        self.scene.getButton(self.axisButton)
+        axisWidget = self.ui.axisWidget
+        axisWidget.setup(comboList, axesDict, self.scene)
+
+        self.scene.getButton(axisWidget)
         self.ui.horizontalSlider.setPageStep(1)
         self.ui.horizontalSlider.setMinimum(0)
         linenb = 0
@@ -467,11 +466,12 @@ class MainWindow(QMainWindow):
         self.connect(self.ui.horizontalSlider,
                      QtCore.SIGNAL('valueChanged(int)'),
                      self.line.update_lines_view)
-        self.axisButton.setLines(self.line, linenb)
-        self.axisButton.setImage(self.image)
-        self.axisButton.setCurrentEngine(pcoords)
-        self.axisButton.setSlider(self.ui.horizontalSlider)
-        self.buttonChange.append(self.axisButton)
+
+        axisWidget.setLines(self.line, linenb)
+        axisWidget.setImage(self.image)
+        axisWidget.setCurrentEngine(pcoords)
+        axisWidget.setSlider(self.ui.horizontalSlider)
+        self.buttonChange.append(axisWidget)
 
     def closeEvent(self, event):
         self.scene.clearSelection()
