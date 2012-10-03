@@ -68,8 +68,6 @@ from os.path import join, dirname, abspath
 repo_root = abspath(dirname(__file__))
 env['PYQTDESIGNERPATH'] = join(repo_root, 'designer_plugins')
 env['PYTHONPATH'] = join(repo_root, 'pcoordsgui', 'widgets')
-print env['PYQTDESIGNERPATH']
-print env['PYTHONPATH']
 qenv = ['%s=%s' % (name, value) for name, value in env.items()]
 
 # Start Designer.
